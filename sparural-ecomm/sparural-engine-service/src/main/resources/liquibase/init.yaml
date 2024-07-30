@@ -1,0 +1,5320 @@
+databaseChangeLog:
+  - changeSet:
+      id: "2022-05-15 15:00"
+      author: "Alex Eysner"
+      context: "tableSchema"
+      changes:
+        - sql:
+            sql: "CREATE TYPE genders AS ENUM ('male', 'female', 'other')"
+        - sql:
+            sql: "CREATE TYPE users_delete_reasons AS ENUM ('Reject', 'Ban')"
+        - sql:
+            sql: "CREATE TYPE card_statuses AS ENUM ('ForIssue', 'Emitted', 'Activated', 'Replaced', 'Expired')"
+        - sql:
+            sql: "CREATE TYPE life_times_periods AS ENUM ('FromWeekToMonth', 'FromMonthToYear', 'FromYear')"
+        - sql:
+            sql: "CREATE TYPE personal_goods_preference_types AS ENUM ('Cashback', 'Discount')"
+        - sql:
+            sql: "CREATE TYPE personal_goods_calculation_methods AS ENUM ('Percent', 'FixAmount', 'AmountPerUnit')"
+        - sql:
+            sql: "CREATE TYPE coupon_states AS ENUM ('Created', 'Issued', 'Used', 'Rejected', 'QueuedToUse', 'QueuedToIssue')"
+        - sql:
+            sql: "CREATE TYPE merchant_working_statuses AS ENUM ('Open', 'OnRepair', 'Closed')"
+        - sql:
+            sql: "CREATE TYPE question_type AS ENUM ('NoAnswer', 'MultipleChoice')"
+        - sql:
+            sql: "CREATE TYPE confirm_code_statuses AS ENUM ('Request', 'Success', 'Rejected')"
+        - sql:
+            sql: "CREATE TYPE city_select_values AS ENUM ('All', 'Nowhere', 'Selection')"
+        - sql:
+            sql: "CREATE TYPE message_statuses AS ENUM ('BeingSent', 'Sent', 'NotSent')"
+
+  - changeSet:
+      id: 1652592839476-2
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: users_groups_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  name: isSys
+                  type: BOOLEAN
+              - column:
+                  name: createdAt
+                  type: BIGINT
+              - column:
+                  name: updatedAt
+                  type: BIGINT
+              - column:
+                  name: code
+                  type: INTEGER
+            tableName: users_groups
+  - changeSet:
+      id: 1652592839476-3
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: users_group_user_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: usersGroupId
+                  type: BIGINT
+              - column:
+                  name: userId
+                  type: BIGINT
+              - column:
+                  name: createdAt
+                  type: BIGINT
+              - column:
+                  name: updatedAt
+                  type: BIGINT
+            tableName: users_group_user
+  - changeSet:
+      id: 1652592839476-4
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: roles_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: code
+                  type: VARCHAR(255)
+              - column:
+                  name: name
+                  remarks: human comprehensible
+                  type: VARCHAR(255)
+              - column:
+                  name: createdAt
+                  type: BIGINT
+              - column:
+                  name: updatedAt
+                  type: BIGINT
+            tableName: roles
+  - changeSet:
+      id: 1652592839476-5
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: role_user_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: userId
+                  type: BIGINT
+              - column:
+                  name: roleId
+                  type: BIGINT
+              - column:
+                  name: createdAt
+                  type: BIGINT
+              - column:
+                  name: updatedAt
+                  type: BIGINT
+            tableName: role_user
+  - changeSet:
+      id: 1652592839476-6
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: registrations_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: userId
+                  type: BIGINT
+              - column:
+                  name: step
+                  type: INTEGER
+              - column:
+                  name: createdAt
+                  type: BIGINT
+              - column:
+                  name: updatedAt
+                  type: BIGINT
+            tableName: registrations
+  - changeSet:
+      id: 1652592839476-7
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: recovery_password_requests_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: notifierId
+                  type: BIGINT
+              - column:
+                  name: notifierIdentity
+                  type: VARCHAR(255)
+              - column:
+                  name: token
+                  type: VARCHAR(255)
+              - column:
+                  name: expired
+                  type: BIGINT
+              - column:
+                  name: code
+                  type: VARCHAR(10)
+              - column:
+                  name: createdAt
+                  type: BIGINT
+              - column:
+                  name: updatedAt
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: userId
+                  type: BIGINT
+            tableName: recovery_password_requests
+  - changeSet:
+      id: 1652592839476-8
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: user_push_tokens_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: userId
+                  type: BIGINT
+              - column:
+                  name: deviceTypeId
+                  type: BIGINT
+              - column:
+                  name: token
+                  type: VARCHAR(255)
+              - column:
+                  name: createdAt
+                  type: BIGINT
+              - column:
+                  name: updatedAt
+                  type: BIGINT
+            tableName: user_push_tokens
+  - changeSet:
+      id: 1652592839476-9
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: device_types_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  name: createdAt
+                  type: BIGINT
+              - column:
+                  name: updatedAt
+                  type: BIGINT
+            tableName: device_types
+  - changeSet:
+      id: 1652592839476-10
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: users_unconfirmed_phones_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: userId
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: phoneNumber
+                  type: VARCHAR(255)
+              - column:
+                  name: createdAt
+                  type: BIGINT
+              - column:
+                  name: updatedAt
+                  type: BIGINT
+            tableName: users_unconfirmed_phones
+  - changeSet:
+      id: 1652592839476-11
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: users_unconfirmed_emails_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: userId
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: email
+                  type: VARCHAR(255)
+              - column:
+                  name: createdAt
+                  type: BIGINT
+              - column:
+                  name: updatedAt
+                  type: BIGINT
+            tableName: users_unconfirmed_emails
+  - changeSet:
+      id: 1652592839476-12
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: confirm_codes_notifiers_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  name: createdAt
+                  type: BIGINT
+              - column:
+                  name: updatedAt
+                  type: BIGINT
+            tableName: confirm_codes_notifiers
+  - changeSet:
+      id: 1652592839476-13
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: card_user_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: cardId
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: userId
+                  type: BIGINT
+              - column:
+                  name: canBlock
+                  type: BOOLEAN
+              - column:
+                  name: canReplace
+                  type: BOOLEAN
+              - column:
+                  name: createdAt
+                  type: BIGINT
+              - column:
+                  name: updatedAt
+                  type: BIGINT
+            tableName: card_user
+  - changeSet:
+      id: 1652592839476-14
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: cards_qr_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: cardId
+                  type: BIGINT
+              - column:
+                  name: codeGeneratedDate
+                  type: BIGINT
+              - column:
+                  name: code
+                  type: VARCHAR(255)
+              - column:
+                  name: lifeTime
+                  remarks: seconds
+                  type: INTEGER
+              - column:
+                  name: createdAt
+                  type: BIGINT
+              - column:
+                  name: updatedAt
+                  type: BIGINT
+            tableName: cards_qr
+  - changeSet:
+      id: 1652592839476-15
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: accounts_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: userId
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: accountTypeId
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  defaultValueNumeric: 0
+                  name: amount
+                  type: INTEGER
+              - column:
+                  name: notActivatedAmount
+                  type: INTEGER
+              - column:
+                  name: createdAt
+                  type: BIGINT
+              - column:
+                  name: updatedAt
+                  type: BIGINT
+            tableName: accounts
+  - changeSet:
+      id: 1652592839476-16
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: accounts_types_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  name: currencyId
+                  type: BIGINT
+              - column:
+                  name: order
+                  type: INTEGER
+              - column:
+                  name: createdAt
+                  type: BIGINT
+              - column:
+                  name: updatedAt
+                  type: BIGINT
+            tableName: accounts_types
+  - changeSet:
+      id: 1652592839476-17
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: account_user_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: accountId
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: userId
+                  type: BIGINT
+              - column:
+                  name: createdAt
+                  type: BIGINT
+              - column:
+                  name: updatedAt
+                  type: BIGINT
+            tableName: account_user
+  - changeSet:
+      id: 1652592839476-18
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: account_life_times_by_time_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: accountId
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: amount
+                  type: INTEGER
+              - column:
+                  name: date
+                  type: BIGINT
+              - column:
+                  name: createdAt
+                  type: BIGINT
+              - column:
+                  name: updatedAt
+                  type: BIGINT
+            tableName: account_life_times_by_time
+  - changeSet:
+      id: 1652592839476-19
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: currencies_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  name: externalId
+                  type: VARCHAR(255)
+              - column:
+                  name: description
+                  type: TEXT
+              - column:
+                  name: isDeleted
+                  type: BOOLEAN
+              - column:
+                  name: createdAt
+                  type: BIGINT
+              - column:
+                  name: updatedAt
+                  type: BIGINT
+              - column:
+                  name: nameCases
+                  type: VARCHAR(255)
+            tableName: currencies
+  - changeSet:
+      id: 1652592839476-20
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: client_statuses_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  name: threshold
+                  type: INTEGER
+              - column:
+                  name: createdAt
+                  type: BIGINT
+              - column:
+                  name: updatedAt
+                  type: BIGINT
+            tableName: client_statuses
+  - changeSet:
+      id: 1652592839476-21
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: client_status_user_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: clientStatusId
+                  type: BIGINT
+              - column:
+                  name: userId
+                  type: BIGINT
+              - column:
+                  name: currentValue
+                  type: INTEGER
+              - column:
+                  name: leftUntilNextStatus
+                  remarks: = threshold of next status - currentValue
+                  type: INTEGER
+              - column:
+                  name: createdAt
+                  type: BIGINT
+              - column:
+                  name: updatedAt
+                  type: BIGINT
+            tableName: client_status_user
+  - changeSet:
+      id: 1652592839476-22
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: offers_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: description
+                  type: TEXT
+              - column:
+                  name: shortDescription
+                  type: TEXT
+              - column:
+                  name: begin
+                  type: BIGINT
+              - column:
+                  name: end
+                  type: BIGINT
+              - column:
+                  name: createdAt
+                  type: BIGINT
+              - column:
+                  name: updatedAt
+                  type: BIGINT
+              - column:
+                  name: title
+                  type: VARCHAR(255)
+            tableName: offers
+  - changeSet:
+      id: 1652592839476-23
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: personal_offers_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: attribute
+                  type: VARCHAR(255)
+              - column:
+                  name: title
+                  type: VARCHAR(255)
+              - column:
+                  name: description
+                  type: TEXT
+              - column:
+                  name: begin
+                  type: BIGINT
+              - column:
+                  name: end
+                  type: BIGINT
+              - column:
+                  name: isPublic
+                  type: BOOLEAN
+              - column:
+                  name: draft
+                  type: BOOLEAN
+              - column:
+                  name: createdAt
+                  type: BIGINT
+              - column:
+                  name: updatedAt
+                  type: BIGINT
+            tableName: personal_offers
+  - changeSet:
+      id: 1652592839476-24
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: personal_offer_user_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: personalOfferId
+                  type: BIGINT
+              - column:
+                  name: userId
+                  type: BIGINT
+              - column:
+                  name: createdAt
+                  type: BIGINT
+              - column:
+                  name: updatedAt
+                  type: BIGINT
+              - column:
+                  name: data
+                  type: VARCHAR(1020)
+            tableName: personal_offer_user
+  - changeSet:
+      id: 1652592839476-25
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: goods_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: extGoodsId
+                  type: VARCHAR(255)
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  name: description
+                  type: TEXT
+              - column:
+                  name: createdAt
+                  type: BIGINT
+              - column:
+                  name: updatedAt
+                  type: BIGINT
+              - column:
+                  name: draft
+                  type: BOOLEAN
+            tableName: goods
+  - changeSet:
+      id: 1652592839476-26
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: coupon_user_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: couponId
+                  type: BIGINT
+              - column:
+                  name: userId
+                  type: BIGINT
+              - column:
+                  name: createdAt
+                  type: BIGINT
+              - column:
+                  name: updatedAt
+                  type: BIGINT
+            tableName: coupon_user
+  - changeSet:
+      id: 1652592839476-27
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: coupon_emissions_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: title
+                  type: VARCHAR(255)
+              - column:
+                  name: start
+                  type: BIGINT
+              - column:
+                  name: end
+                  type: BIGINT
+              - column:
+                  name: isPublic
+                  type: BOOLEAN
+              - column:
+                  name: createdAt
+                  type: BIGINT
+              - column:
+                  name: updatedAt
+                  type: BIGINT
+            tableName: coupon_emissions
+  - changeSet:
+      id: 1652592839476-28
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: favorite_categories_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  name: goodsGroupUID
+                  type: VARCHAR(255)
+              - column:
+                  defaultValueBoolean: false
+                  name: isPublic
+                  type: BOOLEAN
+              - column:
+                  name: createdAt
+                  type: BIGINT
+              - column:
+                  name: updatedAt
+                  type: BIGINT
+            tableName: favorite_categories
+  - changeSet:
+      id: 1652592839476-29
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: favorite_category_user_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: userId
+                  type: BIGINT
+              - column:
+                  name: startActiveDate
+                  type: BIGINT
+              - column:
+                  name: endActiveDate
+                  type: BIGINT
+              - column:
+                  name: preferenceType
+                  type: INTEGER
+              - column:
+                  name: preferenceValue
+                  type: INTEGER
+              - column:
+                  name: createdAt
+                  type: BIGINT
+              - column:
+                  name: updatedAt
+                  type: BIGINT
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                  name: favoriteCategoryId
+                  type: BIGINT
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                  name: monthId
+                  type: BIGINT
+              - column:
+                  name: accepted
+                  type: BOOLEAN
+            tableName: favorite_category_user
+  - changeSet:
+      id: 1652592839476-30
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: catalog_city_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: catalogId
+                  type: BIGINT
+              - column:
+                  name: cityId
+                  type: BIGINT
+              - column:
+                  name: createdAt
+                  type: BIGINT
+              - column:
+                  name: updatedAt
+                  type: BIGINT
+            tableName: catalog_city
+  - changeSet:
+      id: 1652592839476-31
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: checks_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: cardId
+                  type: BIGINT
+              - column:
+                  name: userId
+                  type: BIGINT
+              - column:
+                  name: merchantId
+                  type: BIGINT
+              - column:
+                  name: dateTime
+                  type: BIGINT
+              - column:
+                  name: isRefund
+                  type: BOOLEAN
+              - column:
+                  name: checkNumber
+                  type: VARCHAR(255)
+              - column:
+                  name: amount
+                  type: FLOAT8
+              - column:
+                  name: currencyId
+                  type: BIGINT
+              - column:
+                  name: createdAt
+                  type: BIGINT
+              - column:
+                  name: updatedAt
+                  type: BIGINT
+              - column:
+                  name: externalPurchaseId
+                  type: VARCHAR(255)
+            tableName: checks
+  - changeSet:
+      id: 1652592839476-32
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: checks_items_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: checkId
+                  type: BIGINT
+              - column:
+                  name: positionId
+                  type: INTEGER
+              - column:
+                  name: description
+                  type: TEXT
+              - column:
+                  name: count
+                  type: INTEGER
+              - column:
+                  name: unit
+                  type: VARCHAR(10)
+              - column:
+                  name: amount
+                  type: FLOAT8
+              - column:
+                  name: createdAt
+                  type: BIGINT
+              - column:
+                  name: updatedAt
+                  type: BIGINT
+            tableName: checks_items
+  - changeSet:
+      id: 1652592839476-33
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: checks_additional_attributes_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: checkId
+                  type: BIGINT
+              - column:
+                  name: type
+                  type: VARCHAR(255)
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  name: stringValue
+                  type: VARCHAR(255)
+              - column:
+                  name: decimalValue
+                  type: FLOAT8
+              - column:
+                  name: value
+                  type: VARCHAR(255)
+              - column:
+                  name: createdAt
+                  type: BIGINT
+              - column:
+                  name: updatedAt
+                  type: BIGINT
+            tableName: checks_additional_attributes
+  - changeSet:
+      id: 1652592839476-34
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: checks_withdraws_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: checkId
+                  type: BIGINT
+              - column:
+                  name: withdrawType
+                  type: VARCHAR(255)
+              - column:
+                  name: description
+                  type: TEXT
+              - column:
+                  name: amount
+                  type: FLOAT8
+              - column:
+                  name: currencyId
+                  type: BIGINT
+              - column:
+                  name: createdAt
+                  type: BIGINT
+              - column:
+                  name: updatedAt
+                  type: BIGINT
+            tableName: checks_withdraws
+  - changeSet:
+      id: 1652592839476-35
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: checks_rewards_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: checkId
+                  type: BIGINT
+              - column:
+                  name: rewardType
+                  type: VARCHAR(255)
+              - column:
+                  name: description
+                  type: TEXT
+              - column:
+                  name: amount
+                  type: FLOAT8
+              - column:
+                  name: currencyId
+                  type: BIGINT
+              - column:
+                  name: createdAt
+                  type: BIGINT
+              - column:
+                  name: updatedAt
+                  type: BIGINT
+            tableName: checks_rewards
+  - changeSet:
+      id: 1652592839476-36
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: external_documents_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: alias
+                  type: VARCHAR(255)
+              - column:
+                  name: title
+                  type: VARCHAR(255)
+              - column:
+                  name: url
+                  type: VARCHAR(255)
+              - column:
+                  name: createdAt
+                  type: BIGINT
+              - column:
+                  name: updatedAt
+                  type: BIGINT
+            tableName: external_documents
+  - changeSet:
+      id: 1652592839476-37
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: contents_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: alias
+                  type: VARCHAR(255)
+              - column:
+                  name: title
+                  type: VARCHAR(255)
+              - column:
+                  name: content
+                  type: TEXT
+              - column:
+                  name: createdAt
+                  type: BIGINT
+              - column:
+                  name: updatedAt
+                  type: BIGINT
+            tableName: contents
+  - changeSet:
+      id: 1652592839476-38
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: merchant_formats_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  name: createdAt
+                  type: BIGINT
+              - column:
+                  name: updatedAt
+                  type: BIGINT
+              - column:
+                  name: draft
+                  type: BOOLEAN
+            tableName: merchant_formats
+  - changeSet:
+      id: 1652592839476-39
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: merchant_attributes_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  name: draft
+                  type: BOOLEAN
+              - column:
+                  name: createdAt
+                  type: BIGINT
+              - column:
+                  name: updatedAt
+                  type: BIGINT
+            tableName: merchant_attributes
+  - changeSet:
+      id: 1652592839476-40
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: merchant_attribute_merchant_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: merchantsId
+                  type: BIGINT
+              - column:
+                  name: attributeId
+                  type: BIGINT
+              - column:
+                  name: createdAt
+                  type: BIGINT
+              - column:
+                  name: updatedAt
+                  type: BIGINT
+            tableName: merchant_attribute_merchant
+  - changeSet:
+      id: 1652592839476-41
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: merchant_comments_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: userId
+                  type: BIGINT
+              - column:
+                  name: cardId
+                  type: BIGINT
+              - column:
+                  name: merchantId
+                  type: BIGINT
+              - column:
+                  name: grade
+                  type: INTEGER
+              - column:
+                  name: comment
+                  type: TEXT
+              - column:
+                  name: createdAt
+                  type: BIGINT
+              - column:
+                  name: updatedAt
+                  type: BIGINT
+            tableName: merchant_comments
+  - changeSet:
+      id: 1652592839476-42
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: merchant_comments_question_options_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: questionId
+                  type: VARCHAR(100)
+              - column:
+                  name: answer
+                  type: VARCHAR(255)
+              - column:
+                  name: createdAt
+                  type: BIGINT
+              - column:
+                  name: updatedAt
+                  type: BIGINT
+            tableName: merchant_comments_question_options
+  - changeSet:
+      id: 1652592839476-43
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: merchant_comment_answers_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: merchantCommentId
+                  type: BIGINT
+              - column:
+                  name: optionId
+                  type: BIGINT
+              - column:
+                  name: createdAt
+                  type: BIGINT
+              - column:
+                  name: updatedAt
+                  type: BIGINT
+            tableName: merchant_comment_answers
+  - changeSet:
+      id: 1652592839476-44
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: file_document_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: documentId
+                  remarks: ref to any entity
+                  type: BIGINT
+              - column:
+                  name: createdAt
+                  type: BIGINT
+              - column:
+                  name: updatedAt
+                  type: BIGINT
+              - column:
+                  name: field
+                  type: VARCHAR(256)
+              - column:
+                  name: fileId
+                  type: UUID
+            tableName: file_document
+  - changeSet:
+      id: 1652592839476-45
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: user_requests_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: userId
+                  type: BIGINT
+              - column:
+                  name: fullName
+                  type: VARCHAR(255)
+              - column:
+                  name: email
+                  type: VARCHAR(255)
+              - column:
+                  name: subjectId
+                  type: BIGINT
+              - column:
+                  name: message
+                  type: TEXT
+              - column:
+                  name: createdAt
+                  type: BIGINT
+              - column:
+                  name: updatedAt
+                  type: BIGINT
+              - column:
+                  name: draft
+                  type: BOOLEAN
+            tableName: user_requests
+  - changeSet:
+      id: 1652592839476-46
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: user_requests_subjects_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  name: createdAt
+                  type: BIGINT
+              - column:
+                  name: updatedAt
+                  type: BIGINT
+            tableName: user_requests_subjects
+  - changeSet:
+      id: 1652592839476-47
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: faq_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: question
+                  type: TEXT
+              - column:
+                  name: answer
+                  type: TEXT
+              - column:
+                  name: order
+                  type: INTEGER
+              - column:
+                  name: createdAt
+                  type: BIGINT
+              - column:
+                  name: updatedAt
+                  type: BIGINT
+            tableName: faq
+  - changeSet:
+      id: 1652592839476-48
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: payment_settings_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: tinkoffMerchantId
+                  type: VARCHAR(255)
+              - column:
+                  name: createdAt
+                  type: BIGINT
+              - column:
+                  name: updatedAt
+                  type: BIGINT
+            tableName: payment_settings
+  - changeSet:
+      id: 1652592839476-49
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: email_settings_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: devinoApiKey
+                  type: VARCHAR(255)
+              - column:
+                  name: senderEmail
+                  type: VARCHAR(255)
+              - column:
+                  name: senderName
+                  type: VARCHAR(255)
+              - column:
+                  name: frequency
+                  remarks: seconds
+                  type: INTEGER
+              - column:
+                  name: createdAt
+                  type: BIGINT
+              - column:
+                  name: updatedAt
+                  type: BIGINT
+            tableName: email_settings
+  - changeSet:
+      id: 1652592839476-50
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: sms_settings_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: devinoApiKey
+                  type: VARCHAR(255)
+              - column:
+                  name: senderName
+                  type: VARCHAR(255)
+              - column:
+                  name: frequency
+                  remarks: seconds
+                  type: INTEGER
+              - column:
+                  name: createdAt
+                  type: BIGINT
+              - column:
+                  name: updatedAt
+                  type: BIGINT
+            tableName: sms_settings
+  - changeSet:
+      id: 1652592839476-51
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: viber_settings_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: devinoApiKey
+                  type: VARCHAR(255)
+              - column:
+                  name: senderName
+                  type: VARCHAR(255)
+              - column:
+                  name: frequency
+                  remarks: seconds
+                  type: INTEGER
+              - column:
+                  name: createdAt
+                  type: BIGINT
+              - column:
+                  name: updatedAt
+                  type: BIGINT
+            tableName: viber_settings
+  - changeSet:
+      id: 1652592839476-52
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: whatsapp_settings_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: devinoApiKey
+                  type: VARCHAR(255)
+              - column:
+                  name: senderName
+                  type: VARCHAR(255)
+              - column:
+                  name: frequency
+                  remarks: seconds
+                  type: INTEGER
+              - column:
+                  name: createdAt
+                  type: BIGINT
+              - column:
+                  name: updatedAt
+                  type: BIGINT
+            tableName: whatsapp_settings
+  - changeSet:
+      id: 1652592839476-53
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: push_settings_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: firebaseProjectId
+                  type: VARCHAR(255)
+              - column:
+                  name: huaweiAppId
+                  type: VARCHAR(255)
+              - column:
+                  name: huaweiAppSecret
+                  type: VARCHAR(255)
+              - column:
+                  name: frequency
+                  remarks: seconds
+                  type: INTEGER
+              - column:
+                  name: createdAt
+                  type: BIGINT
+              - column:
+                  name: updatedAt
+                  type: BIGINT
+            tableName: push_settings
+  - changeSet:
+      id: 1652592839476-54
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: settings_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: timezone
+                  type: INTEGER
+              - column:
+                  name: notificationsFrequency
+                  type: INTEGER
+              - column:
+                  name: createdAt
+                  type: BIGINT
+              - column:
+                  name: updatedAt
+                  type: BIGINT
+            tableName: settings
+  - changeSet:
+      id: 1652592839476-55
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: socials_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: name
+                  remarks: facebooke, vk, etc.
+                  type: VARCHAR(255)
+              - column:
+                  name: appId
+                  type: VARCHAR(255)
+              - column:
+                  name: appSecret
+                  type: VARCHAR(255)
+              - column:
+                  name: createdAt
+                  type: BIGINT
+              - column:
+                  name: updatedAt
+                  type: BIGINT
+            tableName: socials
+  - changeSet:
+      id: 1652592839476-56
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: city_onbox_banner_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: cityId
+                  type: BIGINT
+              - column:
+                  name: onboxBunnerId
+                  type: BIGINT
+              - column:
+                  name: createdAt
+                  type: BIGINT
+              - column:
+                  name: updatedAt
+                  type: BIGINT
+            tableName: city_onbox_banner
+  - changeSet:
+      id: 1652592839476-57
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: delivery_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: title
+                  type: VARCHAR(255)
+              - column:
+                  name: shortDescription
+                  type: VARCHAR(255)
+              - column:
+                  name: url
+                  type: VARCHAR(255)
+              - column:
+                  name: isPublic
+                  type: BOOLEAN
+              - column:
+                  name: draft
+                  type: BOOLEAN
+              - column:
+                  name: createdAt
+                  type: BIGINT
+              - column:
+                  name: updatedAt
+                  type: BIGINT
+            tableName: delivery
+  - changeSet:
+      id: 1652592839476-58
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: triggers_types_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: code
+                  remarks: ex. made-purchase-in-store
+                  type: VARCHAR(255)
+              - column:
+                  name: name
+                  remarks: Совершена покупка в магазине
+                  type: VARCHAR(255)
+              - column:
+                  name: createdAt
+                  type: BIGINT
+              - column:
+                  name: updatedAt
+                  type: BIGINT
+            tableName: triggers_types
+  - changeSet:
+      id: 1652592839476-59
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: triggers_document_types_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  name: createdAt
+                  type: BIGINT
+              - column:
+                  name: updatedAt
+                  type: BIGINT
+            tableName: triggers_document_types
+  - changeSet:
+      id: 1652592839476-60
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: triggers_documents_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: triggersTypeId
+                  type: BIGINT
+              - column:
+                  name: triggersDocumentTypeId
+                  type: BIGINT
+              - column:
+                  name: triggersDocumentId
+                  remarks: ex. messagesTemplate.id
+                  type: BIGINT
+              - column:
+                  name: dateStart
+                  type: BIGINT
+              - column:
+                  name: dateEnd
+                  type: BIGINT
+              - column:
+                  name: frequency
+                  remarks: seconds
+                  type: INTEGER
+              - column:
+                  name: timeStart
+                  type: VARCHAR(10)
+              - column:
+                  name: timeEnd
+                  type: VARCHAR(10)
+              - column:
+                  name: createdAt
+                  type: BIGINT
+              - column:
+                  name: updatedAt
+                  type: BIGINT
+            tableName: triggers_documents
+  - changeSet:
+      id: 1652592839476-61
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: triggers_logs_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: triggersTypeId
+                  type: BIGINT
+              - column:
+                  name: triggersDocumentTypeId
+                  type: BIGINT
+              - column:
+                  name: triggersDocumentId
+                  remarks: ex. messagesTemplate.id
+                  type: BIGINT
+              - column:
+                  name: datetime
+                  type: BIGINT
+              - column:
+                  name: data
+                  type: JSON
+              - column:
+                  name: createdAt
+                  type: BIGINT
+              - column:
+                  name: updatedAt
+                  type: BIGINT
+            tableName: triggers_logs
+  - changeSet:
+      id: 1652592839476-62
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: messages_types_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  name: createdAt
+                  type: BIGINT
+              - column:
+                  name: updatedAt
+                  type: BIGINT
+            tableName: messages_types
+  - changeSet:
+      id: 1652592839476-63
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: messages_templates_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: messageTypeId
+                  type: BIGINT
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  name: subject
+                  type: VARCHAR(255)
+              - column:
+                  name: message
+                  type: TEXT
+              - column:
+                  name: messageHTML
+                  type: TEXT
+              - column:
+                  name: screenId
+                  type: BIGINT
+              - column:
+                  name: notificationTypeId
+                  type: BIGINT
+              - column:
+                  name: sendToEveryone
+                  type: BOOLEAN
+              - column:
+                  name: isSystem
+                  type: BOOLEAN
+              - column:
+                  name: required
+                  type: BOOLEAN
+              - column:
+                  name: lifetime
+                  remarks: seconds
+                  type: INTEGER
+              - column:
+                  name: createdAt
+                  type: BIGINT
+              - column:
+                  name: updatedAt
+                  type: BIGINT
+            tableName: messages_templates
+  - changeSet:
+      id: 1652592839476-64
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: screens_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: code
+                  type: VARCHAR(255)
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  name: createdAt
+                  type: BIGINT
+              - column:
+                  name: updatedAt
+                  type: BIGINT
+            tableName: screens
+  - changeSet:
+      id: 1652592839476-65
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: messages_template_user_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: messageTemplateId
+                  type: BIGINT
+              - column:
+                  name: userId
+                  type: BIGINT
+              - column:
+                  name: createdAt
+                  type: BIGINT
+              - column:
+                  name: updatedAt
+                  type: BIGINT
+            tableName: messages_template_user
+  - changeSet:
+      id: 1652592839476-66
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: messages_template_users_group_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: messageTemplate
+                  type: BIGINT
+              - column:
+                  name: usersGroupId
+                  type: BIGINT
+              - column:
+                  name: createdAt
+                  type: BIGINT
+              - column:
+                  name: updatedAt
+                  type: BIGINT
+            tableName: messages_template_users_group
+  - changeSet:
+      id: 1652592839476-67
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: notifications_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: userId
+                  type: BIGINT
+              - column:
+                  name: typeId
+                  type: BIGINT
+              - column:
+                  name: title
+                  type: VARCHAR(255)
+              - column:
+                  name: body
+                  type: TEXT
+              - column:
+                  name: sendedAt
+                  type: BIGINT
+              - column:
+                  name: isReaded
+                  type: BOOLEAN
+              - column:
+                  name: createdAt
+                  type: BIGINT
+              - column:
+                  name: updatedAt
+                  type: BIGINT
+            tableName: notifications
+  - changeSet:
+      id: 1652592839476-68
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: notifications_types_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  name: createdAt
+                  type: BIGINT
+              - column:
+                  name: updatedAt
+                  type: BIGINT
+            tableName: notifications_types
+  - changeSet:
+      id: 1652592839476-69
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: city_info_screen_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: infoScreenId
+                  type: BIGINT
+              - column:
+                  name: cityId
+                  type: BIGINT
+              - column:
+                  name: createdAt
+                  type: BIGINT
+              - column:
+                  name: updatedAt
+                  type: BIGINT
+            tableName: city_info_screen
+  - changeSet:
+      id: 1652592839476-70
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: cities_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  name: timezone
+                  type: VARCHAR(50)
+              - column:
+                  name: createdAt
+                  type: BIGINT
+              - column:
+                  name: updatedAt
+                  type: BIGINT
+            tableName: cities
+  - changeSet:
+      id: 1652592839476-71
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: loymax_users_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: userId
+                  type: BIGINT
+              - column:
+                  name: token
+                  type: VARCHAR(2000)
+              - column:
+                  name: expiresAt
+                  type: BIGINT
+              - column:
+                  name: refreshToken
+                  type: VARCHAR(2000)
+              - column:
+                  name: createdAt
+                  type: BIGINT
+              - column:
+                  name: updatedAt
+                  type: BIGINT
+              - column:
+                  name: personUid
+                  type: VARCHAR(255)
+            tableName: loymax_users
+  - changeSet:
+      id: 1652592839476-72
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: loymax_files_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: fileUuid
+                  type: VARCHAR(255)
+              - column:
+                  name: loymaxFileId
+                  type: VARCHAR(255)
+              - column:
+                  name: createdAt
+                  type: BIGINT
+              - column:
+                  name: updatedAt
+                  type: BIGINT
+            tableName: loymax_files
+  - changeSet:
+      id: 1652592839476-73
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: loymax_checks_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: checkId
+                  type: BIGINT
+              - column:
+                  name: historyId
+                  type: VARCHAR(255)
+              - column:
+                  name: createdAt
+                  type: BIGINT
+              - column:
+                  name: updatedAt
+                  type: BIGINT
+            tableName: loymax_checks
+  - changeSet:
+      id: 1652592839476-74
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: loymax_checks_items_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: checkItemId
+                  type: BIGINT
+              - column:
+                  name: itemId
+                  type: VARCHAR(255)
+              - column:
+                  name: createdAt
+                  type: BIGINT
+              - column:
+                  name: updatedAt
+                  type: BIGINT
+            tableName: loymax_checks_items
+  - changeSet:
+      id: 1652592839476-75
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: loymax_coupons_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: couponId
+                  type: BIGINT
+              - column:
+                  name: loymaxCouponId
+                  type: BIGINT
+              - column:
+                  name: createdAt
+                  type: BIGINT
+              - column:
+                  name: updatedAt
+                  type: BIGINT
+            tableName: loymax_coupons
+  - changeSet:
+      id: 1652592839476-76
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: loymax_offers_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: offerId
+                  type: BIGINT
+              - column:
+                  name: loymaxOfferId
+                  type: BIGINT
+              - column:
+                  name: createdAt
+                  type: BIGINT
+              - column:
+                  name: updatedAt
+                  type: BIGINT
+            tableName: loymax_offers
+  - changeSet:
+      id: 1652592839476-77
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: loymax_personal_offers_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: personalOfferId
+                  type: BIGINT
+              - column:
+                  name: loymaxOfferId
+                  type: BIGINT
+              - column:
+                  name: createdAt
+                  type: BIGINT
+              - column:
+                  name: updatedAt
+                  type: BIGINT
+            tableName: loymax_personal_offers
+  - changeSet:
+      id: 1652592839476-78
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: loymax_personal_goods_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: personalGoodId
+                  type: BIGINT
+              - column:
+                  name: loymaxGoodId
+                  remarks: ???
+                  type: BIGINT
+              - column:
+                  name: createdAt
+                  type: BIGINT
+              - column:
+                  name: updatedAt
+                  type: BIGINT
+            tableName: loymax_personal_goods
+  - changeSet:
+      id: 1652592839476-79
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: loymax_cards_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: cardId
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: loymaxCardId
+                  type: BIGINT
+              - column:
+                  name: createdAt
+                  type: BIGINT
+              - column:
+                  name: updatedAt
+                  type: BIGINT
+            tableName: loymax_cards
+  - changeSet:
+      id: 1652592839476-80
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: loymax_request_types_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  name: frequency
+                  remarks: seconds
+                  type: INTEGER
+              - column:
+                  name: createdAt
+                  type: BIGINT
+              - column:
+                  name: updatedAt
+                  type: BIGINT
+            tableName: loymax_request_types
+  - changeSet:
+      id: 1652592839476-81
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: loymax_last_user_requests_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: userId
+                  type: BIGINT
+              - column:
+                  name: requestTypeId
+                  type: BIGINT
+              - column:
+                  name: datetime
+                  type: BIGINT
+              - column:
+                  name: createdAt
+                  type: BIGINT
+              - column:
+                  name: updatedAt
+                  type: BIGINT
+            tableName: loymax_last_user_requests
+  - changeSet:
+      id: 1652592839476-82
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: loymax_last_request_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: requestTypeId
+                  type: BIGINT
+              - column:
+                  name: datetime
+                  type: BIGINT
+              - column:
+                  name: createdAt
+                  type: BIGINT
+              - column:
+                  name: updatedAt
+                  type: BIGINT
+            tableName: loymax_last_request
+  - changeSet:
+      id: 1652592839476-83
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: loymax_users_socials_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: userId
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: socialId
+                  type: BIGINT
+              - column:
+                  name: loymaxSocialUserId
+                  type: VARCHAR(255)
+              - column:
+                  name: createdAt
+                  type: BIGINT
+              - column:
+                  name: updatedAt
+                  type: BIGINT
+            tableName: loymax_users_socials
+  - changeSet:
+      id: 1652592839476-84
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: favorite_category_months_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: userId
+                  type: BIGINT
+              - column:
+                  name: month
+                  remarks: number of month
+                  type: INTEGER
+              - column:
+                  name: year
+                  type: INTEGER
+              - column:
+                  name: createdAt
+                  type: BIGINT
+              - column:
+                  name: updatedAt
+                  type: BIGINT
+            tableName: favorite_category_months
+  - changeSet:
+      id: 1652592839476-85
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  name: code
+                  type: VARCHAR(255)
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  name: order
+                  type: INTEGER
+              - column:
+                  name: showCounter
+                  type: BOOLEAN
+              - column:
+                  name: showEndDate
+                  type: BOOLEAN
+              - column:
+                  name: showPercents
+                  type: BOOLEAN
+              - column:
+                  name: showBillet
+                  type: BOOLEAN
+              - column:
+                  name: createdAt
+                  type: BIGINT
+              - column:
+                  name: updatedAt
+                  type: BIGINT
+            tableName: main_blocks
+  - changeSet:
+      id: 1652592839476-86
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                  name: identifier
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: userId
+                  type: BIGINT
+              - column:
+                  name: data
+                  type: JSON
+              - column:
+                  name: createdAt
+                  type: BIGINT
+              - column:
+                  name: updatedAt
+                  type: BIGINT
+            tableName: users_devices
+  - changeSet:
+      id: 1652592839476-88
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: users_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: phoneNumber
+                  type: VARCHAR(255)
+              - column:
+                  name: password
+                  remarks: password hash
+                  type: VARCHAR(255)
+              - column:
+                  name: email
+                  type: VARCHAR(255)
+              - column:
+                  name: firstName
+                  type: VARCHAR(255)
+              - column:
+                  name: lastName
+                  type: VARCHAR(255)
+              - column:
+                  name: patronymicName
+                  type: VARCHAR(255)
+              - column:
+                  name: gender
+                  type: GENDERS
+              - column:
+                  name: birthday
+                  type: BIGINT
+              - column:
+                  name: smsAllowed
+                  type: BOOLEAN
+              - column:
+                  name: emailAllowed
+                  type: BOOLEAN
+              - column:
+                  name: viberAllowed
+                  type: BOOLEAN
+              - column:
+                  name: whatsappAllowed
+                  type: BOOLEAN
+              - column:
+                  name: pushAllowed
+                  type: BOOLEAN
+              - column:
+                  name: rejectPaperChecks
+                  type: BOOLEAN
+              - column:
+                  name: lastActivity
+                  type: BIGINT
+              - column:
+                  name: lastCityId
+                  type: BIGINT
+              - column:
+                  name: draft
+                  type: BOOLEAN
+              - column:
+                  name: deletedAt
+                  type: BIGINT
+              - column:
+                  name: createdAt
+                  type: BIGINT
+              - column:
+                  name: updatedAt
+                  type: BIGINT
+              - column:
+                  name: photoId
+                  type: VARCHAR(255)
+            tableName: users
+  - changeSet:
+      id: 1652592839476-89
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addUniqueConstraint:
+            columnNames: userId, usersGroupId
+            constraintName: users_group_user_userId_usersGroupId_key
+            tableName: users_group_user
+  - changeSet:
+      id: 1652592839476-90
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addUniqueConstraint:
+            columnNames: userId, roleId
+            constraintName: role_user_userId_roleId_key
+            tableName: role_user
+  - changeSet:
+      id: 1652592839476-91
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addUniqueConstraint:
+            columnNames: userId, phoneNumber
+            constraintName: uk_users_unconfirmed_phones
+            tableName: users_unconfirmed_phones
+  - changeSet:
+      id: 1652592839476-92
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addUniqueConstraint:
+            columnNames: userId, email
+            constraintName: uk_users_unconfirmed_emails
+            tableName: users_unconfirmed_emails
+  - changeSet:
+      id: 1652592839476-93
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: users_delete_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: userId
+                  type: BIGINT
+              - column:
+                  name: reason
+                  type: USERS_DELETE_REASONS
+              - column:
+                  name: message
+                  type: TEXT
+              - column:
+                  name: createdAt
+                  type: BIGINT
+              - column:
+                  name: updatedAt
+                  type: BIGINT
+            tableName: users_delete
+  - changeSet:
+      id: 1652592839476-94
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: cards_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: number
+                  type: VARCHAR(255)
+              - column:
+                  name: barCode
+                  type: VARCHAR(255)
+              - column:
+                  defaultValueBoolean: false
+                  name: block
+                  type: BOOLEAN
+              - column:
+                  name: expiryDate
+                  type: BIGINT
+              - column:
+                  name: status
+                  type: CARD_STATUSES
+              - column:
+                  name: ownerId
+                  type: BIGINT
+              - column:
+                  name: createdAt
+                  type: BIGINT
+              - column:
+                  name: updatedAt
+                  type: BIGINT
+            tableName: cards
+  - changeSet:
+      id: 1652592839476-95
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addUniqueConstraint:
+            columnNames: userId, cardId
+            constraintName: uk_users_cards
+            tableName: card_user
+  - changeSet:
+      id: 1652592839476-96
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addUniqueConstraint:
+            columnNames: userId, accountTypeId
+            constraintName: uk_accounts
+            tableName: accounts
+  - changeSet:
+      id: 1652592839476-97
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addUniqueConstraint:
+            columnNames: id, currencyId
+            constraintName: uk_accounts_types
+            tableName: accounts_types
+  - changeSet:
+      id: 1652592839476-98
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addUniqueConstraint:
+            columnNames: userId, accountId
+            constraintName: uk_account_user
+            tableName: account_user
+  - changeSet:
+      id: 1652592839476-99
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: account_life_times_by_period_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: accountId
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: activationAmount
+                  type: INTEGER
+              - column:
+                  constraints:
+                    nullable: false
+                  name: expirationAmount
+                  type: INTEGER
+              - column:
+                  name: period
+                  type: LIFE_TIMES_PERIODS
+              - column:
+                  name: createdAt
+                  type: BIGINT
+              - column:
+                  name: updatedAt
+                  type: BIGINT
+            tableName: account_life_times_by_period
+  - changeSet:
+      id: 1652592839476-100
+      author: aeysner (generated)
+      context: "indexSchema"
+      changes:
+        - createIndex:
+            columns:
+              - column:
+                  name: externalId
+            indexName: currencies_externialid_uindex
+            tableName: currencies
+            unique: true
+  - changeSet:
+      id: 1652592839476-101
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createIndex:
+            columns:
+              - column:
+                  name: name
+            indexName: client_statuses_name_uindex
+            tableName: client_statuses
+            unique: true
+  - changeSet:
+      id: 1652592839476-102
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addUniqueConstraint:
+            columnNames: clientStatusId, userId
+            constraintName: uk_users_status
+            tableName: client_status_user
+  - changeSet:
+      id: 1652592839476-103
+      author: aeysner (generated)
+      context: "indexSchema"
+      changes:
+        - createIndex:
+            columns:
+              - column:
+                  name: title
+            indexName: offers_title_uindex
+            tableName: offers
+            unique: true
+  - changeSet:
+      id: 1652592839476-104
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addUniqueConstraint:
+            columnNames: userId, personalOfferId
+            constraintName: personal_offer_user_userid_personalofferid
+            tableName: personal_offer_user
+  - changeSet:
+      id: 1652592839476-105
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: personal_goods_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: userId
+                  type: BIGINT
+              - column:
+                  name: goodsId
+                  type: BIGINT
+              - column:
+                  name: startDate
+                  type: BIGINT
+              - column:
+                  name: endDate
+                  type: BIGINT
+              - column:
+                  name: preferenceType
+                  type: PERSONAL_GOODS_PREFERENCE_TYPES
+              - column:
+                  name: calculationMethod
+                  type: PERSONAL_GOODS_CALCULATION_METHODS
+              - column:
+                  name: preferenceValue
+                  type: INTEGER
+              - column:
+                  name: accepted
+                  type: BOOLEAN
+              - column:
+                  name: createdAt
+                  type: BIGINT
+              - column:
+                  name: updatedAt
+                  type: BIGINT
+              - column:
+                  name: brandId
+                  type: VARCHAR(255)
+            tableName: personal_goods
+  - changeSet:
+      id: 1652592839476-106
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: coupons_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: code
+                  type: VARCHAR(255)
+              - column:
+                  name: qrContent
+                  type: VARCHAR(255)
+              - column:
+                  name: couponState
+                  type: COUPON_STATES
+              - column:
+                  name: isPublic
+                  type: BOOLEAN
+              - column:
+                  name: createdAt
+                  type: BIGINT
+              - column:
+                  name: updatedAt
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: couponEmmissionsId
+                  type: BIGINT
+            tableName: coupons
+  - changeSet:
+      id: 1652592839476-107
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addUniqueConstraint:
+            columnNames: userId, couponId
+            constraintName: coupon_user_userid_couponid_uniq
+            tableName: coupon_user
+  - changeSet:
+      id: 1652592839476-108
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addUniqueConstraint:
+            columnNames: goodsGroupUID
+            constraintName: uk_goods_group_uid
+            tableName: favorite_categories
+  - changeSet:
+      id: 1652592839476-109
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: catalogs_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  name: url
+                  type: VARCHAR(255)
+              - column:
+                  name: citySelect
+                  type: CITY_SELECT_VALUES
+              - column:
+                  name: draft
+                  type: BOOLEAN
+              - column:
+                  name: createdAt
+                  type: BIGINT
+              - column:
+                  name: updatedAt
+                  type: BIGINT
+            tableName: catalogs
+  - changeSet:
+      id: 1652592839476-110
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: onbox_banners_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: title
+                  type: VARCHAR(50)
+              - column:
+                  name: description
+                  type: VARCHAR(255)
+              - column:
+                  name: order
+                  type: INTEGER
+              - column:
+                  name: url
+                  type: VARCHAR(255)
+              - column:
+                  name: screenId
+                  type: BIGINT
+              - column:
+                  name: citySelect
+                  type: CITY_SELECT_VALUES
+              - column:
+                  name: isPublic
+                  type: BOOLEAN
+              - column:
+                  name: draft
+                  type: BOOLEAN
+              - column:
+                  name: createdAt
+                  type: BIGINT
+              - column:
+                  name: updatedAt
+                  type: BIGINT
+            tableName: onbox_banners
+  - changeSet:
+      id: 1652592839476-111
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: info_screens_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: isPublic
+                  type: BOOLEAN
+              - column:
+                  name: draft
+                  type: BOOLEAN
+              - column:
+                  name: citySelect
+                  type: CITY_SELECT_VALUES
+              - column:
+                  name: createdAt
+                  type: BIGINT
+              - column:
+                  name: updatedAt
+                  type: BIGINT
+            tableName: info_screens
+  - changeSet:
+      id: 1652592839476-112
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addUniqueConstraint:
+            columnNames: catalogId, cityId
+            constraintName: catalog_city_catalogId_cityId_key
+            tableName: catalog_city
+  - changeSet:
+      id: 1652592839476-113
+      author: aeysner (generated)
+      context: "indexSchema"
+      changes:
+        - createIndex:
+            columns:
+              - column:
+                  name: checkNumber
+            indexName: checks_checknumber_uindex
+            tableName: checks
+            unique: true
+  - changeSet:
+      id: 1652592839476-114
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addUniqueConstraint:
+            columnNames: checkId, currencyId
+            constraintName: checks_withdraws_pk
+            tableName: checks_withdraws
+  - changeSet:
+      id: 1652592839476-115
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addUniqueConstraint:
+            columnNames: alias
+            constraintName: external_documents_alias_key
+            tableName: external_documents
+  - changeSet:
+      id: 1652592839476-116
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addUniqueConstraint:
+            columnNames: alias
+            constraintName: contents_alias_key
+            tableName: contents
+  - changeSet:
+      id: 1652592839476-117
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: merchants_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: title
+                  type: VARCHAR(255)
+              - column:
+                  name: address
+                  type: VARCHAR(255)
+              - column:
+                  name: latitude
+                  type: FLOAT8
+              - column:
+                  name: formatId
+                  type: BIGINT
+              - column:
+                  name: workingHoursFrom
+                  type: VARCHAR(255)
+              - column:
+                  name: workingHoursTo
+                  type: VARCHAR(255)
+              - column:
+                  name: workingStatus
+                  type: MERCHANT_WORKING_STATUSES
+              - column:
+                  name: isPublic
+                  type: BOOLEAN
+              - column:
+                  name: createdAt
+                  type: BIGINT
+              - column:
+                  name: updatedAt
+                  type: BIGINT
+              - column:
+                  name: longitude
+                  type: FLOAT8
+              - column:
+                  name: loymaxLocationId
+                  type: VARCHAR
+            tableName: merchants
+  - changeSet:
+      id: 1652592839476-118
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  name: code
+                  type: VARCHAR(100)
+              - column:
+                  name: question
+                  type: VARCHAR(255)
+              - column:
+                  name: type
+                  type: QUESTION_TYPE
+              - column:
+                  name: createdAt
+                  type: BIGINT
+              - column:
+                  name: updatedAt
+                  type: BIGINT
+              - column:
+                  name: grade
+                  type: VARCHAR(255)
+            tableName: merchant_comments_questions
+  - changeSet:
+      id: 1652592839476-119
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addUniqueConstraint:
+            columnNames: name
+            constraintName: socials_name_key
+            tableName: socials
+  - changeSet:
+      id: 1652592839476-120
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  name: uuid
+                  type: VARCHAR(255)
+              - column:
+                  name: userId
+                  type: BIGINT
+              - column:
+                  name: notifierId
+                  type: BIGINT
+              - column:
+                  defaultValueNumeric: 1
+                  name: requestCount
+                  type: INTEGER
+              - column:
+                  name: status
+                  type: CONFIRM_CODE_STATUSES
+              - column:
+                  name: createdAt
+                  type: BIGINT
+              - column:
+                  name: updatedAt
+                  type: BIGINT
+            tableName: confirm_code_request
+  - changeSet:
+      id: 1652592839476-121
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  name: uuid
+                  remarks: uuid
+                  type: VARCHAR(255)
+              - column:
+                  name: messageTemplateId
+                  type: BIGINT
+              - column:
+                  name: userId
+                  type: BIGINT
+              - column:
+                  name: data
+                  type: JSON
+              - column:
+                  name: status
+                  type: MESSAGE_STATUSES
+              - column:
+                  name: sendedAt
+                  type: BIGINT
+              - column:
+                  name: createdAt
+                  type: BIGINT
+              - column:
+                  name: updatedAt
+                  type: BIGINT
+            tableName: messages
+  - changeSet:
+      id: 1652592839476-122
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addUniqueConstraint:
+            columnNames: userId
+            constraintName: loymax_users_user_id_unique
+            tableName: loymax_users
+  - changeSet:
+      id: 1652592839476-123
+      author: aeysner (generated)
+      context: "indexSchema"
+      changes:
+        - createIndex:
+            columns:
+              - column:
+                  name: historyId
+            indexName: loymax_checks_historyid_uindex
+            tableName: loymax_checks
+            unique: true
+  - changeSet:
+      id: 1652592839476-124
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addUniqueConstraint:
+            columnNames: couponId, loymaxCouponId
+            constraintName: coupon_in_loymax_coupons
+            tableName: loymax_coupons
+  - changeSet:
+      id: 1652592839476-125
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addUniqueConstraint:
+            columnNames: offerId, loymaxOfferId
+            constraintName: loymax_offers_pk
+            tableName: loymax_offers
+  - changeSet:
+      id: 1652592839476-126
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addUniqueConstraint:
+            columnNames: cardId, loymaxCardId
+            constraintName: uk_loymax_cards_cards
+            tableName: loymax_cards
+  - changeSet:
+      id: 1652592839476-127
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addUniqueConstraint:
+            columnNames: code
+            constraintName: main_blocks_code_key
+            tableName: main_blocks
+  - changeSet:
+      id: 1652592839476-128
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addUniqueConstraint:
+            columnNames: identifier
+            constraintName: uk_users_devices_identifier
+            tableName: users_devices
+  - changeSet:
+      id: 1652592839476-129
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addUniqueConstraint:
+            columnNames: identifier
+            constraintName: users_devices_identifier_key
+            tableName: users_devices
+  - changeSet:
+      id: 1652592839476-130
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addUniqueConstraint:
+            columnNames: email
+            constraintName: uk_user_email
+            tableName: users
+  - changeSet:
+      id: 1652592839476-131
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addUniqueConstraint:
+            columnNames: phoneNumber
+            constraintName: uk_user_phone
+            tableName: users
+  - changeSet:
+      id: 1652592839476-132
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addUniqueConstraint:
+            columnNames: email
+            constraintName: users_email_key
+            tableName: users
+  - changeSet:
+      id: 1652592839476-133
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addUniqueConstraint:
+            columnNames: phoneNumber
+            constraintName: users_phoneNumber_key
+            tableName: users
+  - changeSet:
+      id: 1652592839476-134
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addUniqueConstraint:
+            columnNames: number
+            constraintName: cards_number_key
+            tableName: cards
+  - changeSet:
+      id: 1652592839476-135
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addUniqueConstraint:
+            columnNames: userId, goodsId
+            constraintName: personal_goods_pk
+            tableName: personal_goods
+  - changeSet:
+      id: 1652592839476-136
+      author: aeysner (generated)
+      context: "indexSchema"
+      changes:
+        - createIndex:
+            columns:
+              - column:
+                  name: code
+            indexName: coupons_code_uindex
+            tableName: coupons
+            unique: true
+  - changeSet:
+      id: 1652592839476-137
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addUniqueConstraint:
+            columnNames: code
+            constraintName: merchant_comments_questions_code_key
+            tableName: merchant_comments_questions
+  - changeSet:
+      id: 1652592839476-138
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addUniqueConstraint:
+            columnNames: uuid
+            constraintName: confirm_code_request_uuid_key
+            tableName: confirm_code_request
+  - changeSet:
+      id: 1652592839476-139
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  name: secretKey
+                  type: VARCHAR(255)
+            tableName: auth_settings
+  - changeSet:
+      id: 1652592839476-140
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  name: lifetime
+                  remarks: seconds
+                  type: INTEGER
+              - column:
+                  name: maxUnsuccessfulAttempts
+                  type: INTEGER
+              - column:
+                  name: maxInHourCount
+                  type: INTEGER
+              - column:
+                  name: maxDaylyCount
+                  type: INTEGER
+            tableName: confirm_code_settings
+  - changeSet:
+      id: 1652592839476-141
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  name: size
+                  remarks: bytes
+                  type: BIGINT
+              - column:
+                  name: used
+                  remarks: bytes
+                  type: BIGINT
+              - column:
+                  name: createdAt
+                  type: BIGINT
+              - column:
+                  name: updatedAt
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: file_storages_pkey
+                  name: id
+                  type: UUID
+              - column:
+                  name: url
+                  type: VARCHAR(1024)
+            tableName: file_storages
+  - changeSet:
+      id: 1652592839476-142
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  name: ext
+                  type: VARCHAR(10)
+              - column:
+                  name: size
+                  remarks: in bytes
+                  type: BIGINT
+              - column:
+                  name: mime
+                  type: VARCHAR
+              - column:
+                  name: deletedAt
+                  type: BIGINT
+              - column:
+                  name: createdAt
+                  type: BIGINT
+              - column:
+                  name: updatedAt
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: files_pkey
+                  name: id
+                  type: UUID
+              - column:
+                  name: storageId
+                  type: UUID
+            tableName: files
+  - changeSet:
+      id: 1652592839476-143
+      author: aeysner (generated)
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  name: host
+                  type: VARCHAR(255)
+              - column:
+                  name: username
+                  type: VARCHAR(255)
+              - column:
+                  name: password
+                  type: VARCHAR(255)
+              - column:
+                  name: maxFaforiteCategoriesCount
+                  type: BIGINT
+            tableName: loymax_settings
+  - changeSet:
+      id: 1652592839476-144
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: couponEmmissionsId
+            baseTableName: coupons
+            constraintName: coupons_coupon_emissions_id_fk
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: CASCADE
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: coupon_emissions
+            validate: true
+  - changeSet:
+      id: 1652592839476-145
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: lastCityId
+            baseTableName: users
+            constraintName: fk_1
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: SET NULL
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: cities
+            validate: true
+  - changeSet:
+      id: 1652592839476-146
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: deviceTypeId
+            baseTableName: user_push_tokens
+            constraintName: fk_10
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: device_types
+            validate: true
+  - changeSet:
+      id: 1652592839476-147
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: userId
+            baseTableName: users_unconfirmed_phones
+            constraintName: fk_11
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: CASCADE
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: users
+            validate: true
+  - changeSet:
+      id: 1652592839476-148
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: userId
+            baseTableName: users_unconfirmed_emails
+            constraintName: fk_12
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: CASCADE
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: users
+            validate: true
+  - changeSet:
+      id: 1652592839476-149
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: userId
+            baseTableName: users_delete
+            constraintName: fk_13
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: CASCADE
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: users
+            validate: true
+  - changeSet:
+      id: 1652592839476-150
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: ownerId
+            baseTableName: cards
+            constraintName: fk_14
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: SET NULL
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: users
+            validate: true
+  - changeSet:
+      id: 1652592839476-151
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: cardId
+            baseTableName: card_user
+            constraintName: fk_15
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: cards
+            validate: true
+  - changeSet:
+      id: 1652592839476-152
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: userId
+            baseTableName: card_user
+            constraintName: fk_16
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: CASCADE
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: users
+            validate: true
+  - changeSet:
+      id: 1652592839476-153
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: cardId
+            baseTableName: cards_qr
+            constraintName: fk_17
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: cards
+            validate: true
+  - changeSet:
+      id: 1652592839476-154
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: userId
+            baseTableName: accounts
+            constraintName: fk_18
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: CASCADE
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: users
+            validate: true
+  - changeSet:
+      id: 1652592839476-155
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: accountTypeId
+            baseTableName: accounts
+            constraintName: fk_19
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: accounts_types
+            validate: true
+  - changeSet:
+      id: 1652592839476-156
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: userId
+            baseTableName: users_devices
+            constraintName: fk_2
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: CASCADE
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: users
+            validate: true
+  - changeSet:
+      id: 1652592839476-157
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: currencyId
+            baseTableName: accounts_types
+            constraintName: fk_20
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: currencies
+            validate: true
+  - changeSet:
+      id: 1652592839476-158
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: accountId
+            baseTableName: account_user
+            constraintName: fk_21
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: accounts
+            validate: true
+  - changeSet:
+      id: 1652592839476-159
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: userId
+            baseTableName: account_user
+            constraintName: fk_22
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: CASCADE
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: users
+            validate: true
+  - changeSet:
+      id: 1652592839476-160
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: accountId
+            baseTableName: account_life_times_by_time
+            constraintName: fk_23
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: accounts
+            validate: true
+  - changeSet:
+      id: 1652592839476-161
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: accountId
+            baseTableName: account_life_times_by_period
+            constraintName: fk_24
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: accounts
+            validate: true
+  - changeSet:
+      id: 1652592839476-162
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: clientStatusId
+            baseTableName: client_status_user
+            constraintName: fk_25
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: client_statuses
+            validate: true
+  - changeSet:
+      id: 1652592839476-163
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: userId
+            baseTableName: client_status_user
+            constraintName: fk_26
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: CASCADE
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: users
+            validate: true
+  - changeSet:
+      id: 1652592839476-164
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: personalOfferId
+            baseTableName: personal_offer_user
+            constraintName: fk_27
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: personal_offers
+            validate: true
+  - changeSet:
+      id: 1652592839476-165
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: userId
+            baseTableName: personal_offer_user
+            constraintName: fk_28
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: CASCADE
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: users
+            validate: true
+  - changeSet:
+      id: 1652592839476-166
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: userId
+            baseTableName: personal_goods
+            constraintName: fk_29
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: CASCADE
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: users
+            validate: true
+  - changeSet:
+      id: 1652592839476-167
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: usersGroupId
+            baseTableName: users_group_user
+            constraintName: fk_3
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: users_groups
+            validate: true
+  - changeSet:
+      id: 1652592839476-168
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: goodsId
+            baseTableName: personal_goods
+            constraintName: fk_30
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: goods
+            validate: true
+  - changeSet:
+      id: 1652592839476-169
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: couponId
+            baseTableName: coupon_user
+            constraintName: fk_31
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: coupons
+            validate: true
+  - changeSet:
+      id: 1652592839476-170
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: userId
+            baseTableName: coupon_user
+            constraintName: fk_32
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: CASCADE
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: users
+            validate: true
+  - changeSet:
+      id: 1652592839476-171
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: userId
+            baseTableName: favorite_category_user
+            constraintName: fk_33
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: CASCADE
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: users
+            validate: true
+  - changeSet:
+      id: 1652592839476-172
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: catalogId
+            baseTableName: catalog_city
+            constraintName: fk_36
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: catalogs
+            validate: true
+  - changeSet:
+      id: 1652592839476-173
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: cityId
+            baseTableName: catalog_city
+            constraintName: fk_37
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: cities
+            validate: true
+  - changeSet:
+      id: 1652592839476-174
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: cardId
+            baseTableName: checks
+            constraintName: fk_38
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: cards
+            validate: true
+  - changeSet:
+      id: 1652592839476-175
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: userId
+            baseTableName: checks
+            constraintName: fk_39
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: CASCADE
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: users
+            validate: true
+  - changeSet:
+      id: 1652592839476-176
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: userId
+            baseTableName: users_group_user
+            constraintName: fk_4
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: CASCADE
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: users
+            validate: true
+  - changeSet:
+      id: 1652592839476-177
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: merchantId
+            baseTableName: checks
+            constraintName: fk_40
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: SET NULL
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: merchants
+            validate: true
+  - changeSet:
+      id: 1652592839476-178
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: currencyId
+            baseTableName: checks
+            constraintName: fk_41
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: currencies
+            validate: true
+  - changeSet:
+      id: 1652592839476-179
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: checkId
+            baseTableName: checks_items
+            constraintName: fk_42
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: checks
+            validate: true
+  - changeSet:
+      id: 1652592839476-180
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: checkId
+            baseTableName: checks_additional_attributes
+            constraintName: fk_43
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: checks
+            validate: true
+  - changeSet:
+      id: 1652592839476-181
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: checkId
+            baseTableName: checks_withdraws
+            constraintName: fk_44
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: checks
+            validate: true
+  - changeSet:
+      id: 1652592839476-182
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: currencyId
+            baseTableName: checks_withdraws
+            constraintName: fk_45
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: currencies
+            validate: true
+  - changeSet:
+      id: 1652592839476-183
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: checkId
+            baseTableName: checks_rewards
+            constraintName: fk_46
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: checks
+            validate: true
+  - changeSet:
+      id: 1652592839476-184
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: currencyId
+            baseTableName: checks_rewards
+            constraintName: fk_47
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: currencies
+            validate: true
+  - changeSet:
+      id: 1652592839476-185
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: formatId
+            baseTableName: merchants
+            constraintName: fk_48
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: merchant_formats
+            validate: true
+  - changeSet:
+      id: 1652592839476-186
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: merchantsId
+            baseTableName: merchant_attribute_merchant
+            constraintName: fk_49
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: SET NULL
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: merchants
+            validate: true
+  - changeSet:
+      id: 1652592839476-187
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: userId
+            baseTableName: role_user
+            constraintName: fk_5
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: CASCADE
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: users
+            validate: true
+  - changeSet:
+      id: 1652592839476-188
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: attributeId
+            baseTableName: merchant_attribute_merchant
+            constraintName: fk_50
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: merchant_attributes
+            validate: true
+  - changeSet:
+      id: 1652592839476-189
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: userId
+            baseTableName: merchant_comments
+            constraintName: fk_51
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: CASCADE
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: users
+            validate: true
+  - changeSet:
+      id: 1652592839476-190
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: cardId
+            baseTableName: merchant_comments
+            constraintName: fk_52
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: cards
+            validate: true
+  - changeSet:
+      id: 1652592839476-191
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: merchantId
+            baseTableName: merchant_comments
+            constraintName: fk_53
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: SET NULL
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: merchants
+            validate: true
+  - changeSet:
+      id: 1652592839476-192
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: questionId
+            baseTableName: merchant_comments_question_options
+            constraintName: fk_54
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: code
+            referencedTableName: merchant_comments_questions
+            validate: true
+  - changeSet:
+      id: 1652592839476-193
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: merchantCommentId
+            baseTableName: merchant_comment_answers
+            constraintName: fk_55
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: merchant_comments
+            validate: true
+  - changeSet:
+      id: 1652592839476-194
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: optionId
+            baseTableName: merchant_comment_answers
+            constraintName: fk_56
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: merchant_comments_question_options
+            validate: true
+  - changeSet:
+      id: 1652592839476-195
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: storageId
+            baseTableName: files
+            constraintName: fk_57
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: file_storages
+            validate: true
+  - changeSet:
+      id: 1652592839476-196
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: fileId
+            baseTableName: file_document
+            constraintName: fk_58
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: files
+            validate: true
+  - changeSet:
+      id: 1652592839476-197
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: roleId
+            baseTableName: role_user
+            constraintName: fk_6
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: roles
+            validate: true
+  - changeSet:
+      id: 1652592839476-198
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: userId
+            baseTableName: user_requests
+            constraintName: fk_61
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: CASCADE
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: users
+            validate: true
+  - changeSet:
+      id: 1652592839476-199
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: subjectId
+            baseTableName: user_requests
+            constraintName: fk_62
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: SET NULL
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: user_requests_subjects
+            validate: true
+  - changeSet:
+      id: 1652592839476-200
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: userId
+            baseTableName: confirm_code_request
+            constraintName: fk_63
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: CASCADE
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: users
+            validate: true
+  - changeSet:
+      id: 1652592839476-201
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: notifierId
+            baseTableName: confirm_code_request
+            constraintName: fk_64
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: confirm_codes_notifiers
+            validate: true
+  - changeSet:
+      id: 1652592839476-202
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: screenId
+            baseTableName: onbox_banners
+            constraintName: fk_65
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: screens
+            validate: true
+  - changeSet:
+      id: 1652592839476-203
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: cityId
+            baseTableName: city_onbox_banner
+            constraintName: fk_66
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: CASCADE
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: cities
+            validate: true
+  - changeSet:
+      id: 1652592839476-204
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: onboxBunnerId
+            baseTableName: city_onbox_banner
+            constraintName: fk_67
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: CASCADE
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: onbox_banners
+            validate: true
+  - changeSet:
+      id: 1652592839476-205
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: triggersTypeId
+            baseTableName: triggers_documents
+            constraintName: fk_68
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: triggers_types
+            validate: true
+  - changeSet:
+      id: 1652592839476-206
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: triggersDocumentTypeId
+            baseTableName: triggers_documents
+            constraintName: fk_69
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: triggers_document_types
+            validate: true
+  - changeSet:
+      id: 1652592839476-207
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: userId
+            baseTableName: registrations
+            constraintName: fk_7
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: CASCADE
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: users
+            validate: true
+  - changeSet:
+      id: 1652592839476-208
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: triggersTypeId
+            baseTableName: triggers_logs
+            constraintName: fk_70
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: triggers_types
+            validate: true
+  - changeSet:
+      id: 1652592839476-209
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: triggersDocumentTypeId
+            baseTableName: triggers_logs
+            constraintName: fk_71
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: triggers_document_types
+            validate: true
+  - changeSet:
+      id: 1652592839476-210
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: messageTypeId
+            baseTableName: messages_templates
+            constraintName: fk_72
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: messages_types
+            validate: true
+  - changeSet:
+      id: 1652592839476-211
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: screenId
+            baseTableName: messages_templates
+            constraintName: fk_73
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: screens
+            validate: true
+  - changeSet:
+      id: 1652592839476-212
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: notificationTypeId
+            baseTableName: messages_templates
+            constraintName: fk_74
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: notifications_types
+            validate: true
+  - changeSet:
+      id: 1652592839476-213
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: messageTemplateId
+            baseTableName: messages_template_user
+            constraintName: fk_75
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: messages_types
+            validate: true
+  - changeSet:
+      id: 1652592839476-214
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: userId
+            baseTableName: messages_template_user
+            constraintName: fk_76
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: CASCADE
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: users
+            validate: true
+  - changeSet:
+      id: 1652592839476-215
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: messageTemplate
+            baseTableName: messages_template_users_group
+            constraintName: fk_77
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: messages_types
+            validate: true
+  - changeSet:
+      id: 1652592839476-216
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: usersGroupId
+            baseTableName: messages_template_users_group
+            constraintName: fk_78
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: users_groups
+            validate: true
+  - changeSet:
+      id: 1652592839476-217
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: messageTemplateId
+            baseTableName: messages
+            constraintName: fk_79
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: messages_types
+            validate: true
+  - changeSet:
+      id: 1652592839476-218
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: notifierId
+            baseTableName: recovery_password_requests
+            constraintName: fk_8
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: confirm_codes_notifiers
+            validate: true
+  - changeSet:
+      id: 1652592839476-219
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: userId
+            baseTableName: messages
+            constraintName: fk_80
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: CASCADE
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: users
+            validate: true
+  - changeSet:
+      id: 1652592839476-220
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: userId
+            baseTableName: notifications
+            constraintName: fk_81
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: CASCADE
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: users
+            validate: true
+  - changeSet:
+      id: 1652592839476-221
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: typeId
+            baseTableName: notifications
+            constraintName: fk_82
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: notifications_types
+            validate: true
+  - changeSet:
+      id: 1652592839476-222
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: infoScreenId
+            baseTableName: city_info_screen
+            constraintName: fk_83
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: CASCADE
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: info_screens
+            validate: true
+  - changeSet:
+      id: 1652592839476-223
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: cityId
+            baseTableName: city_info_screen
+            constraintName: fk_84
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: CASCADE
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: cities
+            validate: true
+  - changeSet:
+      id: 1652592839476-224
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: userId
+            baseTableName: loymax_users
+            constraintName: fk_85
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: CASCADE
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: users
+            validate: true
+  - changeSet:
+      id: 1652592839476-225
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: checkId
+            baseTableName: loymax_checks
+            constraintName: fk_88
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: checks
+            validate: true
+  - changeSet:
+      id: 1652592839476-226
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: checkItemId
+            baseTableName: loymax_checks_items
+            constraintName: fk_89
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: checks_items
+            validate: true
+  - changeSet:
+      id: 1652592839476-227
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: userId
+            baseTableName: user_push_tokens
+            constraintName: fk_9
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: CASCADE
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: users
+            validate: true
+  - changeSet:
+      id: 1652592839476-228
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: couponId
+            baseTableName: loymax_coupons
+            constraintName: fk_90
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: coupons
+            validate: true
+  - changeSet:
+      id: 1652592839476-229
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: offerId
+            baseTableName: loymax_offers
+            constraintName: fk_91
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: offers
+            validate: true
+  - changeSet:
+      id: 1652592839476-230
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: personalOfferId
+            baseTableName: loymax_personal_offers
+            constraintName: fk_92
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: personal_offers
+            validate: true
+  - changeSet:
+      id: 1652592839476-231
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: personalGoodId
+            baseTableName: loymax_personal_goods
+            constraintName: fk_93
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: personal_goods
+            validate: true
+  - changeSet:
+      id: 1652592839476-232
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: cardId
+            baseTableName: loymax_cards
+            constraintName: fk_94
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: cards
+            validate: true
+  - changeSet:
+      id: 1652592839476-233
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: userId
+            baseTableName: loymax_last_user_requests
+            constraintName: fk_95
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: CASCADE
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: users
+            validate: true
+  - changeSet:
+      id: 1652592839476-234
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: requestTypeId
+            baseTableName: loymax_last_user_requests
+            constraintName: fk_96
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: loymax_request_types
+            validate: true
+  - changeSet:
+      id: 1652592839476-235
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: requestTypeId
+            baseTableName: loymax_last_request
+            constraintName: fk_97
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: loymax_request_types
+            validate: true
+  - changeSet:
+      id: 1652592839476-236
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: favoriteCategoryId
+            baseTableName: favorite_category_user
+            constraintName: fk_category_id
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: favorite_categories
+            validate: true
+  - changeSet:
+      id: 1652592839476-237
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: monthId
+            baseTableName: favorite_category_user
+            constraintName: fk_month_id
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: favorite_category_months
+            validate: true
+  - changeSet:
+      id: 1652592839476-238
+      author: aeysner (generated)
+      context: "constraintSchema"
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: socialId
+            baseTableName: loymax_users_socials
+            constraintName: fk_social_id
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: socials
+            validate: true

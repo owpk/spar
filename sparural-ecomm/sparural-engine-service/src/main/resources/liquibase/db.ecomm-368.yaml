@@ -1,0 +1,348 @@
+databaseChangeLog:
+  - changeSet:
+      id: "18-06-2023 16:00:00"
+      author: Alex Eysner
+      context: "constraintSchema"
+      changes: 
+        - dropUniqueConstraint:
+            tableName: checks_withdraws
+            constraintName: checks_withdraws_pk
+            
+  - changeSet:
+      id: "18-06-2023 16:01:00"
+      author: Alex Eysner
+      context: "data"
+      changes: 
+        - sql: 
+            splitStatements:  false 
+            sql: |
+              CREATE TEMPORARY TABLE tmp_currency ON COMMIT DROP AS
+              SELECT MAX(id) AS
+              id, name, "externalId", description
+              FROM currencies
+              WHERE NOT "externalId" IS null
+              GROUP BY name, "externalId", description;              
+              
+              CREATE OR REPLACE PROCEDURE pg_temp.upd_cur_id(update_table varchar) AS
+              $upd_cur_id$
+              BEGIN
+                  execute 'UPDATE ' || update_table || ' 
+                      SET "currencyId" = subquery.newId FROM (
+                          SELECT 
+                              currencies.id as oldId,
+                              tmp_currency.id as newId
+                          FROM 
+                              currencies
+                          LEFT JOIN
+                              tmp_currency
+                          ON
+                              currencies.name = tmp_currency.name
+                              and currencies.description = tmp_currency.description
+                      ) AS subquery
+                      WHERE ' || update_table || '."currencyId" = subquery.oldId';
+              END;
+              $upd_cur_id$ language plpgsql;
+              
+              CALL pg_temp.upd_cur_id('checks');
+              CALL pg_temp.upd_cur_id('checks_rewards');
+              CALL pg_temp.upd_cur_id('checks_withdraws');
+              CALL pg_temp.upd_cur_id('accounts_types');
+
+  -  changeSet:  
+      id: "18-06-2023 16:02:00"  
+      author: Alex Eysner
+      context: "constraintSchema"
+      preConditions:
+        onFail: MARK_RAN
+        foreignKeyConstraintExists: 
+          foreignKeyName: fk_20
+          foreignKeyTableName: accounts_types
+      changes:  
+        -  dropForeignKeyConstraint:  
+            baseTableName:  accounts_types  
+            constraintName:  fk_20
+        
+  -  changeSet:  
+      id: "18-06-2023 16:03:00"  
+      author: Alex Eysner
+      context: "constraintSchema"
+      preConditions:
+        onFail: MARK_RAN
+        foreignKeyConstraintExists: 
+          foreignKeyName: fk_41
+          foreignKeyTableName: checks
+      changes:  
+        -  dropForeignKeyConstraint:  
+            baseTableName:  checks  
+            constraintName:  fk_41
+
+  -  changeSet:  
+      id: "18-06-2023 16:04:00"  
+      author: Alex Eysner
+      context: "constraintSchema"
+      preConditions:
+        onFail: MARK_RAN
+        foreignKeyConstraintExists: 
+          foreignKeyName: fk_47
+          foreignKeyTableName: checks_rewards
+      changes:  
+        -  dropForeignKeyConstraint:  
+            baseTableName:  checks_rewards  
+            constraintName:  fk_47
+
+  -  changeSet:  
+      id: "18-06-2023 16:05:00"  
+      author: Alex Eysner
+      context: "constraintSchema"
+      preConditions:
+        onFail: MARK_RAN
+        foreignKeyConstraintExists:
+          foreignKeyName: fk_45
+          foreignKeyTableName: checks_withdraws
+      changes:  
+        -  dropForeignKeyConstraint:  
+            baseTableName:  checks_withdraws  
+            constraintName:  fk_45
+
+            
+  - changeSet:
+      id: "20-06-2023 16:06:00"
+      author: owpk
+      context: "data"
+      changes:
+        - sql:
+            splitStatements:  false
+            sql: |
+              DROP TABLE IF EXISTS tmp_del_currency;
+              CREATE TEMPORARY TABLE tmp_del_currency AS
+              SELECT
+                currencies.*
+              FROM
+                currencies
+              LEFT JOIN (
+                SELECT "currencyId" FROM checks GROUP BY "currencyId"
+              ) t1
+              on t1."currencyId" = currencies.id
+              LEFT JOIN (
+                SELECT "currencyId" FROM checks_rewards GROUP BY "currencyId"
+              ) t2
+              on t2."currencyId" = currencies.id
+              LEFT JOIN (
+                SELECT "currencyId" FROM checks_withdraws GROUP BY "currencyId"
+              ) t3
+              ON t3."currencyId" = currencies.id
+              LEFT JOIN (
+                SELECT "currencyId" FROM accounts_types GROUP BY "currencyId"
+              ) t4
+              ON t4."currencyId" = currencies.id
+              WHERE
+                NOT t1."currencyId" IS null
+                OR NOT t2."currencyId" IS null
+                OR NOT t3."currencyId" IS null
+                OR NOT t4."currencyId" IS null;
+              TRUNCATE TABLE currencies;
+              INSERT INTO CURRENCIES SELECT * FROM tmp_del_currency;
+  - changeSet:
+      id: "20-06-2023 16:07:00"
+      author: "Alex Eysner"
+      context: "constraintSchema"
+      preConditions:
+        onFail: MARK_RAN
+        not:
+          foreignKeyConstraintExists:
+            foreignKeyTableName: accounts_types
+            foreignKeyName: fk_accounts_types_currency_id
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: currencyId
+            baseTableName: accounts_types
+            constraintName: fk_accounts_types_currency_id
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: CASCADE
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: currencies
+            validate: true
+            
+  - changeSet:
+      id: "20-06-2023 16:08:00"
+      author: "Alex Eysner"
+      context: "constraintSchema"
+      preConditions:
+        onFail: MARK_RAN
+        not:
+          foreignKeyConstraintExists:
+            foreignKeyTableName: checks
+            foreignKeyName: fk_checks_currency_id
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: currencyId
+            baseTableName: checks
+            constraintName: fk_checks_currency_id
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: CASCADE
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: currencies
+            validate: true
+            
+  - changeSet:
+      id: "20-06-2023 16:09:00"
+      author: "Alex Eysner"
+      context: "constraintSchema"
+      preConditions:
+        onFail: MARK_RAN
+        not:
+          foreignKeyConstraintExists:
+            foreignKeyTableName: checks_rewards
+            foreignKeyName: fk_checks_rewards_currency_id
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: currencyId
+            baseTableName: checks_rewards
+            constraintName: fk_checks_rewards_currency_id
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: CASCADE
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: currencies
+            validate: true
+        
+  - changeSet:
+      id: "20-06-2023 16:10:00"
+      author: "Alex Eysner"
+      context: "constraintSchema"
+      preConditions:
+        onFail: MARK_RAN
+        not:
+          foreignKeyConstraintExists:
+            foreignKeyTableName: checks_withdraws
+            foreignKeyName: fk_checks_withdraws_currency_id
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: currencyId
+            baseTableName: checks_withdraws
+            constraintName: fk_checks_withdraws_currency_id
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: CASCADE
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: currencies
+            validate: true
+  - changeSet:
+      id: "20-06-2023 16:10:16"
+      author: owpk
+      context: "constraintSchema"
+      changes:
+        - addUniqueConstraint:
+            columnNames: externalId
+            constraintName: external_id_currencies_uniq
+            tableName: currencies
+        - addNotNullConstraint:
+            columnName: externalId
+            constraintName: external_id_currencies_not_null
+            tableName: currencies
+            validate: true
+
+  - changeSet:
+      id: "26-06-2023 12:39:49"
+      author: owpk
+      context: "constraintSchema"
+      changes:
+        - addUniqueConstraint:
+            columnNames: name
+            constraintName: merchant_formats_name_uniq
+            tableName: merchant_formats
+        - addNotNullConstraint:
+            columnName: name
+            constraintName: merchant_formats_name_notnull
+            tableName: merchant_formats
+            validate: true
+
+  - changeSet:
+      id: "26-06-2023 13:26:57"
+      author: owpk
+      context: "constraintSchema"
+      changes:
+        - addUniqueConstraint:
+            columnNames: loymaxLocationId
+            constraintName: merchant_loymaxlocation_uniq
+            tableName: merchants
+        - addNotNullConstraint:
+            columnName: loymaxLocationId
+            constraintName: merchant_loymaxlocation_notnull
+            tableName: merchants
+            validate: true
+
+  - changeSet:
+      id: "26-06-2023 20:39:58"
+      author: owpk
+      context: "tableSchema"
+      changes:
+        - addColumn:
+            tableName: checks_items
+            columns:
+              - column:
+                  name: external_id
+                  type: varchar(100)
+        - addUniqueConstraint:
+            columnNames: external_id
+            constraintName: check_items_external_id_uniq
+            tableName: checks_items
+
+  - changeSet:
+      id: "29-06-2023 18:38:20"
+      author: "owpk"
+      context: "constraintSchema"
+      preConditions:
+        onFail: MARK_RAN
+        indexExists:
+          indexName: rewards_check_id_idx
+          tableName: checks_rewards
+      changes:
+        - createIndex:
+            columns:
+              - column:
+                  name: checkId
+            indexName: rewards_check_id_idx
+            tableName: checks_rewards
+
+  - changeSet:
+      id: "29-06-2023 18:00:00"
+      author: "owpk"
+      context: "constraintSchema"
+      preConditions:
+        onFail: MARK_RAN
+        not:
+          indexExists:
+            indexName: withdraws_check_id_idx
+            tableName: checks_withdraws
+      changes:
+        - createIndex:
+            columns:
+              - column:
+                  name: checkId
+            indexName: withdraws_check_id_idx
+            tableName: checks_withdraws
+
+  - changeSet:
+      id: "29-06-2023 18:00:01"
+      author: "owpk"
+      context: "constraintSchema"
+      preConditions:
+        onFail: MARK_RAN
+        not:
+          indexExists:
+            indexName: items_check_id_idx
+            tableName: checks_items
+      changes:
+        - createIndex:
+            columns:
+              - column:
+                  name: checkId
+            indexName: items_check_id_idx
+            tableName: checks_items

@@ -1,0 +1,13 @@
+sparural:
+  kafka:
+    consumer.name: "trigger-consumer"
+    producer.replyTopic: "lp.trigger.response"
+
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+  quartz:
+    job-store-type: jdbc
+    jdbc.initialize-schema: never
+
+executors.threads: 15 

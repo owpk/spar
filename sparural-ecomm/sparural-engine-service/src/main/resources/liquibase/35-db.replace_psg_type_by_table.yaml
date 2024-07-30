@@ -1,0 +1,140 @@
+databaseChangeLog:
+  -  changeSet:
+       id:  e6541615-9982-4dbb-bd9a-a13c8ce3038e
+       author:  owpk(generated)
+       context: "tableSchema"
+       changes:
+         -  modifyDataType:
+              columnName:  "period"
+              newDataType:  varchar(255)
+              tableName:  "account_life_times_by_period"
+
+  -  changeSet:
+       id:  c23178f6-6992-4964-a452-dd4ebff990ce
+       author:  owpk(generated)
+       context: "tableSchema"
+       changes:
+         -  modifyDataType:
+              columnName:  "city_select"
+              newDataType:  varchar(255)
+              tableName:  "onbox_banners"
+
+  -  changeSet:
+       id:  47ddac9e-3e8d-4cf6-aaa5-0a95e7593900
+       author:  owpk(generated)
+       context: "tableSchema"
+       changes:
+         -  modifyDataType:
+              columnName:  "status"
+              newDataType:  varchar(255)
+              tableName:  "cards"
+
+  -  changeSet:
+       id:  300b1f0c-e4ad-4150-a411-8d40dbb57763
+       author:  owpk(generated)
+       context: "tableSchema"
+       changes:
+         -  modifyDataType:
+              columnName:  "city_select"
+              newDataType:  varchar(255)
+              tableName:  "info_screens"
+
+  -  changeSet:
+       id:  21ddfaec-48c7-4dc6-b764-efa68e5fcca5
+       author:  owpk(generated)
+       context: "tableSchema"
+       changes:
+         -  modifyDataType:
+              columnName:  "coupon_state"
+              newDataType:  varchar(255)
+              tableName:  "coupons"
+
+  -  changeSet:
+       id:  c1796a10-87bb-4047-9459-18ebf0f629f5
+       author:  owpk(generated)
+       context: "tableSchema"
+       changes:
+         -  modifyDataType:
+              columnName:  "city_select"
+              newDataType:  varchar(255)
+              tableName:  "catalogs"
+
+  -  changeSet:
+       id:  629cb708-7e10-4ff6-bc7d-67ccf58cdeb9
+       author:  owpk(generated)
+       context: "tableSchema"
+       changes:
+         -  modifyDataType:
+              columnName:  "preference_type"
+              newDataType:  varchar(255)
+              tableName:  "personal_goods"
+
+  -  changeSet:
+       id:  d4bce6ec-c358-438f-88d2-90310f6f1487
+       author:  owpk(generated)
+       context: "tableSchema"
+       changes:
+         -  modifyDataType:
+              columnName:  "calculation_method"
+              newDataType:  varchar(255)
+              tableName:  "personal_goods"
+
+  -  changeSet:
+       id:  84424d45-f4de-473b-aae8-3185ca200449
+       author:  owpk(generated)
+       context: "tableSchema"
+       changes:
+         -  modifyDataType:
+              columnName:  "type"
+              newDataType:  varchar(255)
+              tableName:  "merchant_comments_questions"
+
+  -  changeSet:
+       id:  4940ea8b-5267-4b56-b627-53d330094e78
+       author:  owpk(generated)
+       context: "tableSchema"
+       changes:
+         -  modifyDataType:
+              columnName:  "status"
+              newDataType:  varchar(255)
+              tableName:  "messages"
+
+  -  changeSet:
+       id:  49080420-9c8e-42c6-93cd-6da569fd47cd
+       author:  owpk(generated)
+       context: "tableSchema"
+       changes:
+         -  modifyDataType:
+              columnName:  "status"
+              newDataType:  varchar(255)
+              tableName:  "confirm_code_request"
+
+  -  changeSet:
+       id:  6179d9f6-4288-4ece-b90b-69bcc10d024e
+       author:  owpk(generated)
+       context: "tableSchema"
+       changes:
+         -  modifyDataType:
+              columnName:  "working_status"
+              newDataType:  varchar(255)
+              tableName:  "merchants"
+
+  -  changeSet:
+       id:  6beeccc4-7602-476e-aa10-bd8b25a81456
+       author:  owpk(generated)
+       context: "tableSchema"
+       changes:
+         -  modifyDataType:
+              columnName:  "gender"
+              newDataType:  varchar(255)
+              tableName:  "users"
+
+  -  changeSet:
+       id:  62b512d1-8d27-4269-89ab-f138a4961e81
+       author:  owpk(generated)
+       context: "tableSchema"
+       changes:
+         -  modifyDataType:
+              columnName:  "reason"
+              newDataType:  varchar(255)
+              tableName:  "users_delete"

@@ -1,0 +1,45 @@
+plugins {
+    id 'java'
+    id 'java-library'
+}
+
+repositories {
+    mavenCentral()
+}
+
+subprojects {
+    apply plugin: 'java'
+    group = 'ru.sparural'
+    version = '1.0-SNAPSHOT'
+
+    repositories {
+        mavenCentral()
+    }
+}
+
+def modApplicationA = project("application")
+def modClientApi = project("kafka-client-api")
+def modKafkaStarter = project("kafka-starter")
+def modApplicationBGeneratedClient = project("generated-kafka-client")
+
+configure modApplicationBGeneratedClient, {
+    dependencies {
+        compileOnly modClientApi
+    }
+}
+
+configure modKafkaStarter, {
+    apply plugin: 'java-library'
+
+    dependencies {
+        api modClientApi
+    }
+}
+
+configure modApplicationA, {
+
+    dependencies {
+        implementation modKafkaStarter
+        implementation modApplicationBGeneratedClient
+    }
+}

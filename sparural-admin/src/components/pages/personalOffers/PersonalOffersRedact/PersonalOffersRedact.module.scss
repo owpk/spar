@@ -1,0 +1,40 @@
+@import '../../../../styles/config.scss';
+
+.block {
+    display: flex;
+    gap: 20px;
+}
+.blockOne {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+}
+.blockTwo {
+    width: 40%;
+}
+.blockLoad {
+    display: flex;
+    gap: 10px;
+    align-items: flex-end;
+}
+.blockDate {
+    display: flex;
+}
+.blockSpanDate {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 130%;
+    color: $color-font-color;
+    margin-top: 16px;
+}
+.blockDateOne {
+    width: 50%;
+}
+.blockDateTwo {
+    margin-left: 9px;
+    width: 50%;
+}
+.textArea {
+    height: 70px;
+}

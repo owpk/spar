@@ -1,0 +1,1 @@
+export { default as TextAria } from './TextAria'

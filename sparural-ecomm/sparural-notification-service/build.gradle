@@ -1,0 +1,19 @@
+repositories {
+    google()
+    jcenter()
+    // Configure the Maven repository address for the HMS Core SDK.
+	maven{url 'http://nexus.ctmol.ru/repository/maven-public/'; allowInsecureProtocol = true}
+	maven{url 'https://developer.huawei.com/repo/'}
+}
+
+dependencies {
+    implementation 'ru.sparural:engine-api:1.7.0'
+    implementation 'ru.sparural:notification-api:1.1.0'
+    implementation 'ru.sparural:kafka-starter:1.8.0-11'
+
+    implementation group: 'com.google.firebase', name: 'firebase-admin', version: '8.1.0'
+    implementation 'org.modelmapper:modelmapper:3.1.0'
+    implementation 'org.springframework.boot:spring-boot-starter-websocket'
+    implementation 'org.apache.commons:commons-lang3:3.12.0'
+    implementation group: 'com.auth0', name: 'java-jwt', version: '3.18.2'
+}

@@ -1,0 +1,1 @@
+export { default as InputHolder } from './InputHolder'

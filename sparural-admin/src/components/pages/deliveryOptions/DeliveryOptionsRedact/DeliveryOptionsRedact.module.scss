@@ -1,0 +1,55 @@
+.wrapperEdit {
+    display: flex;
+    align-items: center;
+
+    .wrapper_input {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        gap: 16px 19px;
+        margin-right: 40px;
+    }
+}
+
+
+
+.link {
+    grid-area: 2 / 2 / 3 / 3;
+}
+
+.header_item {
+    grid-area: 1 / 1 / 2 / 2;
+}
+
+.shortDescr_item {
+    grid-area: 2 / 1 / 3 / 2;
+}
+
+.link_item {
+    grid-area: 2 / 2 / 3 / 3;
+}
+
+.radio_item {
+    grid-area: 1 / 2 / 2 / 3;
+
+    .redio_span {
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 130%;
+        color: #2E2E2E;
+        margin-top: 12px;
+    }
+
+    .radio_items {
+        div {
+            margin-right: 57px;
+        }
+
+        display: flex;
+    }
+}
+
+.btn_save {
+    margin-left: 5px;
+    margin-top: 40px;
+}

@@ -1,0 +1,23 @@
+@import '../../../../../styles/config.scss';
+
+.blockOne {
+    display: grid;
+    grid-template-columns: 445px 445px ;
+    gap: 20px;
+}
+
+.btn {
+    display: flex;
+    justify-content: flex-end;
+    padding: 0 35px;
+    margin-top: 20px;
+}
+
+.oneSocial {
+    width:100%;
+}
+
+.socialName {
+    text-transform: capitalize;
+    font-size: 20px;
+}

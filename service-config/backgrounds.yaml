@@ -1,0 +1,6 @@
+sparural:
+  schedule-delay: 10800000
+  backgrounds.task-thread-pool: 10  
+  kafka:
+    consumer.name: "backgrouns-consumer"
+    producer.replyTopic: "lp.backgrouns.response"

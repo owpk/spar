@@ -1,0 +1,15 @@
+@import '../../../../styles/config.scss';
+
+.block {
+    display: flex;
+    gap: 20px;
+}
+.blockText {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+}
+.blockLoad {
+    display: flex;
+    gap: 16px;
+}

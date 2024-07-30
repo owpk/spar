@@ -1,0 +1,49 @@
+plugins {
+    id 'java'
+    id 'java-library'
+    //id 'ru.sparural.microservice-configurer' version '1.8.2'
+    id 'ru.sparural.kafka-client-generator' version '1.2.3'
+}
+
+group = 'ru.sparural'
+version = '1.0'
+
+//microservice {
+//    nexus()
+//    gitVersion()
+//}
+
+kafka {
+    kafkaControllerAnnotationName = "KafkaSparuralController"
+    kafkaMappingAnnotationName = "KafkaSparuralMapping"
+    serviceName = "engine"
+
+    source {
+        localSource = "/home/owpk/gh/spar/sparural-ecomm"
+        moduleName = "sparural-engine-service"
+        needToBuild = false
+
+//        gitConfig {
+//            remoteBranch = "master"
+//            remoteURI = "https://dev02.ctmol.ru/ecomm/backend-api-service/engine-service.git"
+//        }
+    }
+}
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+    maven{url 'http://nexus.ctmol.ru/repository/maven-public/'; allowInsecureProtocol = true}
+}
+
+dependencies {
+    api 'ru.sparural:engine-api:1.43.0'
+    api 'ru.sparural:kafka-client-api:1.2.0'
+
+    testImplementation platform('org.junit:junit-bom:5.9.1')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+test {
+    useJUnitPlatform()
+}

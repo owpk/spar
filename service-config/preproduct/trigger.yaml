@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://postgres.ctmol.ru/sparural_trigger_preprod
+    username: sparural_preprod
+    password: "{cipher}{key:dev}AQCE9Jdh2XDw2JrmH7DifLzh8Mrr51YO72zznXL1GGCAomfNek7nuYXwZ2ZRx05AhqUy6ZQy6NayHkLBRFnZ8qDqVHS0T1WkpWID2wsiKW+g6j+vnvOXZn81yWV0jC4gtNfl8b5EHiFgcrOur/V6rTojeksCAwtfHii/LCr5iynQqvYRbGXrOHSljD8fefHiIWK50PSyDq644VQAZt35C+oxQ2VKPxIL0bNwNhB8eiC4NGFhM7RPjBRL0wu23oenv6kksVQaEI3ziZUNbHCdxp7Or/FvCAbRer+LtBgvgdDXeOD6Oky5c6IixnxbHACHTD8MMD3agQMb4RHUkmWmJFtKKJB2jxfVzx0Q0AcHWmZeTPMLG77EuG0HZpkXzKChYIj3N0+mAyrGYIIdGsMK0Rm6"
+
+logging:
+  file:
+    name: /home/trigger/log/trigger.log
+  level:
+    root: INFO
+    
+sparural:
+  kafka:
+    consumer.name: "preprod.trigger-consumer"
+    producer.replyTopic: "preprod.trigger.response"

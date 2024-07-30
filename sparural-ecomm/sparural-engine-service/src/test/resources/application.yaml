@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: ${SPRING_APPLICATION_NAME}
+  profiles:
+    active: ${SPRING_ACTIVE_PROFILE}
+  cloud:
+    config:
+      label: ${SPRING_ACTIVE_LABEL}
+  config:
+    import: configserver:${SPRING_CONFIG_SERVER_URL}

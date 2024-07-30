@@ -1,0 +1,58 @@
+plugins {
+    id 'org.liquibase.gradle' version '2.1.1'
+    id 'ru.sparural.microservice-configurer' version '1.8.4'
+}
+
+repositories {
+    maven { url 'http://nexus.ctmol.ru/repository/maven-public/'; allowInsecureProtocol = true }
+}
+
+microservice {
+    databaseJooq()
+            .withScriptPath("src/main/resources/liquibase")
+            .withChangeLogFile('master.yaml')
+            .withPackageName('ru.sparural')
+            .generateClasses()
+    nexus()
+    gitVersion()
+}
+
+dependencies {
+    //api
+    implementation 'ru.sparural:engine-api:1.37.0'
+    implementation 'ru.sparural:notification-api:1.1.0'
+    implementation 'ru.sparural:trigger-api:1.7.0'
+
+    implementation 'ru.sparural:kafka-starter:1.8.0-11'
+
+    implementation 'org.springframework.boot:spring-boot-starter-quartz'
+    liquibaseRuntime group: 'org.liquibase', name: 'liquibase-core', version: '3.5.1'
+    liquibaseRuntime 'org.liquibase:liquibase-groovy-dsl:3.0.0'
+    liquibaseRuntime 'info.picocli:picocli:4.6.1'
+    liquibaseRuntime 'org.postgresql:postgresql:42.3.6'
+    liquibaseRuntime group: 'org.yaml', name: 'snakeyaml', version: '1.30'
+
+    implementation group: 'org.postgresql', name: 'postgresql', version: '42.3.6'
+    implementation 'org.springframework.boot:spring-boot-starter-jooq'
+    runtimeOnly 'com.h2database:h2'
+
+    implementation 'org.modelmapper:modelmapper:3.1.0'
+    implementation 'com.google.guava:guava:31.1-jre'
+    implementation 'org.apache.commons:commons-lang3:3.12.0'
+}
+
+def jdbcUrl = System.env.SPARURAL_TRIGGER_JDBC
+def dbUserName = System.env.SPARURAL_TRIGGER_DB_USER
+def dbPassword = System.env.SPARURAL_TRIGGER_DB_PASSWORD
+
+liquibase {
+    activities {
+        main {
+            classpath "${project.projectDir}/src/main/resources/liquibase"
+            changeLogFile "master.yaml"
+            url jdbcUrl
+            username dbUserName
+            password dbPassword
+        }
+    }
+}

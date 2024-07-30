@@ -1,0 +1,16 @@
+@import '../../../../styles/config.scss';
+
+.block {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.blockOne {
+    display: flex;
+    gap: 20px;
+}
+.blockInput {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+}

@@ -1,0 +1,9 @@
+.blockWrapper {
+    display: grid;
+
+    grid-template-rows: auto;
+    grid-template-columns: repeat(auto-fit, 380px);
+    grid-auto-columns: auto;
+    gap: 21px;
+    height: 100%;
+}

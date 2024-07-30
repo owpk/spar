@@ -1,0 +1,66 @@
+@import '../../../styles/config.scss';
+.label {
+    display: block;
+    margin-bottom: 3px;
+    font-family: SFProDisplay;
+    font-weight: normal;
+    font-size: 18px;
+}
+
+.input {
+    height: 249px;
+    border: none;
+    padding: 0 20px;
+    width: 100%;
+    outline: none;
+}
+.wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    // border: 1px solid $color-grey;
+    width: 100%;
+    border-radius: 5px;
+    // background-color: #fff;
+    // overflow: hidden;
+    // padding: 0 5px;
+    z-index: 5;    
+    height: 100%;
+}
+
+.root {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.iconEye {
+    margin-left: 20px;
+    margin-right: -100%;
+    cursor: pointer;
+}
+
+.error {
+    color: rgb(231, 45, 31)
+}
+
+.errorField {
+    @extend .wrapper;
+    border: 1px solid $color-red;
+}
+
+.extraIcon {
+    position: absolute;
+    right: 20px;
+}
+
+.count {
+    position: absolute;
+    bottom: -20px;
+    right: 0;
+    color: $color-grey;
+}
+
+.currentCount {
+    color: $color-primary;
+}

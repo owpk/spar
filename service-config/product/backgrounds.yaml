@@ -1,0 +1,5 @@
+sparural:
+  kafka:
+    bootstrap-servers: mob03:9092
+    consumer.name: "prod.backgrouns-consumer"
+    producer.replyTopic: "prod.backgrouns.response" 

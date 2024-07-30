@@ -1,0 +1,25 @@
+sparural:
+  loymax:
+    social:
+      # use '$' to declare social name wildcard: example http://localhost/$/success-login
+      redirect-url:
+        login: https%3A%2F%2Fmollapp.sparural.ru/api/v1/socials/$/login-success
+        set: https%3A%2F%2Fmollapp.sparural.ru/api/v1/socials/$/binding-success
+  kafka:
+    consumer.name: "prod.engine-consumer"
+    producer.replyTopic: "prod.db.response"
+    
+spring:
+  datasource:
+    url: jdbc:postgresql://mob01.ctmol.ru/sparural
+    password: "{cipher}{key:product}AgBzkod07pP5rPOgViDHCtFjlPw+/7XEQ3EnebzBwezNDO4EcvKrdVEUloDBJyoxPwmyDYXSRLSuogtS1b+K1hXGr7PZ7RqZdVa0ukzi5Ow5gTD2tirAYxEnlEAK+1u/ETEtxYvmI76LfI0LVtkFYE1G8jD6C0p76TrlyH/vj3kFW5f8ZzvNTeicndf//kG8N2fFTkp1zvmAWTPXVnEX4Fw6Vz0ojI40L5o1kBp7DXhjVccT0i+Zf1hZ5ySRu+1xI6J9vXQUtzCSkHBLRxkOqDIv9oL9yWhrl8QlZuO28KUuGZpgAZ8IMrxQknxv5fiWP4qJYCIjJm7maIFwGWTSPpiyh+/29nU7mDCkR64021yZH0///DYDGvkPLvMJr6nnYl2w8+nJ4oo0xJM3Jmo3JlldgTvcxFzwBT/BPz7FmZ/Z9SQVCvOWlMHHB7MfP4r7VxLpJM36NhzWuNdM7iTMJuuv0zK/pyPjjTxUe9VfyQUn5ZlgFVz1x2ZhpJW1ZuaXv4zY7iu08yHnfU8bHV3vESIF+ynZQR01yTmsz/wnJMaxaG6+62r2f9yoJ/pCq8qlbJo2xk/9RHvoqKoUrub/xYw/B1AzlZpMQAnIZ7TweguYcxPmC7W0E2irPAb7MJ3GnFN3E6s+lPgp1Azs/gZeOLW7p1h5XIZD/HbBa5VTvy/l27gelT2iwto55Dx1qcRMlrNjxgyzd5P/I9pcMgQ6nb649GZnbjpr/li9d+eh03uKtg=="
+    username: sparural
+    
+performance_log:
+  enabled: true
+
+logging:
+  file:
+    name: /home/engine/log/engine.log
+  level:
+    root: INFO

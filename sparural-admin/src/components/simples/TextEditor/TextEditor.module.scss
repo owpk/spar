@@ -1,0 +1,12 @@
+@import '/src/styles/config.scss';
+
+.root {
+    position: relative;
+    border: 1px solid red;
+    border-radius: 5px;
+}
+.error {
+    position: absolute;
+    bottom: -20px;
+    color: $color-red;
+}

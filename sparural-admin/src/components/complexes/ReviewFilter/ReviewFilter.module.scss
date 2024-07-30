@@ -1,0 +1,23 @@
+.AllFilter {
+    display: flex;
+    justify-content: flex-start;
+    // padding-left: 0 !important;
+    flex-wrap: wrap;
+    margin-top: 14px;
+    // width: 850px;
+
+    >div {
+        // margin-left: 15px;
+    }
+}
+
+.search {
+    width: 585px;
+    margin-right: 8px;
+}
+
+.wrapperInput {
+    width: 273px;
+    margin-left: 0;
+    margin-right: 10px;
+}

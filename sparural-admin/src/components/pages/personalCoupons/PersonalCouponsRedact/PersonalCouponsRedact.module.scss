@@ -1,0 +1,32 @@
+@import '../../../../styles/config.scss';
+
+.block {
+    display: flex;
+    gap: 20px;
+}
+.blockOne {
+    width: 40%;
+}
+.blockDate {
+    display: flex;
+}
+.blockSpanDate {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 130%;
+    color: $color-font-color;
+    margin-top: 16px;
+    
+}
+.blockDateOne {
+    width: 50%;
+}
+.blockDateTwo {
+    margin-left: 9px;
+    width: 50%;
+}
+
+.holder {
+    width: 100%;
+}

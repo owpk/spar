@@ -1,0 +1,9 @@
+pluginManagement {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        maven { url 'http://nexus.ctmol.ru/repository/maven-public/'; allowInsecureProtocol = true }
+    }
+}
+
+rootProject.name = 'sparural-engine-service'

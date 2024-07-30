@@ -1,0 +1,113 @@
+@import '../../../../styles/config.scss';
+
+.block {
+    display: flex;
+    gap: 20px;
+}
+.blockOne {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+}
+.blockTwo {
+    width: 40%;
+}
+.blockLoad {
+    display: flex;
+    gap: 10px;
+    align-items: flex-end;
+}
+.blockDate {
+    display: flex;
+}
+.blockSpanDate {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 130%;
+    color: $color-font-color;
+    margin-top: 16px;
+}
+.blockDateOne {
+    width: 50%;
+}
+.blockDateTwo {
+    margin-left: 9px;
+    width: 50%;
+}
+.textArea {
+    height: 70px;
+}
+
+.goodsTitle {
+    margin-bottom: 24px;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 130%;
+    text-transform: uppercase;
+    color: #000000;
+}
+
+.searchHolder {
+    width: 100%;
+}
+
+.goodsBlockWrapper {
+    width: 100%;
+    min-height: 200px;
+    max-height: 270px;
+    overflow-y: auto;
+    border: 1px solid $color-primary;
+    border-radius: 5px;
+    padding: 13px 20px;
+}
+.addDeleteBlock {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+.delUsersIcon {
+    cursor: pointer;
+    margin-bottom: 10px;
+    margin-right: -6px;
+}
+.addUsersIcon {
+    cursor: pointer;
+    margin-top: 10px;
+    margin-left: -6px;
+}
+.titleName {
+    display: flex;
+    margin-bottom: 24px;
+}
+.title {
+    font-style: normal;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 130%;
+
+    text-transform: uppercase;
+
+    color: #000000;
+}
+.groupName {
+    font-style: normal;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 130%;
+    text-transform: uppercase;
+    color: #000000;
+    margin-bottom: 20px;
+}
+
+.showAllBtn {
+    border: none;
+    padding: 0;
+}
+
+.inputHolderRoot {
+    width: auto;
+}

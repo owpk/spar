@@ -1,0 +1,31 @@
+sparural:
+  loymax:
+    rest.base-url: https://sparch.loymax.tech
+  kafka:
+    consumer.name: "engine-consumer"
+    producer.replyTopic: "lp.db.response"
+  trigger:
+    default-time-zone: "Asia/Yekaterinburg"
+  gateways:
+    fileservice:
+        thread.count: 10
+
+spring:
+  datasource:
+    driverClassName: org.postgresql.Driver
+    url: ${SPARURAL_JDBC}
+    password: ${SPARURAL_DB_PASSWORD}
+    username: ${SPARURAL_DB_USER}
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 30000
+    validationQuery: SELECT 1
+    max-active: 15
+    max-idle: 10
+    max-wait: 8000
+  centrum:
+    datasource:
+      driver: org.postgresql.Driver
+      url: jdbc:postgresql://192.168.249.104/set
+      password: "{cipher}{key:dev}AQAUYy55pfo5eFW2x+GxlDB0SilRh8va6pDlOHBp7LyrlLfbyUTmKKzGUaFFQu3lmwT4L1K3/cUfXZBhXC6GMNJAOImezUyvncs3yID1F9JX/6NOZTBizYshJxhtwteZOqH3zcysueMh/xPkPKQX4RzR4zmlUlTIA4QBmqnC2FYkn2JfjP0sdISm5bTZMZalxkSlmscYR7ce4yUFJDnmI+05Mv1LMVCvlnfciOEU809dIV9NljHdRtew7f3I0lt82qcXixXyqNzGfwaFFhZq4TuwhKODHhH6XqPcHz1ohiCEseCielEJdPxE3YtnNmTEpWFZxSF/0ivodeYzUCJM1gOsCQMaeGwBR8ChWysWp6vOMo/e6NmGCnLcErbqWyT1Iy8="
+      username: intuser
+    

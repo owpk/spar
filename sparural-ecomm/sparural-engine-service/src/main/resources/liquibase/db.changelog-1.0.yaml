@@ -1,0 +1,3299 @@
+databaseChangeLog:
+  - changeSet:
+      id: "2022-11-20 11:00:00"
+      author: "Alex Eysner"
+      context: "constraintSchema"
+      preConditions:
+        onFail: MARK_RAN
+        foreignKeyConstraintExists:
+          foreignKeyTableName: favorite_category_months
+          foreignKeyName: fk_user_id
+      changes:
+        - dropForeignKeyConstraint:
+            baseTableName: favorite_category_months
+            constraintName: fk_user_id
+
+  - changeSet:
+      id: "2022-11-20 11:01:00"
+      author: "Alex Eysner"
+      context: "constraintSchema"
+      preConditions:
+        onFail: MARK_RAN
+        not:
+          foreignKeyConstraintExists:
+            foreignKeyTableName: favorite_category_months
+            foreignKeyName: fk_favorite_category_months_user_id
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: userId
+            baseTableName: favorite_category_months
+            constraintName: fk_favorite_category_months_user_id
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: CASCADE
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: users
+            validate: true
+
+  - changeSet:
+      id: "2022-11-20 12:00:00"
+      author: "Alex Eysner"
+      context: "constraintSchema"
+      preConditions:
+        onFail: MARK_RAN
+        foreignKeyConstraintExists:
+          foreignKeyTableName: loymax_users_socials
+          foreignKeyName: fk_user_id
+      changes:
+        - dropForeignKeyConstraint:
+            baseTableName: loymax_users_socials
+            constraintName: fk_user_id
+
+  - changeSet:
+      id: "2022-11-20 12:01:00"
+      author: "Alex Eysner"
+      context: "constraintSchema"
+      preConditions:
+        onFail: MARK_RAN
+        not:
+          foreignKeyConstraintExists:
+            foreignKeyTableName: loymax_users_socials
+            foreignKeyName: fk_loymax_users_socials_user_id
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: userId
+            baseTableName: loymax_users_socials
+            constraintName: fk_loymax_users_socials_user_id
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: users
+            validate: true
+
+  - changeSet:
+      id: "2022-11-20 13:00:00"
+      author: "Alex Eysner"
+      context: "constraintSchema"
+      preConditions:
+        onFail: MARK_RAN
+        foreignKeyConstraintExists:
+          foreignKeyTableName: recovery_password_requests
+          foreignKeyName: fk_user_id
+      changes:
+        - dropForeignKeyConstraint:
+            baseTableName: recovery_password_requests
+            constraintName: fk_user_id
+
+  - changeSet:
+      id: "2022-11-20 13:01:00"
+      author: "Alex Eysner"
+      context: "constraintSchema"
+      preConditions:
+        onFail: MARK_RAN
+        not:
+          foreignKeyConstraintExists:
+            foreignKeyTableName: recovery_password_requests
+            foreignKeyName: fk_recovery_password_requests_user_id
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: userId
+            baseTableName: recovery_password_requests
+            constraintName: fk_recovery_password_requests_user_id
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: users
+            validate: true
+  - changeSet:
+      id: "2022-05-15 15:00"
+      author: "Alex Eysner"
+      context: "constraintSchema"
+      changes:
+        - dropForeignKeyConstraint:
+            constraintName: fk_50
+            baseTableName: merchant_attribute_merchant
+        - addForeignKeyConstraint:
+            constraintName: fk_50
+            baseColumnNames: attributeId
+            baseTableName: merchant_attribute_merchant
+            onDelete: SET NULL
+            referencedColumnNames: id
+            referencedTableName: merchant_attributes
+  - changeSet:
+      id: "2022-05-16 20:00"
+      author: "Svetlana Astapova"
+      context: "tableSchema"
+      changes:
+        - renameColumn:
+            tableName: city_onbox_banner
+            columnDataType: bigint
+            oldColumnName: onboxBunnerId
+            newColumnName: onboxBannerId
+  - changeSet:
+      id: "2022-05-20 21:00"
+      author: "Ekrem Memedlyaev"
+      context: "tableSchema"
+      changes:
+        - addColumn:
+            tableName: cards
+            columns:
+              - column:
+                  name: cardType
+                  type: varchar(50)
+  - changeSet:
+      id: "2022-05-23 14:00"
+      author: "Svetlana Astapova"
+      context: "constraintSchema"
+      changes:
+        - dropForeignKeyConstraint:
+            constraintName: fk_75
+            baseTableName: messages_template_user
+        - addForeignKeyConstraint:
+            constraintName: fk_75
+            baseColumnNames: messageTemplateId
+            baseTableName: messages_template_user
+            onDelete: SET NULL
+            referencedColumnNames: id
+            referencedTableName: messages_templates
+        - dropForeignKeyConstraint:
+            constraintName: fk_77
+            baseTableName: messages_template_users_group
+        - addForeignKeyConstraint:
+            constraintName: fk_77
+            baseColumnNames: messageTemplate
+            baseTableName: messages_template_users_group
+            onDelete: SET NULL
+            referencedColumnNames: id
+            referencedTableName: messages_templates
+
+  - changeSet:
+      id: "2022-05-26 16:00"
+      author: "Ekrem Memedlyaev"
+      context: "data"
+      preConditions:
+        - onFail: MARK_RAN
+        - sqlCheck:
+            expectedResult: 0
+            sql: select count(*) from roles where code='anonymous'
+      changes:
+        - insert:
+            columns:
+              - column:
+                  name: code
+                  value: anonymous
+              - column:
+                  name: name
+                  value: Анонимный пользователь
+            tableName: roles
+
+  - changeSet:
+      id: "2022-05-26 16:01"
+      author: "Ekrem Memedlyaev"
+      context: "data"
+      preConditions:
+        - onFail: MARK_RAN
+        - sqlCheck:
+            expectedResult: 0
+            sql: select count(*) from roles where code='client'
+      changes:
+        - insert:
+            columns:
+              - column:
+                  name: code
+                  value: client
+              - column:
+                  name: name
+                  value: Покупатель
+            tableName: roles
+
+  - changeSet:
+      id: "2022-05-26 16:02"
+      author: "Ekrem Memedlyaev"
+      context: "data"
+      preConditions:
+        - onFail: MARK_RAN
+        - sqlCheck:
+            expectedResult: 0
+            sql: select count(*) from roles where code='admin'
+      changes:
+        - insert:
+            columns:
+              - column:
+                  name: code
+                  value: admin
+              - column:
+                  name: name
+                  value: Администратор
+            tableName: roles
+
+  - changeSet:
+      id: "2022-05-26 16:03"
+      author: "Ekrem Memedlyaev"
+      context: "data"
+      preConditions:
+        - onFail: MARK_RAN
+        - sqlCheck:
+            expectedResult: 0
+            sql: select count(*) from roles where code='manager'
+      changes:
+        - insert:
+            columns:
+              - column:
+                  name: code
+                  value: manager
+              - column:
+                  name: name
+                  value: Менеджер
+            tableName: roles
+
+  - changeSet:
+      id: "2022-05-26 16:04"
+      author: "Ekrem Memedlyaev"
+      context: "data"
+      preConditions:
+        - onFail: MARK_RAN
+        - sqlCheck:
+            expectedResult: 0
+            sql: select count(*) from socials where name='facebook'
+      changes:
+        - insert:
+            columns:
+              - column:
+                  name: appId
+                  value: 328456702456134
+              - column:
+                  name: name
+                  value: facebook
+              - column:
+                  name: appSecret
+                  value: t
+            tableName: socials
+
+  - changeSet:
+      id: "2022-05-26 16:05"
+      author: "Ekrem Memedlyaev"
+      context: "data"
+      preConditions:
+        - onFail: MARK_RAN
+        - sqlCheck:
+            expectedResult: 0
+            sql: select count(*) from socials where name='vk'
+      changes:
+        - insert:
+            columns:
+              - column:
+                  name: appId
+                  value: 8010505
+              - column:
+                  name: name
+                  value: vk
+              - column:
+                  name: appSecret
+                  value: t
+            tableName: socials
+
+  - changeSet:
+      id: "2022-05-26 16:06"
+      author: "Ekrem Memedlyaev"
+      context: "data"
+      preConditions:
+        - onFail: MARK_RAN
+        - sqlCheck:
+            expectedResult: 0
+            sql: select count(*) from socials where name='odnoklassniki'
+      changes:
+        - insert:
+            columns:
+              - column:
+                  name: appId
+                  value: 512000980273
+              - column:
+                  name: name
+                  value: odnoklassniki
+              - column:
+                  name: appSecret
+                  value: t
+            tableName: socials
+
+  - changeSet:
+      id: "2022-05-26 16:07"
+      author: "Ekrem Memedlyaev"
+      context: "data"
+      preConditions:
+        - onFail: MARK_RAN
+        - sqlCheck:
+            expectedResult: 0
+            sql: select count(*) from socials where name='apple'
+      changes:
+        - insert:
+            columns:
+              - column:
+                  name: appId
+                  value: ru.sparural.mobile.loymax
+              - column:
+                  name: name
+                  value: apple
+              - column:
+                  name: appSecret
+                  value: t
+            tableName: socials
+
+  - changeSet:
+      id: "2022-05-27 14:38"
+      author: "Ekrem Memedlyaev"
+      context: "tableSchema"
+      changes:
+        - addColumn:
+            tableName: loymax_settings
+            columns:
+              - column:
+                  name: siteKey
+                  type: varchar(50)
+
+  - changeSet:
+      id: "2022-05-27 14:39"
+      author: "Ekrem Memedlyaev"
+      context: "data"
+      preConditions:
+        - onFail: MARK_RAN
+        - sqlCheck:
+            expectedResult: 0
+            sql: select count(*) from users_groups where name='Анонимные пользователи'
+      changes:
+        - insert:
+            columns:
+              - column:
+                  name: name
+                  value: Анонимные пользователи
+              - column:
+                  name: isSys
+                  value: true
+              - column:
+                  name: code
+                  value: 1
+            tableName: users_groups
+
+  - changeSet:
+      id: "2022-06-03 07:23"
+      author: "Ekrem Memedlyaev"
+      context: "tableSchema"
+      changes:
+        - addColumn:
+            tableName: favorite_categories
+            columns:
+              - column:
+                  name: loymaxId
+                  type: varchar(50)
+
+  - changeSet:
+      id: "2022-06-03 13:00"
+      author: "Svetlana Astapova"
+      context: "data"
+      preConditions:
+        - onFail: MARK_RAN
+        - sqlCheck:
+            expectedResult: 0
+            sql: select count(*) from triggers_types where name='Незавершенная регистрация'
+      changes:
+        - insert:
+            columns:
+              - column:
+                  name: name
+                  value: 'Незавершенная регистрация'
+              - column:
+                  name: code
+                  value: 'in-progress'
+            tableName: triggers_types
+
+  - changeSet:
+      id: "2022-06-03 13:02"
+      author: "Svetlana Astapova"
+      context: "data"
+      preConditions:
+        - onFail: MARK_RAN
+        - sqlCheck:
+            expectedResult: 0
+            sql: select count(*) from triggers_types where name='Покупка совершена'
+      changes:
+        - insert:
+            columns:
+              - column:
+                  name: name
+                  value: 'Покупка совершена'
+              - column:
+                  name: code
+                  value: 'the-purchase-is-completed'
+            tableName: triggers_types
+
+  - changeSet:
+      id: "2022-06-03 13:04"
+      author: "Svetlana Astapova"
+      context: "data"
+      preConditions:
+        - onFail: MARK_RAN
+        - sqlCheck:
+            expectedResult: 0
+            sql: select count(*) from triggers_types where name='Без условий'
+      changes:
+        - insert:
+            columns:
+              - column:
+                  name: name
+                  value: 'Без условий'
+              - column:
+                  name: code
+                  value: 'without-conditions'
+            tableName: triggers_types
+
+  - changeSet:
+      id: "2022-06-03 20:30"
+      author: "Svetlana Astapova"
+      context: "data"
+      changes:
+        - delete:
+            tableName: triggers_types
+
+  - changeSet:
+      id: "2022-06-03 20:33"
+      author: "Svetlana Astapova"
+      context: "data"
+      preConditions:
+        - onFail: MARK_RAN
+        - sqlCheck:
+            expectedResult: 0
+            sql: select count(*) from triggers_types where name='Не завершена регистрация'
+      changes:
+        - insert:
+            columns:
+              - column:
+                  name: name
+                  value: 'Не завершена регистрация'
+              - column:
+                  name: code
+                  value: 'registration-not-completed'
+            tableName: triggers_types
+
+  - changeSet:
+      id: "2022-06-03 20:35"
+      author: "Svetlana Astapova"
+      context: "data"
+      preConditions:
+        - onFail: MARK_RAN
+        - sqlCheck:
+            expectedResult: 0
+            sql: select count(*) from triggers_types where name='Совершена покупка в магазине'
+      changes:
+        - insert:
+            columns:
+              - column:
+                  name: name
+                  value: 'Совершена покупка в магазине'
+              - column:
+                  name: code
+                  value: 'made-purchase-in-store'
+            tableName: triggers_types
+
+  - changeSet:
+      id: "2022-06-03 20:37"
+      author: "Svetlana Astapova"
+      context: "data"
+      preConditions:
+        - onFail: MARK_RAN
+        - sqlCheck:
+            expectedResult: 0
+            sql: select count(*) from triggers_types where name='Без условий'
+      changes:
+        - insert:
+            columns:
+              - column:
+                  name: name
+                  value: 'Без условий'
+              - column:
+                  name: code
+                  value: 'no-conditions'
+            tableName: triggers_types
+  - changeSet:
+      id: "2022-06-06 01:30"
+      author: "Svetlana Astapova"
+      context: "constraintSchema"
+      changes:
+        - dropForeignKeyConstraint:
+            constraintName: fk_31
+            baseTableName: coupon_user
+        - addForeignKeyConstraint:
+            baseColumnNames: couponId
+            baseTableName: coupon_user
+            constraintName: fk_31
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: CASCADE
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: coupons
+            validate: true
+  - changeSet:
+      id: "2022-06-06 01:37"
+      author: "Svetlana Astapova"
+      context: "constraintSchema"
+      changes:
+        - dropForeignKeyConstraint:
+            constraintName: fk_90
+            baseTableName: loymax_coupons
+        - addForeignKeyConstraint:
+            baseColumnNames: couponId
+            baseTableName: loymax_coupons
+            constraintName: fk_90
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: CASCADE
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: coupons
+            validate: true
+  - changeSet:
+      id: "2022-06-06 01:45"
+      author: "Svetlana Astapova"
+      context: "constraintSchema"
+      changes:
+        - dropForeignKeyConstraint:
+            constraintName: fk_3
+            baseTableName: users_group_user
+        - addForeignKeyConstraint:
+            baseColumnNames: usersGroupId
+            baseTableName: users_group_user
+            constraintName: fk_3
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: CASCADE
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: users_groups
+            validate: true
+  - changeSet:
+      id: "2022-06-06 01:54"
+      author: "Svetlana Astapova"
+      context: "constraintSchema"
+      changes:
+        - dropForeignKeyConstraint:
+            constraintName: fk_78
+            baseTableName: messages_template_users_group
+        - addForeignKeyConstraint:
+            baseColumnNames: usersGroupId
+            baseTableName: messages_template_users_group
+            constraintName: fk_78
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: CASCADE
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: users_groups
+            validate: true
+  - changeSet:
+      id: "2022-06-10 00:00"
+      author: "Svetlana Astapova"
+      context: "tableSchema"
+      changes:
+        - dropColumn:
+            tableName: users_devices
+            columns:
+              - column:
+                  name: data
+  - changeSet:
+      id: "2022-06-10 00:02"
+      author: "Svetlana Astapova"
+      context: "tableSchema"
+      changes:
+        - addColumn:
+            tableName: users_devices
+            columns:
+              - column:
+                  name: data
+                  type: varchar(500)
+
+  - changeSet:
+      id: "2022-06-11 08:07"
+      author: "Ekrem Memedlyaev"
+      context: "data"
+      preConditions:
+        - onFail: MARK_RAN
+        - sqlCheck:
+            expectedResult: 0
+            sql: select count(*) from notifications_types where name='Акции'
+      changes:
+        - insert:
+            columns:
+              - column:
+                  name: name
+                  value: Акции
+            tableName: notifications_types
+  - changeSet:
+      id: "2022-06-11 08:08"
+      author: "Ekrem Memedlyaev"
+      context: "data"
+      preConditions:
+        - onFail: MARK_RAN
+        - sqlCheck:
+            expectedResult: 0
+            sql: select count(*) from notifications_types where name='Бонусы'
+      changes:
+        - insert:
+            columns:
+              - column:
+                  name: name
+                  value: Бонусы
+            tableName: notifications_types
+  - changeSet:
+      id: "2022-06-11 08:09"
+      author: "Ekrem Memedlyaev"
+      context: "data"
+      preConditions:
+        - onFail: MARK_RAN
+        - sqlCheck:
+            expectedResult: 0
+            sql: select count(*) from notifications_types where name='Персональные товары'
+      changes:
+        - insert:
+            columns:
+              - column:
+                  name: name
+                  value: Персональные товары
+            tableName: notifications_types
+  - changeSet:
+      id: "2022-06-11 08:10"
+      author: "Ekrem Memedlyaev"
+      context: "data"
+      preConditions:
+        - onFail: MARK_RAN
+        - sqlCheck:
+            expectedResult: 0
+            sql: select count(*) from notifications_types where name='Новый чек'
+      changes:
+        - insert:
+            columns:
+              - column:
+                  name: name
+                  value: Новый чек
+            tableName: notifications_types
+
+  - changeSet:
+      id: "2022-06-17 05:10"
+      author: "Ekrem Memedlyaev"
+      context: "tableSchema"
+      changes:
+        - modifyDataType:
+            columnName: amount
+            newDataType: double
+            tableName: accounts
+
+  - changeSet:
+      id: "2022-06-17 05:15"
+      author: "Ekrem Memedlyaev"
+      context: "tableSchema"
+      changes:
+        - modifyDataType:
+            columnName: notActivatedAmount
+            newDataType: double
+            tableName: accounts
+  - changeSet:
+      id: "2022-06-17 03:14"
+      author: "Svetlana Astapova"
+      context: "tableSchema"
+      changes:
+        - dropColumn:
+            tableName: triggers_logs
+            columns:
+              - column:
+                  name: data
+  - changeSet:
+      id: "2022-06-17 03:20"
+      author: "Svetlana Astapova"
+      context: "tableSchema"
+      changes:
+        - addColumn:
+            tableName: triggers_logs
+            columns:
+              - column:
+                  name: data
+                  type: varchar(500)
+  - changeSet:
+      id: "2022-06-17 13:02"
+      author: "Svetlana Astapova"
+      context: "tableSchema"
+      changes:
+        - addColumn:
+            tableName: triggers_logs
+            columns:
+              - column:
+                  name: userId
+                  type: bigint
+  - changeSet:
+      id: "2022-06-17 15:36"
+      author: "Svetlana Astapova"
+      context: "constraintSchema"
+      changes:
+        - dropForeignKeyConstraint:
+            constraintName: fk_79
+            baseTableName: messages
+        - addForeignKeyConstraint:
+            constraintName: fk_79
+            baseColumnNames: messageTemplateId
+            baseTableName: messages
+            onDelete: SET NULL
+            referencedColumnNames: id
+            referencedTableName: messages_templates
+  - changeSet:
+      id: "2022-06-19 17:50"
+      author: "Svetlana Astapova"
+      context: "constraintSchema"
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: triggersDocumentId
+            baseTableName: triggers_documents
+            constraintName: fk_98
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: CASCADE
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: messages_templates
+            validate: true
+  - changeSet:
+      id: "2022-06-20 18:50"
+      author: "Svetlana Astapova"
+      context: "constraintSchema"
+      changes:
+        - dropForeignKeyConstraint:
+            constraintName: fk_75
+            baseTableName: messages_template_user
+        - addForeignKeyConstraint:
+            baseColumnNames: messageTemplateId
+            baseTableName: messages_template_user
+            constraintName: fk_75
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: CASCADE
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: messages_templates
+            validate: true
+  - changeSet:
+      id: "2022-06-20 17:20"
+      author: "Svetlana Astapova"
+      context: "constraintSchema"
+      changes:
+        - dropForeignKeyConstraint:
+            constraintName: fk_77
+            baseTableName: messages_template_users_group
+        - addForeignKeyConstraint:
+            baseColumnNames: messageTemplate
+            baseTableName: messages_template_users_group
+            constraintName: fk_77
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: CASCADE
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: messages_templates
+            validate: true
+
+  - changeSet:
+      id: "2022-06-21 03:15"
+      author: "Ekrem Memedlyaev"
+      context: "tableSchema"
+      changes:
+        - modifyDataType:
+            columnName: count
+            newDataType: double
+            tableName: checks_items
+
+  - changeSet:
+      id: "2022-06-23 15:14"
+      author: "Svetlana Astapova"
+      context: "tableSchema"
+      changes:
+        - dropColumn:
+            tableName: email_settings
+            columns:
+              - column:
+                  name: devinoApiKey
+        - addColumn:
+            tableName: email_settings
+            columns:
+              - column:
+                  name: devinoLogin
+                  type: varchar(255)
+        - addColumn:
+            tableName: email_settings
+            columns:
+              - column:
+                  name: devinoPassword
+                  type: varchar(255)
+        - dropColumn:
+            tableName: sms_settings
+            columns:
+              - column:
+                  name: devinoApiKey
+        - addColumn:
+            tableName: sms_settings
+            columns:
+              - column:
+                  name: gatewayLogin
+                  type: varchar(255)
+        - addColumn:
+            tableName: sms_settings
+            columns:
+              - column:
+                  name: gatewayPassword
+                  type: varchar(255)
+        - dropColumn:
+            tableName: viber_settings
+            columns:
+              - column:
+                  name: devinoApiKey
+        - addColumn:
+            tableName: viber_settings
+            columns:
+              - column:
+                  name: devinoLogin
+                  type: varchar(255)
+        - addColumn:
+            tableName: viber_settings
+            columns:
+              - column:
+                  name: devinoPassword
+                  type: varchar(255)
+        - dropColumn:
+            tableName: whatsapp_settings
+            columns:
+              - column:
+                  name: devinoApiKey
+        - addColumn:
+            tableName: whatsapp_settings
+            columns:
+              - column:
+                  name: devinoLogin
+                  type: varchar(255)
+        - addColumn:
+            tableName: whatsapp_settings
+            columns:
+              - column:
+                  name: devinoPassword
+                  type: varchar(255)
+
+  - changeSet:
+      id: "2022-06-24 09:15"
+      author: "Ekrem Memedlyaev"
+      context: "tableSchema"
+      changes:
+        changes:
+          - dropColumn:
+              tableName: checks
+              columns:
+                - column:
+                    name: checkNumber
+          - addColumn:
+              tableName: checks
+              columns:
+                - column:
+                    name: checkNumber
+                    type: varchar(255)
+
+  - changeSet:
+      id: "2022-06-24 09:38"
+      author: "Ekrem Memedlyaev"
+      context: "constraintSchema"
+      changes:
+        - addUniqueConstraint:
+            columnNames: externalPurchaseId
+            constraintName: externalPurchaseIdUniq
+            tableName: checks
+            validate: true
+
+  - changeSet:
+      id: "2022-06-29 11:07"
+      author: "Ekrem Memedlyaev"
+      context: "data"
+      preConditions:
+        - onFail: MARK_RAN
+        - sqlCheck:
+            expectedResult: 0
+            sql: select count(*) from merchant_comments_questions where code='greate'
+      changes:
+        - insert:
+            columns:
+              - column:
+                  name: code
+                  value: greate
+              - column:
+                  name: question
+                  value: Расскажите пожалуйста, что Вам понравилось?
+              - column:
+                  name: grade
+                  value: 5
+              - column:
+                  name: type
+                  value: NoAnswer
+            tableName: merchant_comments_questions
+
+  - changeSet:
+      id: "2022-06-29 11:08"
+      author: "Ekrem Memedlyaev"
+      context: "data"
+      preConditions:
+        - onFail: MARK_RAN
+        - sqlCheck:
+            expectedResult: 0
+            sql: select count(*) from merchant_comments_questions where code='good'
+      changes:
+        - insert:
+            columns:
+              - column:
+                  name: code
+                  value: good
+              - column:
+                  name: question
+                  value: Что испортило Ваши впечатления?
+              - column:
+                  name: grade
+                  value: 4
+              - column:
+                  name: type
+                  value: NoAnswer
+            tableName: merchant_comments_questions
+
+  - changeSet:
+      id: "2022-06-29 11:09"
+      author: "Ekrem Memedlyaev"
+      context: "data"
+      preConditions:
+        - onFail: MARK_RAN
+        - sqlCheck:
+            expectedResult: 0
+            sql: select count(*) from merchant_comments_questions where code='bad'
+      changes:
+        - insert:
+            columns:
+              - column:
+                  name: code
+                  value: bad
+              - column:
+                  name: question
+                  value: Что вас разочаровало?
+              - column:
+                  name: grade
+                  value: 3,2,1
+              - column:
+                  name: type
+                  value: MultipleChoice
+            tableName: merchant_comments_questions
+
+  - changeSet:
+      id: "2022-07-04 02:25"
+      author: "Svetlana Astapova"
+      context: "data"
+      preConditions:
+        - onFail: MARK_RAN
+        - sqlCheck:
+            expectedResult: 0
+            sql: select count(*) from merchant_comments_questions where code='bad'
+      changes:
+        - insert:
+            columns:
+              - column:
+                  name: code
+                  value: bad
+              - column:
+                  name: question
+                  value: Что вас разочаровало?
+              - column:
+                  name: grade
+                  value: 3,2,1
+              - column:
+                  name: type
+                  value: MultipleChoice
+            tableName: merchant_comments_questions
+
+  - changeSet:
+      id: "2022-07-04 03:20"
+      author: "Svetlana Astapova"
+      context: "tableSchema"
+      changes:
+        - addColumn:
+            tableName: notifications
+            columns:
+              - column:
+                  name: screenId
+                  type: bigint
+        - addForeignKeyConstraint:
+            baseColumnNames: screenId
+            baseTableName: notifications
+            constraintName: fk_99
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: CASCADE
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: screens
+            validate: true
+
+  - changeSet:
+      id: "2022-07-05 11:50"
+      author: "Svetlana Astapova"
+      context: "data"
+      changes:
+        - delete:
+            tableName: screens
+            where: code='qr'
+  - changeSet:
+      id: "2022-07-05 11:51"
+      author: "Svetlana Astapova"
+      context: "data"
+      changes:
+        - delete:
+            tableName: screens
+            where: name='QR'
+  - changeSet:
+      id: "2022-07-05 12:52"
+      author: "Svetlana Astapova"
+      context: "data"
+      changes:
+        - delete:
+            tableName: screens
+            where: name='Бонусы'
+  - changeSet:
+      id: "2022-07-05 12:54"
+      author: "Svetlana Astapova"
+      context: "data"
+      changes:
+        - delete:
+            tableName: screens
+            where: name='Экстра бонусы'
+  - changeSet:
+      id: "2022-07-05 12:56"
+      author: "Svetlana Astapova"
+      context: "data"
+      changes:
+        - delete:
+            tableName: screens
+            where: name='Фишки'
+  - changeSet:
+      id: "2022-07-05 12:58"
+      author: "Svetlana Astapova"
+      context: "data"
+      changes:
+        - delete:
+            tableName: merchant_comments_questions
+            where: code='greate'
+  - changeSet:
+      id: "2022-07-05 13:00"
+      author: "Svetlana Astapova"
+      context: "data"
+      preConditions:
+        - onFail: MARK_RAN
+        - sqlCheck:
+            expectedResult: 0
+            sql: select count(*) from merchant_comments_questions where code='great'
+      changes:
+        - insert:
+            columns:
+              - column:
+                  name: code
+                  value: great
+              - column:
+                  name: question
+                  value: Расскажите пожалуйста, что Вам понравилось?
+              - column:
+                  name: grade
+                  value: 5
+              - column:
+                  name: type
+                  value: NoAnswer
+            tableName: merchant_comments_questions
+  - changeSet:
+      id: "2022-07-05 13:05"
+      author: "Svetlana Astapova"
+      context: "data"
+      preConditions:
+        - onFail: MARK_RAN
+        - sqlCheck:
+            expectedResult: 0
+            sql: select count(*) from screens where code='currenciesAndAccounts'
+      changes:
+        - insert:
+            columns:
+              - column:
+                  name: id
+                  value: 6
+              - column:
+                  name: code
+                  value: currenciesAndAccounts
+              - column:
+                  name: name
+                  value: Валюты и счета
+            tableName: screens
+
+  - changeSet:
+      id: "2022-07-05 16:19"
+      author: "Svetlana Astapova"
+      context: "tableSchema"
+      changes:
+        - addColumn:
+            tableName: messages
+            columns:
+              - column:
+                  name: triggerLogId
+                  type: bigint
+        - addForeignKeyConstraint:
+            baseColumnNames: triggerLogId
+            baseTableName: messages
+            constraintName: fk_100
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: CASCADE
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: triggers_logs
+            validate: true
+  - changeSet:
+      id: "2022-07-05 18:50"
+      author: "Svetlana Astapova"
+      context: "tableSchema"
+      changes:
+        - dropColumn:
+            tableName: messages
+            columns:
+              - column:
+                  name: data
+  - changeSet:
+      id: "2022-07-05 18:56"
+      author: "Svetlana Astapova"
+      context: "tableSchema"
+      changes:
+        - addColumn:
+            tableName: messages
+            columns:
+              - column:
+                  name: data
+                  type: varchar(1000)
+
+  - changeSet:
+      id: "2022-07-07 06:00"
+      author: "Ekrem Memedlyaev"
+      context: "tableSchema"
+      changes:
+        - addColumn:
+            tableName: loymax_users
+            columns:
+              - column:
+                  defaultValue: false
+                  name: setMobileApplicationInstalled
+                  type: boolean
+
+  - changeSet:
+      id: "2022-07-07 12:36"
+      author: "Svetlana Astapova"
+      context: "constraintSchema"
+      changes:
+        - dropForeignKeyConstraint:
+            constraintName: fk_3
+            baseTableName: users_group_user
+        - addForeignKeyConstraint:
+            baseColumnNames: usersGroupId
+            baseTableName: users_group_user
+            constraintName: fk_3
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: CASCADE
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: users_groups
+            validate: true
+
+  - changeSet:
+      id: "2022-07-07 13:44"
+      author: "Svetlana Astapova"
+      context: "tableSchema"
+      changes:
+        - dropColumn:
+            tableName: users_devices
+            columns:
+              - column:
+                  name: data
+        - addColumn:
+            tableName: users_devices
+            columns:
+              - column:
+                  name: data
+                  type: varchar(2000)
+  - changeSet:
+      id: "2022-07-06 07:00"
+      author: "Alex Eysner"
+      context: "tableSchema"
+      changes:
+        - addColumn:
+            tableName: files
+            columns:
+              - column:
+                  name: name
+                  type: varchar(255)
+
+  - changeSet:
+      id: "2022-07-08 16:05"
+      author: "Svetlana Astapova"
+      context: "tableSchema"
+      changes:
+        - dropColumn:
+            tableName: users_devices
+            columns:
+              - column:
+                  name: data
+        - addColumn:
+            tableName: users_devices
+            columns:
+              - column:
+                  name: data
+                  type: varchar(10000)
+
+  - changeSet:
+      id: "2022-11-20 09:00:00"
+      author: "Vorobev Vyacheslav"
+      context: "indexSchema"
+      preConditions:
+        onFail: MARK_RAN
+        not:
+          indexExists:
+            indexName: person_uid_idx
+            tableName: loymax_users
+      changes:
+        - createIndex:
+            columns:
+              - name: personUid
+            schemaName: public
+            indexName: person_uid_idx
+            tableName: loymax_users
+            unique: true
+
+  - changeSet:
+      id: "2022-11-20 09:01:00"
+      author: "Vorobev Vyacheslav"
+      context: "constraintSchema"
+      preConditions:
+        onFail: MARK_RAN
+        not:
+          indexExists:
+            indexName: personal_good_id_loymax_good_id_unique
+            tableName: loymax_personal_goods
+      changes:
+        - createIndex:
+            columns:
+              - column:
+                  name: personalGoodId
+              - column:
+                  name: loymaxGoodId
+            indexName: personal_good_id_loymax_good_id_unique
+            tableName: loymax_personal_goods
+            unique: true
+
+  - changeSet:
+      id: "2022-11-20 09:02:00"
+      author: "Vorobev Vyacheslav"
+      context: "constraintSchema"
+      preConditions:
+        onFail: MARK_RAN
+        not:
+          indexExists:
+            indexName: personal_offer_id_loymax_offer_id_unique
+            tableName: loymax_personal_offers
+      changes:
+        - createIndex:
+            columns:
+              - column:
+                  name: personalOfferId
+              - column:
+                  name: loymaxOfferId
+            indexName: personal_offer_id_loymax_offer_id_unique
+            tableName: loymax_personal_offers
+            unique: true
+
+  - changeSet:
+      id: "2022-11-20 09:03:00"
+      author: "Vorobev Vyacheslav"
+      context: "constraintSchema"
+      preConditions:
+        onFail: MARK_RAN
+        not:
+          indexExists:
+            indexName: loymax_users_socials_unique
+            tableName: loymax_users_socials
+      changes:
+        - createIndex:
+            columns:
+              - column:
+                  name: userId
+              - column:
+                  name: socialId
+              - column:
+                  name: loymaxSocialUserId
+            indexName: loymax_users_socials_unique
+            tableName: loymax_users_socials
+            unique: true
+
+  - changeSet:
+      id: "2022-11-20 09:04:00"
+      author: "Vorobev Vyacheslav"
+      context: "tableSchema"
+      preConditions:
+        onFail: MARK_RAN
+        not:
+          changeSetExecuted:
+            id: "2022-07-13 23:26"
+            author: "Vorobev Vyacheslav"
+            changeLogFile: "src/main/resources/liquibase/db.changelog-1.0.yaml"
+      changes:
+        - modifyDataType:
+            tableName: loymax_personal_goods
+            columnName: loymaxGoodId
+            newDataType: varchar
+
+  - changeSet:
+      id: "2022-07-14 09:55"
+      author: "Ekrem Memedlyaev"
+      context: "data"
+      preConditions:
+        - onFail: MARK_RAN
+        - sqlCheck:
+            expectedResult: 0
+            sql: select count(*) from screens where code='map'
+      changes:
+        - insert:
+            columns:
+              - column:
+                  name: id
+                  value: 16
+              - column:
+                  name: code
+                  value: map
+              - column:
+                  name: name
+                  value: Карта Яндекс (Не авт.)
+            tableName: screens
+
+  - changeSet:
+      id: "2022-07-14 09:56"
+      author: "Ekrem Memedlyaev"
+      context: "data"
+      preConditions:
+        - onFail: MARK_RAN
+        - sqlCheck:
+            expectedResult: 0
+            sql: select count(*) from screens where code='offers'
+      changes:
+        - insert:
+            columns:
+              - column:
+                  name: id
+                  value: 17
+              - column:
+                  name: code
+                  value: offers
+              - column:
+                  name: name
+                  value: Акции список (Не авт.)
+            tableName: screens
+
+  - changeSet:
+      id: "2022-07-14 09:57"
+      author: "Ekrem Memedlyaev"
+      context: "data"
+      preConditions:
+        - onFail: MARK_RAN
+        - sqlCheck:
+            expectedResult: 0
+            sql: select count(*) from screens where code='delivery'
+      changes:
+        - insert:
+            columns:
+              - column:
+                  name: id
+                  value: 18
+              - column:
+                  name: code
+                  value: delivery
+              - column:
+                  name: name
+                  value: Доставка (Не авт.)
+            tableName: screens
+
+  - changeSet:
+      id: "2022-07-14 09:58"
+      author: "Ekrem Memedlyaev"
+      context: "data"
+      preConditions:
+        - onFail: MARK_RAN
+        - sqlCheck:
+            expectedResult: 0
+            sql: select count(*) from screens where code='profile'
+      changes:
+        - insert:
+            columns:
+              - column:
+                  name: id
+                  value: 19
+              - column:
+                  name: code
+                  value: profile
+              - column:
+                  name: name
+                  value: Профиль
+            tableName: screens
+
+  - changeSet:
+      id: "2022-07-14 09:59"
+      author: "Ekrem Memedlyaev"
+      context: "data"
+      preConditions:
+        - onFail: MARK_RAN
+        - sqlCheck:
+            expectedResult: 0
+            sql: select count(*) from screens where code='subscriptions'
+      changes:
+        - insert:
+            columns:
+              - column:
+                  name: id
+                  value: 20
+              - column:
+                  name: code
+                  value: subscriptions
+              - column:
+                  name: name
+                  value: Управление подписками
+            tableName: screens
+
+
+  - changeSet:
+      id: "2022-07-14 10:10"
+      author: "Ekrem Memedlyaev"
+      context: "data"
+      preConditions:
+        - onFail: MARK_RAN
+        - sqlCheck:
+            expectedResult: 0
+            sql: "select count(*) from screens where code='socials'"
+      changes:
+        - insert:
+            columns:
+              - column:
+                  name: id
+                  value: 21
+              - column:
+                  name: code
+                  value: socials
+              - column:
+                  name: name
+                  value: Соц. Сети
+            tableName: screens
+
+  - changeSet:
+      id: "2022-07-14 10:11"
+      author: "Ekrem Memedlyaev"
+      context: "data"
+      preConditions:
+        - onFail: MARK_RAN
+        - sqlCheck:
+            expectedResult: 0
+            sql: select count(*) from screens where code='faq'
+      changes:
+        - insert:
+            columns:
+              - column:
+                  name: id
+                  value: 22
+              - column:
+                  name: code
+                  value: faq
+              - column:
+                  name: name
+                  value: Вопрос ответ
+            tableName: screens
+
+  - changeSet:
+      id: "2022-07-14 10:12"
+      author: "Ekrem Memedlyaev"
+      context: "data"
+      preConditions:
+        - onFail: MARK_RAN
+        - sqlCheck:
+            expectedResult: 0
+            sql: select count(*) from screens where code='login'
+      changes:
+        - insert:
+            columns:
+              - column:
+                  name: id
+                  value: 23
+              - column:
+                  name: code
+                  value: login
+              - column:
+                  name: name
+                  value: Авторизация (Не авт.)
+            tableName: screens
+
+  - changeSet:
+      id: "2022-07-14 10:13"
+      author: "Ekrem Memedlyaev"
+      context: "data"
+      preConditions:
+        - onFail: MARK_RAN
+        - sqlCheck:
+            expectedResult: 0
+            sql: select count(*) from screens where code='registration'
+      changes:
+        - insert:
+            columns:
+              - column:
+                  name: id
+                  value: 24
+              - column:
+                  name: code
+                  value: registration
+              - column:
+                  name: name
+                  value: Регистрация (Не авт.)
+            tableName: screens
+
+  - changeSet:
+      id: "2022-07-14 10:14"
+      author: "Ekrem Memedlyaev"
+      context: "data"
+      changes:
+        - update:
+            columns:
+              - column:
+                  name: name
+                  value: Моя карта
+            tableName: screens
+            where: code='cards'
+
+  - changeSet:
+      id: "2022-07-14 12:07"
+      author: "Ekrem Memedlyaev"
+      context: "data"
+      preConditions:
+        - onFail: MARK_RAN
+        - sqlCheck:
+            expectedResult: 0
+            sql: select count(*) from screens where code='rejectPaperChecks'
+      changes:
+        - insert:
+            columns:
+              - column:
+                  name: id
+                  value: 25
+              - column:
+                  name: code
+                  value: rejectPaperChecks
+              - column:
+                  name: name
+                  value: Электронный чек
+            tableName: screens
+  - changeSet:
+      id: "2022-07-17 15:27"
+      author: "Svetlana Astapova"
+      context: "tableSchema"
+      changes:
+        - addColumn:
+            tableName: checks
+            columns:
+              - column:
+                  defaultValue: false
+                  name: isNotifSent
+                  type: boolean
+
+  - changeSet:
+      id: "2022-11-20 09:05:00"
+      author: "Vorobev Vyacheslav"
+      context: "tableSchema"
+      preConditions:
+        onFail: MARK_RAN
+        changeSetExecuted:
+          id: "2022-07-20 23:26"
+          author: "Vorobev Vyacheslav"
+      changes:
+        - modifyDataType:
+            tableName: loymax_personal_goods
+            columnName: loymaxGoodId
+            newDataType: bigint
+
+
+  - changeSet:
+      id: "2022-07-23 18:27"
+      author: "Ekrem Memedlyaev"
+      context: "tableSchema"
+      changes:
+        - addColumn:
+            tableName: loymax_users
+            columns:
+              - column:
+                  name: loymaxUserId
+                  type: bigint
+
+  - changeSet:
+      id: "2022-07-27 17:32"
+      author: "Svetlana Astapova"
+      context: "data"
+      changes:
+        - insert:
+            columns:
+              - column:
+                  name: id
+                  value: 1
+            tableName: payment_settings
+
+  - changeSet:
+      id: "2022-07-27 17:48"
+      author: "Svetlana Astapova"
+      context: "data"
+      preConditions:
+        - onFail: MARK_RAN
+        - sqlCheck:
+            expectedResult: 0
+            sql: select count(*) from payment_settings where id=1
+      changes:
+        - insert:
+            columns:
+              - column:
+                  name: id
+                  value: 1
+            tableName: payment_settings
+
+  - changeSet:
+      id: "2022-07-29 17:48"
+      author: "Svetlana Astapova"
+      context: "data"
+      preConditions:
+        - onFail: MARK_RAN
+        - sqlCheck:
+            expectedResult: 0
+            sql: select count(*) from device_types where name='android'
+      changes:
+        - insert:
+            columns:
+              - column:
+                  name: name
+                  value: android
+            tableName: device_types
+
+  - changeSet:
+      id: "2022-07-29 17:56"
+      author: "Svetlana Astapova"
+      context: "data"
+      preConditions:
+        - onFail: MARK_RAN
+        - sqlCheck:
+            expectedResult: 0
+            sql: select count(*) from device_types where name='ios'
+      changes:
+        - insert:
+            columns:
+              - column:
+                  name: name
+                  value: ios
+            tableName: device_types
+
+  - changeSet:
+      id: "2022-07-29 17:58"
+      author: "Svetlana Astapova"
+      context: "data"
+      preConditions:
+        - onFail: MARK_RAN
+        - sqlCheck:
+            expectedResult: 0
+            sql: select count(*) from device_types where name='huawei'
+      changes:
+        - insert:
+            columns:
+              - column:
+                  name: name
+                  value: huawei
+            tableName: device_types
+
+  - changeSet:
+      id: "2022-08-01 19:25"
+      author: "Svetlana Astapova"
+      context: "data"
+      preConditions:
+        - onFail: MARK_RAN
+        - sqlCheck:
+            expectedResult: 0
+            sql: select count(*) from triggers_document_types where name='messagesTemplate'
+      changes:
+        - insert:
+            columns:
+              - column:
+                  name: name
+                  value: messagesTemplate
+            tableName: triggers_document_types
+
+  - changeSet:
+      id: "2022-09-27 19:25"
+      author: "Ekrem Memedlyaev"
+      context: "indexSchema"
+      changes:
+        - dropIndex:
+            indexName: offers_title_uindex
+            tableName: title
+
+  - changeSet:
+      id: "2022-11-20 09:06:00"
+      author: "Vorobev Vyacheslav"
+      context: "indexSchema"
+      preConditions:
+        onFail: MARK_RAN
+        not:
+          indexExists:
+            indexName: loymax_userid_idx
+            tableName: loymax_users
+      changes:
+        - createIndex:
+            columns:
+              - name: userId
+            schemaName: public
+            indexName: loymax_userid_idx
+            tableName: loymax_users
+
+  - changeSet:
+      id: "2022-11-20 09:07:00"
+      author: "Vorobev Vyacheslav"
+      context: "indexSchema"
+      preConditions:
+        onFail: MARK_RAN
+        not:
+          indexExists:
+            indexName: user_push_token_unique
+            tableName: user_push_tokens
+      changes:
+        - createIndex:
+            columns:
+              - name: token
+            schemaName: public
+            indexName: user_push_token_unique
+            tableName: user_push_tokens
+            unique: true
+
+  - changeSet:
+      id: "2022-11-20 09:08:00"
+      author: "Vorobev Vyacheslav"
+      context: "indexSchema"
+      preConditions:
+        onFail: MARK_RAN
+        not:
+          indexExists:
+            indexName: fav_categories_user_category_unique_idx
+            tableName: favorite_category_user
+      changes:
+        - createIndex:
+            columns:
+              - column:
+                  name: userId
+              - column:
+                  name: favoriteCategoryId
+            indexName: fav_categories_user_category_unique_idx
+            tableName: favorite_category_user
+            unique: true
+
+  - changeSet:
+      id: "2022-11-20 09:09:01"
+      author: "Vorobev Vyacheslav"
+      context: "constraintSchema"
+      preConditions:
+        onFail: MARK_RAN
+        not:
+          and:
+            - changeSetExecuted:
+                id: "2022-10-25 09:55"
+                author: "Vorobev Vyacheslav"
+                changeLogFile: "src/main/resources/liquibase/db.changelog-1.0.yaml"
+            - changeSetExecuted:
+                id: "2022-10-25 09:56"
+                author: "Vorobev Vyacheslav"
+                changeLogFile: "src/main/resources/liquibase/db.changelog-1.0.yaml"
+      changes:
+        - dropForeignKeyConstraint:
+            baseTableName: account_life_times_by_period
+            constraintName: fk_24
+        - addForeignKeyConstraint:
+            baseColumnNames: accountId
+            baseTableName: account_life_times_by_period
+            constraintName: fk_24
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: CASCADE
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: accounts
+            validate: true
+
+  - changeSet:
+      id: "2022-11-20 09:10:01"
+      author: "Vorobev Vyacheslav"
+      context: "constraintSchema"
+      preConditions:
+        onFail: MARK_RAN
+        not:
+          and:
+            - changeSetExecuted:
+                id: "2022-10-25 09:57"
+                author: "Vorobev Vyacheslav"
+                changeLogFile: "src/main/resources/liquibase/db.changelog-1.0.yaml"
+            - changeSetExecuted:
+                id: "2022-10-25 09:58"
+                author: "Vorobev Vyacheslav"
+                changeLogFile: "src/main/resources/liquibase/db.changelog-1.0.yaml"
+      changes:
+        - dropForeignKeyConstraint:
+            baseTableName: checks_items
+            constraintName: fk_42
+        - addForeignKeyConstraint:
+            baseColumnNames: checkId
+            baseTableName: checks_items
+            constraintName: fk_42
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: CASCADE
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: checks
+            validate: true
+
+  - changeSet:
+      id: "2022-11-20 09:11:01"
+      author: "Vorobev Vyacheslav"
+      context: "constraintSchema"
+      preConditions:
+        onFail: MARK_RAN
+        not:
+          and:
+            - changeSetExecuted:
+                id: "2022-10-25 09:59"
+                author: "Vorobev Vyacheslav"
+                changeLogFile: "src/main/resources/liquibase/db.changelog-1.0.yaml"
+            - changeSetExecuted:
+                id: "2022-10-25 10:00"
+                author: "Vorobev Vyacheslav"
+                changeLogFile: "src/main/resources/liquibase/db.changelog-1.0.yaml"
+      changes:
+        - dropForeignKeyConstraint:
+            baseTableName: checks_rewards
+            constraintName: fk_46
+        - addForeignKeyConstraint:
+            baseColumnNames: checkId
+            baseTableName: checks_rewards
+            constraintName: fk_46
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: CASCADE
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: checks
+            validate: true
+
+  - changeSet:
+      id: "2022-11-20 09:12:01"
+      author: "Vorobev Vyacheslav"
+      context: "constraintSchema"
+      preConditions:
+        onFail: MARK_RAN
+        not:
+          and:
+            - changeSetExecuted:
+                id: "2022-10-25 10:02"
+                author: "Vorobev Vyacheslav"
+                changeLogFile: "src/main/resources/liquibase/db.changelog-1.0.yaml"
+            - changeSetExecuted:
+                id: "2022-10-25 10:03"
+                author: "Vorobev Vyacheslav"
+                changeLogFile: "src/main/resources/liquibase/db.changelog-1.0.yaml"
+      changes:
+        - dropForeignKeyConstraint:
+            baseTableName: loymax_checks
+            constraintName: fk_88
+        - addForeignKeyConstraint:
+            baseColumnNames: checkId
+            baseTableName: loymax_checks
+            constraintName: fk_88
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: CASCADE
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: checks
+            validate: true
+
+  - changeSet:
+      id: "2022-11-20 09:13:00"
+      author: "Vorobev Vyacheslav"
+      context: "constraintSchema"
+      preConditions:
+        onFail: MARK_RAN
+        not:
+          and:
+            - changeSetExecuted:
+                id: "2022-10-25 10:04"
+                author: "Vorobev Vyacheslav"
+                changeLogFile: "src/main/resources/liquibase/db.changelog-1.0.yaml"
+            - changeSetExecuted:
+                id: "2022-10-25 10:05"
+                author: "Vorobev Vyacheslav"
+                changeLogFile: "src/main/resources/liquibase/db.changelog-1.0.yaml"
+      changes:
+        - dropForeignKeyConstraint:
+            baseTableName: checks_withdraws
+            constraintName: fk_44
+        - addForeignKeyConstraint:
+            baseColumnNames: checkId
+            baseTableName: checks_withdraws
+            constraintName: fk_44
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: CASCADE
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: checks
+            validate: true
+
+  - changeSet:
+      id: "2022-11-20 09:14:00"
+      author: "Vorobev Vyacheslav"
+      context: "constraintSchema"
+      preConditions:
+        onFail: MARK_RAN
+        not:
+          and:
+            - changeSetExecuted:
+                id: "2022-10-25 10:04"
+                author: "Vorobev Vyacheslav"
+                changeLogFile: "src/main/resources/liquibase/db.changelog-1.0.yaml"
+            - changeSetExecuted:
+                id: "2022-10-25 10:05"
+                author: "Vorobev Vyacheslav"
+                changeLogFile: "src/main/resources/liquibase/db.changelog-1.0.yaml"
+      changes:
+        - dropForeignKeyConstraint:
+            baseTableName: loymax_checks_items
+            constraintName: fk_89
+        - addForeignKeyConstraint:
+            baseColumnNames: checkItemId
+            baseTableName: loymax_checks_items
+            constraintName: fk_89
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: CASCADE
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: checks_items
+            validate: true
+
+  - changeSet:
+      id: "2022-11-20 09:15:01"
+      author: "Vorobev Vyacheslav"
+      context: "indexSchema"
+      preConditions:
+        onFail: MARK_RAN
+        not:
+          indexExists:
+            indexName: user_push_token_userid_idx
+            tableName: user_push_tokens
+      changes:
+        - createIndex:
+            columns:
+              - name: userId
+            schemaName: public
+            indexName: user_push_token_userid_idx
+            tableName: user_push_tokens
+            unique: false
+
+  - changeSet:
+      id: "2022-11-20 09:16:00"
+      author: "Vorobev Vyacheslav"
+      context: "indexSchema"
+      preConditions:
+        onFail: MARK_RAN
+        not:
+          indexExists:
+            indexName: userid_idx
+            tableName: accounts
+      changes:
+        - createIndex:
+            columns:
+              - name: userId
+            schemaName: public
+            indexName: userid_idx
+            tableName: accounts
+            unique: false
+
+  - changeSet:
+      id: "332c8b2-765a-426f-8420-ac4a9128e744"
+      author: "owpk"
+      context: "tableSchema"
+      changes:
+        - addColumn:
+            tableName: notifications
+            columns:
+              - column:
+                  name: "merchantId"
+                  type: bigint
+  - changeSet:
+      id: "332c8b2-765a-426f-8420-ac4a9128e744"
+      author: "owpk"
+      context: "tableSchema"
+      changes:
+        - addColumn:
+            tableName: notifications
+            columns:
+              - column:
+                  name: "merchantId"
+                  type: bigint
+
+  - changeSet:
+      id: "a67404b7-9636-412a-84d2-6f84c17e8ee"
+      author: "owpk"
+      context: "tableSchema"
+      changes:
+        - addColumn:
+            tableName: notifications
+            columns:
+              - column:
+                  name: msg_type
+                  type: varchar(50)
+  - changeSet:
+      id: "55406a7b-1993-48fa-a24f-a02395c2c97c"
+      author: "owpk"
+      context: "tableSchema"
+      changes:
+        - addColumn:
+            tableName: users_devices
+            columns:
+              - column:
+                  name: version_app
+                  type: varchar(50)
+
+  - changeSet:
+      id: "07c397a5-7c64-446c-a7f6-753fe631c5cd"
+      author: owpk
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: min_ver_app_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: min_version_app
+                  type: VARCHAR(255)
+              - column:
+                  name: created_at
+                  type: BIGINT
+              - column:
+                  name: updated_at
+                  type: BIGINT
+            tableName: min_version_app
+
+  - changeSet:
+      id: "5f1b197b-51f6-4026-b987-703cd49c32cf"
+      author: owpk
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: min_ver_app_dt_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    unique: true
+                    onDelete: CASCADE
+                    onUpdate: NO ACTION
+                    foreignKeyName: fk_dev_type_id_ver_app
+                    references: device_types(id)
+                  name: device_type_id
+                  type: BIGINT
+              - column:
+                  name: min_version_app
+                  type: VARCHAR(255)
+              - column:
+                  name: created_at
+                  type: BIGINT
+              - column:
+                  name: updated_at
+                  type: BIGINT
+            tableName: min_version_app_device_type
+
+  - changeSet:
+      id: "5ad1c87c-e302-4b7d-92ab-ac098cd4cfd4"
+      author: "owpk"
+      context: "indexSchema"
+      preConditions:
+        onFail: MARK_RAN
+        not:
+          indexExists:
+            indexName: merchant_location_id_idx
+            tableName: merchants
+      changes:
+        - createIndex:
+            columns:
+              - name: loymaxLocationId
+            schemaName: public
+            indexName: merchant_location_id_idx
+            tableName: merchants
+            unique: true
+
+  - changeSet:
+      id: "e5e11852-45b7-4e7e-b103-ae2d132bc39b"
+      author: "owpk"
+      context: "tableSchema"
+      changes:
+        - addColumn:
+            tableName: personal_goods
+            columns:
+              - column:
+                  name: price_up
+                  type: varchar(50)
+              - column:
+                  name: price_down
+                  type: varchar(50)
+
+  - changeSet:
+      id: "35ee89ae-60ce-4bec-aed9-d217ee506d4c"
+      author: "owpk"
+      context: "tableSchema"
+      changes:
+        - addColumn:
+            tableName: account_life_times_by_time
+            columns:
+              - column:
+                  name: trigger_fired
+                  type: boolean
+
+  - changeSet:
+      id: "9084518b-5fb9-4a3f-a6dd-578367f15e17"
+      author: "owpk"
+      context: "constraintSchema"
+      preConditions:
+        onFail: MARK_RAN
+        foreignKeyConstraintExists:
+          foreignKeyTableName: loymax_users_socials
+          foreignKeyName: fk_loymax_users_socials_user_id
+      changes:
+        - dropForeignKeyConstraint:
+            baseTableName: loymax_users_socials
+            constraintName: fk_loymax_users_socials_user_id
+        - addForeignKeyConstraint:
+            baseColumnNames: userId
+            baseTableName: loymax_users_socials
+            constraintName: fk_loymax_users_socials_user_id
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: CASCADE
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: users
+            validate: true
+
+  - changeSet:
+      id: "219fa82c-6f20-4be2-96d1-4dab75c392bf"
+      author: "owpk"
+      context: "constraintSchema"
+      preConditions:
+        onFail: MARK_RAN
+        foreignKeyConstraintExists:
+          foreignKeyTableName: recovery_password_requests
+          foreignKeyName: fk_recovery_password_requests_user_id
+      changes:
+        - dropForeignKeyConstraint:
+            baseTableName: recovery_password_requests
+            constraintName: fk_recovery_password_requests_user_id
+        - addForeignKeyConstraint:
+            baseColumnNames: userId
+            baseTableName: recovery_password_requests
+            constraintName: fk_recovery_password_requests_user_id
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: CASCADE
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: users
+            validate: true
+
+  - changeSet:
+      id: "14b5cda5-cb3a-4eb4-95d3-4797772c66e0"
+      author: owpk
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: users_attributes_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: attribute_name
+                  type: VARCHAR(255)
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  name: updated_at
+                  type: BIGINT
+              - column:
+                  name: created_at
+                  type: BIGINT
+            tableName: users_attributes
+
+  - changeSet:
+      id: "4adc2b94-a4dc-43d7-951e-957cd47d67dc"
+      author: owpk
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: users_attribute_user_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: user_id
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_user_attr_user
+                    references: users(id)
+                    onDelete: CASCADE
+              - column:
+                  name: user_attribute_id
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_user_attr_attr
+                    references: users_attributes(id)
+                    onDelete: CASCADE
+              - column:
+                  name: updated_at
+                  type: BIGINT
+              - column:
+                  name: created_at
+                  type: BIGINT
+            tableName: users_attribute_user
+
+  - changeSet:
+      id: "06ff0c2b-8336-4555-9639-cc3d5fc7aaac"
+      author: "owpk"
+      context: "tableSchema"
+      changes:
+        - addColumn:
+            tableName: info_screens
+            columns:
+              - column:
+                  name: date_start
+                  type: BIGINT
+              - column:
+                  name: date_end
+                  type: BIGINT
+
+  - changeSet:
+      id: "8a349be5-3b39-4d6c-bfb0-3cbda641a788"
+      author: "owpk"
+      context: "tableSchema"
+      changes:
+        - addColumn:
+            tableName: onbox_banners
+            columns:
+              - column:
+                  name: date_start
+                  type: BIGINT
+              - column:
+                  name: date_end
+                  type: BIGINT
+
+  - changeSet:
+      id: "2f3c6d8a-7146-4674-a283-3edb3a3fc7d8"
+      author: owpk
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: offers_counters_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: loymax_offer_id
+                  type: VARCHAR(255)
+              - column:
+                  name: loymax_counter_id
+                  type: VARCHAR(255)
+              - column:
+                  name: max_value
+                  type: integer
+                  defaultValue: 0
+              - column:
+                  name: is_public
+                  type: boolean
+              - column:
+                  name: offer_id
+                  type: bigint
+                  constraints:
+                    foreignKeyName: fk_offers_counters_offer_id
+                    references: offers(id)
+                    onDelete: CASCADE
+              - column:
+                  name: updated_at
+                  type: BIGINT
+              - column:
+                  name: created_at
+                  type: BIGINT
+            tableName: offers_counters
+
+  - changeSet:
+      id: "ca7291a2-d8cf-4c1f-8844-4a3242623eae"
+      author: owpk
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  name: offer_id
+                  type: bigint
+                  constraints:
+                    primaryKey: true
+                    foreignKeyName: fk_offers_counters_user_offer_id
+                    references: offers_counters(id)
+                    onDelete: CASCADE
+              - column:
+                  name: user_id
+                  type: bigint
+                  constraints:
+                    primaryKey: true
+                    foreignKeyName: fk_offers_counters_user_user_id
+                    references: users(id)
+                    onDelete: CASCADE
+              - column:
+                  name: value
+                  type: integer
+                  defaultValue: 0
+              - column:
+                  name: updated_at
+                  type: BIGINT
+              - column:
+                  name: created_at
+                  type: BIGINT
+            tableName: offers_counter_user
+
+  - changeSet:
+      id: "e4430f36-0eb8-47d7-954a-a94a0ba2dec5"
+      author: owpk
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: counters_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  name: loymax_id
+                  type: VARCHAR(255)
+                  constraints:
+                    unique: true
+              - column:
+                  name: created_at
+                  type: BIGINT
+              - column:
+                  name: updated_at
+                  type: BIGINT
+            tableName: counters
+
+  - changeSet:
+      id: "87b63bc8-28b0-4a71-8ee3-d2d0b9057b97"
+      author: owpk
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  name: counter_id
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_counter_val_counter_id
+                    references: counters(id)
+                    onDelete: CASCADE
+                    primaryKey: true
+                    primaryKeyName: pk_counter_val_counter_id
+              - column:
+                  name: user_id
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_counter_val_user_id
+                    references: users(id)
+                    onDelete: CASCADE
+                    primaryKey: true
+                    primaryKeyName: pk_counter_val_user_id
+              - column:
+                  name: created_at
+                  type: BIGINT
+              - column:
+                  name: updated_at
+                  type: BIGINT
+            tableName: counters_values
+
+  - changeSet:
+      id: "55972dab-56ee-47ff-9342-0df38074cfde"
+      author: owpk
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: recipes_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: title
+                  type: VARCHAR(255)
+              - column:
+                  name: description
+                  type: TEXT
+              - column:
+                  name: calories
+                  type: INTEGER
+              - column:
+                  name: proteins
+                  type: INTEGER
+              - column:
+                  name: fats
+                  type: INTEGER
+              - column:
+                  name: carbohydrates
+                  type: INTEGER
+              - column:
+                  name: draft
+                  type: boolean
+                  defaultValue: false
+              - column:
+                  name: created_at
+                  type: BIGINT
+              - column:
+                  name: updated_at
+                  type: BIGINT
+            tableName: recipes
+
+  - changeSet:
+      id: "92294cff-9e97-4ca1-ae96-5eff4147a434"
+      author: owpk
+      context: "tableSchema"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: recipe_attributes_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  name: show_on_preview
+                  type: boolean
+                  defaultValue: false
+              - column:
+                  name: draft
+                  type: boolean
+                  defaultValue: false
+              - column:
+                  name: created_at
+                  type: BIGINT
+              - column:
+                  name: updated_at
+                  type: BIGINT
+            tableName: recipe_attributes
+
+  - changeSet:
+      id: "07-11-2023 10:00:42"
+      author: owpk
+      context: "tableSchema"
+      preConditions:
+        onFail: MARK_RAN
+        not:
+          tableExists:
+            tableName: recipe_attribute_recipe
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: recipe_attribute_recipe_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: recipe_id
+                  type: BIGINT
+              - column:
+                  name: recipe_attribute_id
+                  type: BIGINT
+              - column:
+                  name: created_at
+                  type: BIGINT
+              - column:
+                  name: updated_at
+                  type: BIGINT
+            tableName: recipe_attribute_recipe
+
+  - changeSet:
+      id: "07-11-2023 10:08:55"
+      author: owpk
+      context: "constraintSchema"
+      preConditions:
+        onFail: MARK_RAN
+        not:
+          foreignKeyConstraintExists:
+            foreignKeyTableName: recipe_attribute_recipe
+            foreignKeyName: fk_rar_recipe_id
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: recipe_id
+            baseTableName: recipe_attribute_recipe
+            constraintName: fk_rar_recipe_id
+            referencedColumnNames: id
+            referencedTableName: recipes
+            deferrable: false
+            onDelete: CASCADE
+            onUpdate: NO ACTION
+            initiallyDeferred: false
+            validate: true
+
+  - changeSet:
+      id: "07-11-2023 10:13:10"
+      author: owpk
+      context: "constraintSchema"
+      preConditions:
+        onFail: MARK_RAN
+        not:
+          foreignKeyConstraintExists:
+            foreignKeyTableName: recipe_attribute_recipe
+            foreignKeyName: fk_rar_recipe_id
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: recipe_attribute_id
+            baseTableName: recipe_attribute_recipe
+            constraintName: fk_rar_recipe_id
+            referencedColumnNames: id
+            referencedTableName: recipe_attributes
+            deferrable: false
+            onDelete: CASCADE
+            onUpdate: NO ACTION
+            initiallyDeferred: false
+            validate: true
+
+  - changeSet:
+      id: "07-11-2023 10:02:00"
+      author: owpk
+      context: "tableSchema"
+      preConditions:
+        onFail: MARK_RAN
+        not:
+          tableExists:
+            tableName: goods_item_recipe
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: goods_item_recipe_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: recipe_id
+                  type: BIGINT
+              - column:
+                  name: goods_item_id
+                  type: BIGINT
+              - column:
+                  name: created_at
+                  type: BIGINT
+              - column:
+                  name: updated_at
+                  type: BIGINT
+            tableName: goods_item_recipe
+
+  - changeSet:
+      id: "07-11-2023 10:14:02"
+      author: owpk
+      context: "constraintSchema"
+      preConditions:
+        onFail: MARK_RAN
+        not:
+          foreignKeyConstraintExists:
+            foreignKeyTableName: goods_item_recipe
+            foreignKeyName: fk_rar_recipe_id
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: recipe_id
+            baseTableName: goods_item_recipe
+            constraintName: fk_rar_recipe_id
+            referencedColumnNames: id
+            referencedTableName: recipes
+            onDelete: CASCADE
+            deferrable: false
+            initiallyDeferred: false
+            onUpdate: NO ACTION
+            validate: true
+
+  - changeSet:
+      id: "07-11-2023 10:18:36"
+      author: owpk
+      context: "constraintSchema"
+      preConditions:
+        onFail: MARK_RAN
+        not:
+          foreignKeyConstraintExists:
+            foreignKeyTableName: goods_item_recipe
+            foreignKeyName: fk_gir_recipe_id
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: goods_item_id
+            baseTableName: goods_item_recipe
+            constraintName: fk_gir_recipe_id
+            referencedColumnNames: id
+            referencedTableName: goods
+            onDelete: CASCADE
+            deferrable: false
+            initiallyDeferred: false
+            onUpdate: NO ACTION
+            validate: true
+
+  - changeSet:
+      id: "15-06-2023 12:36:55"
+      author: "owpk"
+      context: "constraintSchema"
+      changes:
+        - addUniqueConstraint:
+            columnNames: loymax_offer_id, loymax_counter_id
+            constraintName: offers_counters_loymax_offer_counter_unique
+            tableName: offers_counters
+            validate: true
+
+  - changeSet:
+      id: "2023-06-20 03:14"
+      author: "owpk"
+      context: "tableSchema"
+      changes:
+        - dropColumn:
+            tableName: recipe_attributes
+            columns:
+              - column:
+                  name: draft
+
+  - changeSet:
+      id: "2023-06-20 03:20"
+      author: "owpk"
+      context: "tableSchema"
+      changes:
+        - addColumn:
+            tableName: recipe_attributes
+            columns:
+              - column:
+                  name: draft
+                  type: boolean
+                  defaultValue: true
+
+  - changeSet:
+      id: "2023-06-20 11:00:00"
+      author: "owpk"
+      context: "constraintSchema"
+      preConditions:
+        onFail: MARK_RAN
+        foreignKeyConstraintExists:
+          foreignKeyTableName: recipe_attribute_recipe
+          foreignKeyName: fk_rar_recipe_attribute_id
+      changes:
+        - dropForeignKeyConstraint:
+            baseTableName: recipe_attribute_recipe
+            constraintName: fk_rar_recipe_attribute_id
+
+  - changeSet:
+      id: "2023-06-20 11:00:01"
+      author: "owpk"
+      context: "constraintSchema"
+      preConditions:
+        onFail: MARK_RAN
+        not:
+          foreignKeyConstraintExists:
+            foreignKeyTableName: recipe_attribute_recipe
+            foreignKeyName: fk_rar_recipe_attribute_id
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: recipe_attribute_id
+            baseTableName: recipe_attribute_recipe
+            constraintName: fk_rar_recipe_attribute_id
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: SET NULL
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: recipe_attributes
+            validate: true
+
+  - changeSet:
+      id: "30-06-2023 16:35:17"
+      author: "owpk"
+      context: "constraintSchema"
+      preConditions:
+        onFail: MARK_RAN
+        foreignKeyConstraintExists:
+          foreignKeyTableName: recipe_attribute_recipe
+          foreignKeyName: fk_rar_recipe_id
+      changes:
+        - dropForeignKeyConstraint:
+            baseTableName: recipe_attribute_recipe
+            constraintName: fk_rar_recipe_id
+        - addForeignKeyConstraint:
+            baseColumnNames: recipe_id
+            baseTableName: recipe_attribute_recipe
+            constraintName: fk_rar_recipe_id
+            onDelete: CASCADE
+            referencedColumnNames: id
+            referencedTableName: recipes
+            validate: true
+
+  - changeSet:
+      id: "30-06-2023 16:40:10"
+      author: "owpk"
+      context: "constraintSchema"
+      preConditions:
+        onFail: MARK_RAN
+        foreignKeyConstraintExists:
+          foreignKeyTableName: goods_item_recipe
+          foreignKeyName: fk_rar_recipe_id
+      changes:
+        - dropForeignKeyConstraint:
+            baseTableName: goods_item_recipe
+            constraintName: fk_gir_recipe_id
+        - addForeignKeyConstraint:
+            baseColumnNames: recipe_id
+            baseTableName: goods_item_recipe
+            constraintName: fk_gir_recipe_id
+            onDelete: CASCADE
+            referencedColumnNames: id
+            referencedTableName: recipes
+            validate: true
+
+  - changeSet:
+      id: "30-06-2023 16:44:45"
+      author: "owpk"
+      context: "constraintSchema"
+      preConditions:
+        onFail: MARK_RAN
+        foreignKeyConstraintExists:
+          foreignKeyTableName: recipe_attribute_recipe
+          foreignKeyName: fk_rar_recipe_attribute_id
+      changes:
+        - dropForeignKeyConstraint:
+            baseColumnNames: recipe_attribute_id
+            baseTableName: recipe_attribute_recipe
+            constraintName: fk_rar_recipe_attribute_id
+        - addForeignKeyConstraint:
+            baseColumnNames: recipe_attribute_id
+            baseTableName: recipe_attribute_recipe
+            constraintName: fk_rar_recipe_attribute_id
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: CASCADE
+            referencedColumnNames: id
+            referencedTableName: recipe_attributes
+            validate: true
+
+  - changeSet:
+      id: "30-06-2023 16:58:10"
+      author: "owpk"
+      context: "constraintSchema"
+      preConditions:
+        onFail: MARK_RAN
+        foreignKeyConstraintExists:
+          foreignKeyTableName: goods_item_recipe
+          foreignKeyName: fk_rar_recipe_id
+      changes:
+        - dropForeignKeyConstraint:
+            baseTableName: goods_item_recipe
+            constraintName: fk_rar_recipe_id
+
+  - changeSet:
+      id: "2023-07-02 20:30"
+      author: "Egor Novikov"
+      context: "data"
+      preConditions:
+        - onFail: MARK_RAN
+        - sqlCheck:
+            expectedResult: 0
+            sql: select count(*) from main_blocks where code='recipes'
+      changes:
+        - insert:
+            columns:
+              - column:
+                  name: code
+                  value: recipes
+              - column:
+                  name: name
+                  value: Рецепты
+              - column:
+                  name: order
+                  value: 6
+              - column:
+                  name: showCounter
+                  value: true
+              - column:
+                  name: showEndDate
+                  value: true
+              - column:
+                  name: showPercents
+                  value: true
+              - column:
+                  name: showBillet
+                  value: true
+            tableName: main_blocks
+
+  - changeSet:
+      id: "01-07-2023 01:33:14"
+      author: "owpk"
+      context: "constraintSchema"
+      preConditions:
+        onFail: MARK_RAN
+        not:
+          foreignKeyConstraintExists:
+            foreignKeyTableName: goods_item_recipe
+            foreignKeyName: fk_gir_goods_id
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: goods_item_id
+            baseTableName: goods_item_recipe
+            constraintName: fk_gir_goods_id
+            onDelete: CASCADE
+            referencedColumnNames: id
+            referencedTableName: goods
+            validate: true
+
+  - changeSet:
+      id: "05-07-2023 01:33:13"
+      author: "owpk"
+      context: "data"
+      changes:
+        - sql:
+            sql: "TRUNCATE TABLE cards_qr"
+
+  - changeSet:
+      id: "05-07-2023 01:33:14"
+      author: "owpk"
+      context: "constraintSchema"
+      preConditions:
+        onFail: MARK_RAN
+        not:
+          uniqueConstraintExists:
+            tableName: cards_qr
+            constraintName: cards_qr_card_id_uniq
+      changes:
+        - addUniqueConstraint:
+            columnNames: cardId
+            constraintName: cards_qr_card_id_uniq
+            tableName: cards_qr
+            validate: true
+
+  - changeSet:
+      id: "2023-07-10 09:38"
+      author: "owpk"
+      context: "constraintSchema"
+      changes:
+        - addUniqueConstraint:
+            columnNames: user_id, user_attribute_id
+            constraintName: user_attr_user_user_id_user_attr_id_uniq
+            tableName: users_attribute_user
+            validate: true
+
+  - changeSet:
+      id: "2023-07-11 09:38"
+      author: "owpk"
+      context: "constraintSchema"
+      changes:
+        - addUniqueConstraint:
+            columnNames: attribute_name
+            constraintName: users_attributes_attribute_name_uniq
+            tableName: users_attributes
+            validate: true
+
+  - changeSet:
+      id: "12-07-2023 01:33:14"
+      author: "owpk"
+      context: "constraintSchema"
+      preConditions:
+        onFail: MARK_RAN
+        not:
+          uniqueConstraintExists:
+            tableName: recipe_attribute_recipe
+            constraintName: rar_rec_id_attr_id_uniq
+      changes:
+        - addUniqueConstraint:
+            columnNames: recipe_id, recipe_attribute_id
+            constraintName: rar_rec_id_attr_id_uniq
+            tableName: recipe_attribute_recipe
+            validate: true
+
+  - changeSet:
+      id: "12-07-2023 01:32:14"
+      author: "owpk"
+      context: "constraintSchema"
+      preConditions:
+        onFail: MARK_RAN
+        not:
+          uniqueConstraintExists:
+            tableName: goods_item_recipe
+            constraintName: gir_rec_id_good_id_uniq
+      changes:
+        - addUniqueConstraint:
+            columnNames: recipe_id, goods_item_id
+            constraintName: gir_rec_id_good_id_uniq
+            tableName: goods_item_recipe
+            validate: true
+
+  - changeSet:
+      id: "2023-07-14 17:23"
+      author: "fsuharev"
+      context: "data"
+      preConditions:
+        - onFail: MARK_RAN
+        - sqlCheck:
+            expectedResult: 0
+            sql: select count(*) from main_blocks where code='personalGoodsPrice'
+      changes:
+        - insert:
+            columns:
+              - column:
+                  name: code
+                  value: personalGoodsPrice
+              - column:
+                  name: name
+                  value: Персональные товары
+              - column:
+                  name: order
+                  value: 2
+              - column:
+                  name: showCounter
+                  value: false
+              - column:
+                  name: showEndDate
+                  value: true
+              - column:
+                  name: showPercents
+                  value: true
+              - column:
+                  name: showBillet
+                  value: true
+            tableName: main_blocks
+
+  - changeSet:
+      id: "2023-07-18 12:32"
+      author: "fsuharev"
+      context: "data"
+      preConditions:
+        - onFail: MARK_RAN
+        - sqlCheck:
+            expectedResult: 1
+            sql: select count(*) from main_blocks where code='personalGoods' and name<>'Акция с фишками'
+      changes:
+        - update:
+            columns:
+              - column:
+                  name: name
+                  value: Акция с фишками
+
+            tableName: main_blocks
+            where: code='personalGoods'
+
+
+  - changeSet:
+      id: "2023-07-18 12:46"
+      author: "fsuharev"
+      context: "data"
+      preConditions:
+        - onFail: MARK_RAN
+        - sqlCheck:
+            expectedResult: 0
+            sql: select count(*) from main_blocks where code='personalGoods'
+      changes:
+        - insert:
+            columns:
+              - column:
+                  name: code
+                  value: personalGoods
+              - column:
+                  name: name
+                  value: Акция с фишками
+              - column:
+                  name: order
+                  value: 2
+              - column:
+                  name: showCounter
+                  value: false
+              - column:
+                  name: showEndDate
+                  value: true
+              - column:
+                  name: showPercents
+                  value: true
+              - column:
+                  name: showBillet
+                  value: true
+            tableName: main_blocks
+
+  - changeSet:
+      id: 2023-08-08 11:36:52
+      author: owpk
+      context: "constraintSchema"
+      preConditions:
+        onFail: MARK_RAN
+        foreignKeyConstraintExists:
+          foreignKeyTableName: personal_goods
+          foreignKeyName: fk_30
+      changes:
+        - dropForeignKeyConstraint:
+            baseTableName: personal_goods
+            constraintName: fk_30
+
+  - changeSet:
+      id: 2023-08-08 11:36:54
+      author: owpk
+      context: "constraintSchema"
+      preConditions:
+        onFail: MARK_RAN
+        not:
+          foreignKeyConstraintExists:
+            foreignKeyTableName: personal_goods
+            foreignKeyName: personal_goods_goods_id_fk
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: goodsId
+            baseTableName: personal_goods
+            constraintName: personal_goods_goods_id_fk
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: CASCADE
+            onUpdate: CASCADE
+            referencedColumnNames: id
+            referencedTableName: goods
+            validate: true
+
+  - changeSet:
+      id: 2023-08-14 10:11:34
+      author: damdev
+      changes:
+        - addNotNullConstraint:
+            columnName: loymax_counter_id
+            constraintName: offers_counters_loymax_counter_id_not_null
+            tableName: offers_counters
+            validate: true
+
+  - changeSet:
+      id: "28-08-2023 17:56:13"
+      author: "owpk"
+      context: "constraintSchema"
+      preConditions:
+        onFail: MARK_RAN
+        foreignKeyConstraintExists:
+          foreignKeyTableName: accounts
+          foreignKeyName: fk_19
+      changes:
+        - dropForeignKeyConstraint:
+            baseTableName: accounts
+            constraintName: fk_19
+
+  - changeSet:
+      id: "28-08-2023 18:05:45"
+      author: "owpk"
+      context: "tableSchema"
+      preConditions:
+        onFail: MARK_RAN
+        columnExists:
+          tableName: accounts
+          columnName: "accountTypeId"
+      changes:
+        - dropColumn:
+            tableName: accounts
+            columns:
+              - column:
+                  name: "accountTypeId"
+
+  - changeSet:
+      id: "28-08-2023 18:06:40"
+      author: "owpk"
+      context: "tableSchema"
+      changes:
+        - addColumn:
+            tableName: accounts
+            columns:
+              - column:
+                  name: currency_id
+                  type: BIGINT
+
+  - changeSet:
+      id: 28-08-2023 18:09:21
+      author: owpk
+      context: "constraintSchema"
+      changes:
+        - addUniqueConstraint:
+            columnNames: userId, currency_id
+            constraintName: user_id_curr_id_uniq
+            tableName: accounts
+
+  - changeSet:
+      id: "28-08-2023 17:58:13"
+      author: "owpk"
+      context: "constraintSchema"
+      preConditions:
+        onFail: MARK_RAN
+        foreignKeyConstraintExists:
+          foreignKeyTableName: accounts
+          foreignKeyName: accounts_curr_id_fk
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: currency_id
+            baseTableName: accounts
+            constraintName: accounts_curr_id_fk
+            deferrable: true
+            initiallyDeferred: true
+            onDelete: CASCADE
+            onUpdate: CASCADE
+            referencedColumnNames: id
+            referencedTableName: currencies
+            validate: true
+
+  - changeSet:
+      id: "08-09-2023 11:35:32"
+      author: "owpk"
+      context: "constraintSchema"
+      preConditions:
+        onFail: MARK_RAN
+
+      changes:
+        - dropForeignKeyConstraint:
+            baseTableName: account_life_times_by_period
+            constraintName: fk_24
+        - addForeignKeyConstraint:
+            baseColumnNames: accountId
+            baseTableName: account_life_times_by_period
+            constraintName: fk_24
+            deferrable: true
+            initiallyDeferred: true
+            onDelete: CASCADE
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: accounts
+            validate: true
+
+  - changeSet:
+      id: 08-09-2023 11:35:22
+      author: owpk
+      context: "constraintSchema"
+      changes:
+        - dropForeignKeyConstraint:
+            baseTableName: account_life_times_by_time
+            constraintName: fk_23
+        - addForeignKeyConstraint:
+            baseColumnNames: accountId
+            baseTableName: account_life_times_by_time
+            constraintName: fk_23
+            deferrable: true
+            initiallyDeferred: true
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: accounts
+            validate: true
+
+  - changeSet:
+      id: "29-10-2023 23:12:21"
+      author: "owpk"
+      context: "tableSchema"
+      changes:
+        - addColumn:
+            tableName: counters_values
+            columns:
+              - column:
+                  name: value
+                  type: INTEGER
+                  defaultValue: 0
+
+  - changeSet:
+      id: "09-11-2023 20:10:08"
+      author: "owpk"
+      context: "tableSchema"
+      preConditions:
+        onFail: "MARK_RAN"
+        not:
+          columnExists:
+            tableName: min_version_app_device_type
+            columnName: market_url
+      changes:
+        - addColumn:
+            tableName: min_version_app_device_type
+            columns:
+              - column:
+                  name: market_url
+                  type: varchar(255)

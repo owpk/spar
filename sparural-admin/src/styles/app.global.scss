@@ -1,0 +1,57 @@
+@import './config.scss';
+@import '~antd/dist/antd.css';
+@import './ant_design.scss';
+@import './jodit_editor';
+/*
+=============================
+Reset
+=============================
+*/
+
+@import './fonts';
+
+/*
+=============================
+Typography
+=============================
+*/
+
+@import './reset';
+
+/*
+=============================
+Body
+=============================
+*/
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body,
+#root,
+#root > div {
+    height: 100%;
+}
+
+body {
+    font-family: SFProDisplay;
+    font-size: 14px;
+    line-height: 1.4;
+    color: $color-font-color;
+    background-color: #f2f4f6;
+}
+
+input,
+button {
+    font-family: SFProDisplay;
+    font-size: 14px;
+    line-height: 16px;
+    color: $color-font-color;
+}
+
+a {
+    color: $color-font-color;
+}
+

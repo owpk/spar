@@ -1,0 +1,58 @@
+@import '../../../../styles/config.scss';
+
+.block {
+    display: flex;
+    gap: 20px;
+
+    label {
+        font-style: normal;
+        font-weight: normal;
+        font-size: 18px;
+        line-height: 130%;
+        color: rgba(46, 46, 46, 0.4);
+    }
+
+    p {
+        font-style: normal;
+        font-weight: 300;
+        font-size: 18px;
+        line-height: 130%;
+        color: #000000;
+    }
+
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 130%;
+    /* or 23px */
+
+
+    color: #000000;
+}
+
+.blockOne {
+    width: 40%;
+
+    .blockUser {
+        margin-bottom: 17px;
+    }
+
+    p {
+        margin-bottom: 32px;
+    }
+}
+
+.blockTwo {
+    width: 40%;
+
+    .blockTema {
+        margin-bottom: 17px;
+    }
+
+    p {
+        margin-bottom: 32px;
+    }
+}
+
+.list {
+    list-style-type: disc;
+}

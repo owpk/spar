@@ -1,0 +1,7 @@
+pluginManagement {
+    repositories {
+        mavenLocal()
+        maven { url 'http://nexus.ctmol.ru/repository/maven-public/'; allowInsecureProtocol = true }
+    }
+}
+rootProject.name = 'engine-kafka-client'

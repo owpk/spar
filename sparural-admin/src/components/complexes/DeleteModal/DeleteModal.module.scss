@@ -1,0 +1,74 @@
+@import '../../../styles/config.scss';
+
+// .portal {
+//     width: 395px;
+//     height: 234px;
+//     background: #ffffff;
+//     box-shadow: 0px 10px 35px rgba(0, 0, 0, 0.15);
+//     border-radius: 10px;
+//     position: absolute;
+//     z-index: 9999;
+//     left: 50%;
+//     top: 50%;
+//     transform: translate(-50%, -50%);
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     flex-direction: column;
+// }
+.portal__text {
+    font-style: normal;
+    font-weight: 300;
+    font-size: 30px;
+    line-height: 130%;
+    color: #2e2e2e;
+    width: 239px;
+}
+.portal__button {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-top: 32px;
+}
+.portal__button__span {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 28px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #ffffff;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    margin: 0px 16px;
+}
+
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.modal {
+    width: 395px;
+    height: 234px;
+    background: #ffffff;
+    box-shadow: 0px 10px 35px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+    position: absolute;
+    z-index: 999;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 40px;
+    text-align: center;
+}

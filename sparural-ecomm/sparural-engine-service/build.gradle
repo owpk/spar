@@ -1,0 +1,85 @@
+plugins {
+    id 'org.liquibase.gradle' version '2.1.1'
+    id 'com.github.johnrengelman.shadow' version '7.1.2'
+    id 'ru.sparural.microservice-configurer' version '1.8.4'
+}
+
+repositories {
+    maven { url 'http://nexus.ctmol.ru/repository/maven-public/'; allowInsecureProtocol = true }
+}
+
+dependencies {
+    implementation 'ru.sparural:engine-api:1.51.0'
+    implementation 'ru.sparural:file-api:1.0.0'
+    implementation 'ru.sparural:notification-api:1.1.0'
+    implementation 'ru.sparural:trigger-api:1.6.0'
+    implementation 'ru.sparural:kafka-starter:1.4.0'
+    implementation 'ru.sparural:kafka-starter:1.8.0-11'
+
+    // tools
+    implementation group: 'com.google.guava', name: 'guava', version: '31.0.1-jre'
+    implementation 'org.springframework.boot:spring-boot-starter'
+    compileOnly 'org.projectlombok:lombok:1.18.28'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    implementation 'com.google.code.gson:gson:2.9.0'
+    implementation 'org.apache.commons:commons-lang3:3.12.0'
+    runtimeOnly group: 'org.aspectj', name: 'aspectjweaver', version: '1.9.9.1'
+    implementation 'org.aspectj:aspectjrt:1.8.9'
+    implementation 'com.google.guava:guava:31.1-jre'
+
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.9.3'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.3'
+
+    implementation group: 'org.postgresql', name: 'postgresql', version: '42.3.6'
+    implementation 'org.springframework.boot:spring-boot-starter-jooq'
+    runtimeOnly 'com.h2database:h2'
+
+    implementation 'org.modelmapper:modelmapper:3.1.0'
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.13.0'
+
+    liquibaseRuntime group: 'org.liquibase', name: 'liquibase-core', version: '3.5.1'
+    liquibaseRuntime 'org.liquibase:liquibase-groovy-dsl:3.0.0'
+    liquibaseRuntime 'info.picocli:picocli:4.6.1'
+    liquibaseRuntime 'org.postgresql:postgresql:42.3.6'
+    liquibaseRuntime group: 'org.yaml', name: 'snakeyaml', version: '1.30'
+
+    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+
+    implementation 'org.springframework.cloud:spring-cloud-starter-config'
+
+    implementation 'org.mapstruct:mapstruct:1.5.5.Final'
+    annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.5.Final'
+}
+
+def jdbcUrl = System.env.SPARURAL_JDBC
+def dbUserName = System.env.SPARURAL_DB_USER
+def dbPassword = System.env.SPARURAL_DB_PASSWORD
+
+microservice {
+    databaseJooq()
+            .withScriptPath("src/main/resources/liquibase")
+            .withChangeLogFile('master.yaml')
+            .withPackageName('ru.sparural')
+            .generateClasses()
+    nexus()
+    gitVersion()
+}
+
+liquibase {
+    activities {
+        main {
+            classpath "${project.projectDir}/src/main/resources/liquibase"
+            changeLogFile "master.yaml"
+            url jdbcUrl
+            username dbUserName
+            password dbPassword
+        }
+    }
+}
+
+test {
+    exclude '**/*'
+    useJUnitPlatform()
+}

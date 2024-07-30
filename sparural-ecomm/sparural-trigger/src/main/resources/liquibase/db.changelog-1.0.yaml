@@ -1,0 +1,692 @@
+databaseChangeLog:
+  - changeSet:
+      id: "2022-06-03 13:00"
+      author: "Svetlana Astapova"
+      context: data
+      preConditions:
+        - onFail: MARK_RAN
+        - sqlCheck:
+            expectedResult: 0
+            sql: select count(*) from triggers_types where name='Незавершенная регистрация'
+      changes:
+        - insert:
+            columns:
+              - column:
+                  name: name
+                  value: 'Незавершенная регистрация'
+              - column:
+                  name: code
+                  value: 'in-progress'
+            tableName: triggers_types
+
+  - changeSet:
+      id: "2022-06-03 13:02"
+      author: "Svetlana Astapova"
+      context: data
+      preConditions:
+        - onFail: MARK_RAN
+        - sqlCheck:
+            expectedResult: 0
+            sql: select count(*) from triggers_types where name='Покупка совершена'
+      changes:
+        - insert:
+            columns:
+              - column:
+                  name: name
+                  value: 'Покупка совершена'
+              - column:
+                  name: code
+                  value: 'the-purchase-is-completed'
+            tableName: triggers_types
+
+  - changeSet:
+      id: "2022-06-03 13:04"
+      author: "Svetlana Astapova"
+      context: data
+      preConditions:
+        - onFail: MARK_RAN
+        - sqlCheck:
+            expectedResult: 0
+            sql: select count(*) from triggers_types where name='Без условий'
+      changes:
+        - insert:
+            columns:
+              - column:
+                  name: name
+                  value: 'Без условий'
+              - column:
+                  name: code
+                  value: 'without-conditions'
+            tableName: triggers_types
+
+  - changeSet:
+      id: "2022-06-03 20:30"
+      author: "Svetlana Astapova"
+      context: tableSchema
+      changes:
+        - delete:
+            tableName: triggers_types
+
+  - changeSet:
+      id: "2022-06-03 20:35"
+      author: "Svetlana Astapova"
+      context: data
+      preConditions:
+        - onFail: MARK_RAN
+        - sqlCheck:
+            expectedResult: 0
+            sql: select count(*) from triggers_types where name='Совершена покупка в магазине'
+      changes:
+        - insert:
+            columns:
+              - column:
+                  name: name
+                  value: 'Совершена покупка в магазине'
+              - column:
+                  name: code
+                  value: 'made-purchase-in-store'
+            tableName: triggers_types
+
+  - changeSet:
+      id: "2022-06-03 20:37"
+      author: "Svetlana Astapova"
+      context: data
+      preConditions:
+        - onFail: MARK_RAN
+        - sqlCheck:
+            expectedResult: 0
+            sql: select count(*) from triggers_types where name='Без условий'
+      changes:
+        - insert:
+            columns:
+              - column:
+                  name: name
+                  value: 'Без условий'
+              - column:
+                  name: code
+                  value: 'no-conditions'
+            tableName: triggers_types
+
+  - changeSet:
+      id: "2022-06-17 03:14"
+      author: "Svetlana Astapova"
+      context: tableSchema
+      changes:
+        - dropColumn:
+            tableName: triggers_logs
+            columns:
+              - column:
+                  name: data
+
+  - changeSet:
+      id: "2022-06-17 03:20"
+      author: "Svetlana Astapova"
+      context: tableSchema
+      changes:
+        - addColumn:
+            tableName: triggers_logs
+            columns:
+              - column:
+                  name: data
+                  type: varchar(500)
+
+  - changeSet:
+      id: "2022-06-17 13:02"
+      author: "Svetlana Astapova"
+      context: tableSchema
+      changes:
+        - addColumn:
+            tableName: triggers_logs
+            columns:
+              - column:
+                  name: userId
+                  type: bigint
+
+  - changeSet:
+      id: "2022-06-19 17:50"
+      author: "Svetlana Astapova"
+      context: "constraintSchema"
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: triggers_document_id
+            baseTableName: triggers_documents
+            constraintName: fk_98
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: CASCADE
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: messages_templates
+            validate: true
+
+  - changeSet:
+      id: "2022-07-05 16:19"
+      author: "Svetlana Astapova"
+      context: "constraintSchema"
+      changes:
+        - addColumn:
+            tableName: messages
+            columns:
+              - column:
+                  name: trigger_log_id
+                  type: bigint
+        - addForeignKeyConstraint:
+            baseColumnNames: trigger_log_id
+            baseTableName: messages
+            constraintName: fk_100
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: CASCADE
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: triggers_logs
+            validate: true
+
+  - changeSet:
+      id: "2022-06-17 15:36"
+      author: "Svetlana Astapova"
+      context: "constraintSchema"
+      changes:
+        - addForeignKeyConstraint:
+            constraintName: fk_79
+            baseColumnNames: message_template_id
+            baseTableName: messages
+            onDelete: SET NULL
+            referencedColumnNames: id
+            referencedTableName: messages_templates
+
+  - changeSet:
+      id: "2022-08-01 19:25"
+      author: "Svetlana Astapova"
+      context: tableSchema
+      preConditions:
+        - onFail: MARK_RAN
+        - sqlCheck:
+            expectedResult: 0
+            sql: select count(*) from triggers_document_types where name='messagesTemplate'
+      changes:
+        - insert:
+            columns:
+              - column:
+                  name: name
+                  value: messagesTemplate
+            tableName: triggers_document_types
+
+  - changeSet:
+      id: "2022-12-21 19:25"
+      author: "Vorobev Vyacheslav"
+      context: tableSchema
+      changes:
+        - addColumn:
+            tableName: triggers_documents
+            columns:
+              name: time_unit
+              type: varchar(50)
+
+  - changeSet:
+      id: "a12347"
+      author: "Svetlana Astapova"
+      context: "data"
+      preConditions:
+        - onFail: MARK_RAN
+        - sqlCheck:
+            expectedResult: 0
+            sql: select count(*) from triggers_types where name='Без условий'
+      changes:
+        - insert:
+            columns:
+              - column:
+                  name: name
+                  value: 'Без условий'
+              - column:
+                  name: code
+                  value: 'without-conditions'
+            tableName: triggers_types
+
+  - changeSet:
+      id: "a123456"
+      author: "Svetlana Astapova"
+      context: "data"
+      preConditions:
+        - onFail: MARK_RAN
+        - sqlCheck:
+            expectedResult: 0
+            sql: select count(*) from triggers_types where name='Незавершенная регистрация'
+      changes:
+        - insert:
+            columns:
+              - column:
+                  name: name
+                  value: 'Незавершенная регистрация'
+              - column:
+                  name: code
+                  value: 'in-progress'
+            tableName: triggers_types
+
+  - changeSet:
+      id: 165259283-123-a
+      author: aeysner (generated)
+      context: tableSchema
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: job_details_triggers_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: trigger_document_id
+                  type: BIGINT
+              - column:
+                  name: job_name
+                  type: VARCHAR(200)
+              - column:
+                  name: job_group
+                  type: VARCHAR(200)
+            tableName: job_details_triggers
+
+
+  - changeSet:
+      id: 2023-02-12 14:00:00
+      author: aeysner
+      context: tableSchema
+      preConditions:
+        - onFail: MARK_RAN
+        - sqlCheck:
+            expectedResult: 0
+            sql: SELECT count(*) FROM messages_types WHERE name='push'
+      changes:
+        - insert:
+            columns:
+              - column:
+                  name: name
+                  value: 'push'
+            tableName: messages_types
+
+  - changeSet:
+      id: 2023-02-12 14:01:00
+      author: aeysner
+      context: tableSchema
+      preConditions:
+        - onFail: MARK_RAN
+        - sqlCheck:
+            expectedResult: 0
+            sql: SELECT count(*) FROM messages_types WHERE name='push'
+      changes:
+        - insert:
+            columns:
+              - column:
+                  name: name
+                  value: 'push'
+            tableName: messages_types
+
+  - changeSet:
+      id: 2023-02-12 14:02:00
+      author: aeysner
+      context: tableSchema
+      preConditions:
+        - onFail: MARK_RAN
+        - sqlCheck:
+            expectedResult: 0
+            sql: SELECT count(*) FROM messages_types WHERE name='email'
+      changes:
+        - insert:
+            columns:
+              - column:
+                  name: name
+                  value: 'email'
+            tableName: messages_types
+
+  - changeSet:
+      id: 2023-02-12 14:03:00
+      author: aeysner
+      context: tableSchema
+      preConditions:
+        - onFail: MARK_RAN
+        - sqlCheck:
+            expectedResult: 0
+            sql: SELECT count(*) FROM messages_types WHERE name='whatsapp'
+      changes:
+        - insert:
+            columns:
+              - column:
+                  name: name
+                  value: 'whatsapp'
+            tableName: messages_types
+
+  - changeSet:
+      id: 2023-02-12 14:04:00
+      author: aeysner
+      context: tableSchema
+      preConditions:
+        - onFail: MARK_RAN
+        - sqlCheck:
+            expectedResult: 0
+            sql: SELECT count(*) FROM messages_types WHERE name='viber'
+      changes:
+        - insert:
+            columns:
+              - column:
+                  name: name
+                  value: 'viber'
+            tableName: messages_types
+
+  - changeSet:
+      id: 2023-02-12 14:05:00
+      author: aeysner
+      context: tableSchema
+      preConditions:
+        - onFail: MARK_RAN
+        - sqlCheck:
+            expectedResult: 0
+            sql: SELECT count(*) FROM messages_types WHERE name='sms'
+      changes:
+        - insert:
+            columns:
+              - column:
+                  name: name
+                  value: 'sms'
+            tableName: messages_types
+
+  - changeSet:
+      id: "bcdc5aa9-b7fe-4da9-b031-d43a56c5bb92"
+      author: "owpk"
+      context: tableSchema
+      changes:
+        - addColumn:
+            tableName: messages_templates
+            columns:
+              - column:
+                  name: account_type_id
+                  type: BIGINT
+              - column:
+                  name: account_type_days_before_burning
+                  type: INTEGER
+
+  - changeSet:
+      id: "f9774272-5766-49d6-965a-5328ef7c77a1"
+      author: "owpk"
+      context: tableSchema
+      preConditions:
+        - onFail: MARK_RAN
+        - sqlCheck:
+            expectedResult: 0
+            sql: select count(*) from triggers_types where code='lifespan-of-currency'
+      changes:
+        - insert:
+            columns:
+              - column:
+                  name: name
+                  value: 'Срок жизни валюты'
+              - column:
+                  name: code
+                  value: 'lifespan-of-currency'
+            tableName: triggers_types
+
+  - changeSet:
+      id: "03-10-2023 01:06:28"
+      author: owpk
+      context: "tableSchema"
+      changes:
+        - delete:
+            tableName: messages_template_user
+            where: NOT messages_template_user.message_template_id IN (SELECT mt.id FROM messages_templates mt);
+
+  - changeSet:
+      id: "14-09-2023 05:06:40"
+      author: "owpk"
+      context: "constraintSchema"
+      preConditions:
+        onFail: MARK_RAN
+        not:
+          foreignKeyConstraintExists:
+            foreignKeyTableName: messages_template_user
+            foreignKeyName: msg_template_users_msg_template_id_fk
+      changes:
+        - addForeignKeyConstraint:
+            constraintName: msg_template_users_msg_template_id_fk
+            baseColumnNames: message_template_id
+            baseTableName: messages_template_user
+            onDelete: CASCADE
+            onUpdate: CASCADE
+            referencedColumnNames: id
+            referencedTableName: messages_templates
+
+  - changeSet:
+      id: "14-09-2023 05:15:02"
+      author: "owpk"
+      context: "constraintSchema"
+      preConditions:
+        onFail: MARK_RAN
+        not:
+          uniqueConstraintExists:
+            tableName: messages_template_user
+            constraintName: msg_template_user_msg_template_user_uniq
+      changes:
+        - addUniqueConstraint:
+            columnNames: message_template_id, user_id
+            constraintName: msg_template_user_msg_template_user_uniq
+            tableName: messages_template_user
+            validate: true
+
+  - changeSet:
+      id: 14-09-2023 04:40:37
+      author: owpk
+      context: "constraintSchema"
+      preConditions:
+        onFail: MARK_RAN
+        not:
+          foreignKeyConstraintExists:
+            foreignKeyTableName: job_details_triggers
+            foreignKeyName: fk_job_details_triggers_10
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: trigger_document_id
+            baseTableName: job_details_triggers
+            constraintName: fk_job_details_triggers_10
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: CASCADE
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: messages_templates
+            validate: true
+
+  - changeSet:
+      id: "03-10-2023 01:06:13"
+      author: owpk
+      context: "tableSchema"
+      changes:
+        - delete:
+            tableName: messages_template_users_group
+            where: NOT messages_template_users_group.message_template IN (SELECT mt.id FROM messages_templates mt)
+
+  - changeSet:
+      id: "14-09-2023 05:11:11"
+      author: "owpk"
+      context: "constraintSchema"
+      preConditions:
+        onFail: MARK_RAN
+        not:
+          foreignKeyConstraintExists:
+            foreignKeyTableName: messages_template_users_group
+            foreignKeyName: msg_template_users_grp_msg_template_id_fk
+      changes:
+        - addForeignKeyConstraint:
+            constraintName: msg_template_users_grp_msg_template_id_fk
+            baseColumnNames: message_template
+            baseTableName: messages_template_users_group
+            onDelete: CASCADE
+            onUpdate: CASCADE
+            referencedColumnNames: id
+            referencedTableName: messages_templates
+
+  - changeSet:
+      id: "14-09-2023 05:14:23"
+      author: "owpk"
+      context: "constraintSchema"
+      preConditions:
+        onFail: MARK_RAN
+        not:
+          uniqueConstraintExists:
+            tableName: messages_template_users_group
+            constraintName: msg_template_user_grp_msg_template_user_uniq
+      changes:
+        - addUniqueConstraint:
+            columnNames: message_template, users_group_id
+            constraintName: msg_template_user_grp_msg_template_user_uniq
+            tableName: messages_template_users_group
+            validate: true
+
+  - changeSet:
+      id: "2023-10-16 04:22:00"
+      author: "owpk"
+      context: tableSchema
+      preConditions:
+        onFail: MARK_RAN
+        columnExists:
+          tableName: messages_templates
+          columnName: "account_type_id"
+      changes:
+        - dropColumn:
+            tableName: messages_templates
+            columns:
+              - column:
+                  name: "account_type_id"
+        - addColumn:
+            tableName: messages_templates
+            columns:
+              - column:
+                  name: currency_id
+                  type: BIGINT
+
+  - changeSet:
+      id: "2023-10-16 04:23:00"
+      context: tableSchema
+      author: "owpk"
+      preConditions:
+        onFail: MARK_RAN
+        columnExists:
+          tableName: messages_templates
+          columnName: "account_type_days_before_burning"
+      changes:
+        - dropColumn:
+            tableName: messages_templates
+            columns:
+              - column:
+                  name: "account_type_days_before_burning"
+        - addColumn:
+            tableName: messages_templates
+            columns:
+              - column:
+                  name: currency_days_before_burning
+                  type: INTEGER
+
+  - changeSet:
+      id: "19-10-2023 17:13:30"
+      author: "owpk"
+      context: "data"
+      preConditions:
+        - onFail: MARK_RAN
+        - sqlCheck:
+            expectedResult: 1
+            sql: select count(*) from triggers_types where code='no-conditions'
+      changes:
+        - delete:
+            tableName: triggers_types
+            where: code='no-conditions'
+
+  - changeSet:
+      id: "19-10-2023 17:13:21"
+      author: "owpk"
+      context: data
+      preConditions:
+        - onFail: MARK_RAN
+        - sqlCheck:
+            expectedResult: 0
+            sql: select count(*) from triggers_types where code='without-conditions'
+      changes:
+        - insert:
+            columns:
+              - column:
+                  name: name
+                  value: 'Без условий'
+              - column:
+                  name: code
+                  value: 'without-conditions'
+            tableName: triggers_types
+
+  - changeSet:
+      id: "19-10-2023 17:30:39"
+      author: "owpk"
+      context: "data"
+      preConditions:
+        - onFail: MARK_RAN
+        - sqlCheck:
+            expectedResult: 1
+            sql: select count(*) from triggers_types where code='made-purchase-in-store'
+      changes:
+        - delete:
+            tableName: triggers_types
+            where: code='made-purchase-in-store'
+
+  - changeSet:
+      id: "19-10-2023 17:30:34"
+      author: "owpk"
+      context: data
+      preConditions:
+        - onFail: MARK_RAN
+        - sqlCheck:
+            expectedResult: 0
+            sql: select count(*) from triggers_types where code='the-purchase-is-completed'
+      changes:
+        - insert:
+            columns:
+              - column:
+                  name: name
+                  value: 'Совершена покупка в магазине'
+              - column:
+                  name: code
+                  value: 'the-purchase-is-completed'
+            tableName: triggers_types
+  - changeSet:
+      id: "22-11-2023 13:07:27"
+      author: "owpk"
+      context: data
+      preConditions:
+        - onFail: MARK_RAN
+        - sqlCheck:
+            expectedResult: 0
+            sql: select count(*) from triggers_types where code='no-purchase-for-n-days'
+      changes:
+        - insert:
+            columns:
+              - column:
+                  name: name
+                  value: 'Не было покупок n дней'
+              - column:
+                  name: code
+                  value: 'no-purchase-for-n-days'
+            tableName: triggers_types
+
+  - changeSet:
+      id: "07-12-2023 13:15:08"
+      context: tableSchema
+      author: "owpk"
+      preConditions:
+        onFail: MARK_RAN
+        not:
+          columnExists:
+            tableName: messages_templates
+            columnName: "days_without_purchasing"
+      changes:
+        - addColumn:
+            tableName: messages_templates
+            columns:
+              - column:
+                  name: days_without_purchasing
+                  type: INTEGER

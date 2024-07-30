@@ -1,0 +1,50 @@
+pipeline {
+    agent any
+	environment {
+		NEXUS_CREDENTIALS = credentials('jenkins_nexus')
+	}
+	
+    stages {
+        stage('Build') {
+            steps {
+				script {
+					echo 'Build....'
+					sh (script: "git checkout ${params.branch}")
+					version = sh(script: './gradlew printReleaseVersion --quiet', returnStdout: true).replace('\n','')
+					sh (script: "PROJECT_VERSION=$version ./gradlew clean build")
+				}
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Testing..'
+            }
+        }
+        stage('Deploy') {
+		
+            steps {
+				sshagent(['jenkins_git']) {
+					script {
+						echo 'Deploying....'
+		
+						String userName = env.NEXUS_CREDENTIALS_USR
+						String password = env.NEXUS_CREDENTIALS_PSW
+    					version = sh(script: './gradlew printReleaseVersion --quiet', returnStdout: true).replace('\n','')
+						if (params.branch == 'master') {
+							repository = 'http://nexus.ctmol.ru/repository/maven-releases'
+							sh "git tag -a v$version -m 'Tag release version'"
+							sh "git push --tags"
+						} else {
+							repository = 'http://nexus.ctmol.ru/repository/maven-snapshots'
+						}
+						
+						sh 'printenv'
+						sh (script: "NEXUS_CREDENTIALS_USR=$userName NEXUS_CREDENTIALS_PSW=$password NEXUS_URI=$repository PROJECT_VERSION=$version ./gradlew publishSparPublicationToNexusRepository")
+						sh (script: "git checkout .")
+						sh (script: "git clean -d -f")
+					}
+				}
+            }
+        }
+    }
+}

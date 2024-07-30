@@ -1,0 +1,4 @@
+sparural:
+  kafka:
+    consumer.name: "preprod.backgrouns-consumer"
+    producer.replyTopic: "preprod.backgrouns.response" 

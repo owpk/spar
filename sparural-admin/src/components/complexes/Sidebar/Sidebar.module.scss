@@ -1,0 +1,30 @@
+@import '../../../styles/config.scss';
+
+.sidebarInner {
+    padding: 0 20px;
+}
+.menuItem {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin-bottom: 16px;
+    svg {
+        stroke: $color-font-color;
+        fill: $color-font-color;
+    }
+}
+.menuItemActive {
+    @extend .menuItem;
+        svg {
+            stroke: $color-primary;
+            fill: $color-primary;
+        }
+        span {
+            color: $color-primary;
+            text-decoration: underline;
+        }
+
+}
+.menuItemIcon {
+    margin-right: 10px;
+}

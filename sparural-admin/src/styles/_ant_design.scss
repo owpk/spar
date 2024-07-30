@@ -1,0 +1,104 @@
+.block .ant-tabs .ant-tabs-nav {
+    margin-bottom: 20px;
+}
+.block .ant-tabs-nav::before {
+    display: none;
+}
+.block .ant-tabs-nav-wrap {
+    padding: 15px 0px;
+}
+.block .ant-tabs-content-holder {
+    padding: 0 35px;
+}
+.block .ant-tabs-tab {
+    background: #ffffff;
+    border: 1px solid #b7b7b7;
+    box-sizing: border-box;
+    border-radius: 5px;
+    padding: 8px 35px;
+    margin: 0 0 10px 15px;
+}
+.ant-tabs-tabpane {
+    padding-bottom: 30px;
+}
+.block .ant-tabs-tab + .ant-tabs-tab {
+    margin: 0 0 10px 16px;
+}
+.block .ant-tabs-tab:hover {
+    color: #007c45;
+}
+.ant-tabs-tab-btn:focus {
+    color: #2e2e2e;
+}
+
+.block .ant-tabs-tab-active {
+    background: #ffffff;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.15);
+    border: 0px solid #b7b7b7;
+}
+.block .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+    color: #007c45;
+}
+.block .ant-tabs-ink-bar {
+    display: none;
+}
+//  INPUTS
+.ant-input {
+    border: 1px solid $color-grey;
+    width: 100%;
+    border-radius: 5px;
+    background-color: #fff;
+    overflow: hidden;
+    font-size: 18px;
+}
+.ant-input:hover {
+    border-color: #007c45;
+}
+.ant-input:focus {
+    border-color: #007c45;
+    box-shadow: none;
+}
+
+textarea.ant-input {
+    // min-height: 147px;
+}
+
+.ant-input[disabled] {
+    background-color: #fff;
+}
+// DatePicker
+.ant-picker {
+    border: 1px solid $color-grey;
+    z-index: 3;
+}
+.ant-picker-suffix{
+    opacity: 0;
+}
+.ant-picker:hover,
+.ant-picker-focused {
+    border-color: #007c45;
+}
+.ant-picker-focused {
+    border-color: #007c45;
+    box-shadow: none;
+}
+.ant-picker-input {
+    input {
+        font-size: 18px;
+    }
+}
+
+// BUTTON
+.ant-btn-primary {
+    background-color: #007c45;
+    border-color: #007c45;
+    border-radius: 5px;
+    box-shadow: none;
+
+    &:hover {
+        background-color: #007c45;
+        border-color: #007c45;
+        border-radius: 5px;
+        box-shadow: none;
+    }
+}

@@ -1,0 +1,11 @@
+@import '../../../../../styles/config.scss';
+.block {
+    width: 40%;
+    padding-bottom: 20px;
+}
+.btn {
+    display: flex;
+    justify-content: flex-end;
+    padding: 0 35px;
+    margin-top: 20px;
+}

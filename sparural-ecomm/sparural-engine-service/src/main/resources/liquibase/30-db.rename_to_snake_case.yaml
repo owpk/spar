@@ -1,0 +1,3926 @@
+databaseChangeLog:
+
+  -  changeSet:
+       id: "8e943a0d-dec1-4d49-95f7-afe83d4d82f5"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: card_id
+              oldColumnName:  cardId
+              tableName:  cards_qr
+
+  -  changeSet:
+       id: "d0bcc23a-fb7d-4406-8f42-d7f581afe5a8"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: code_generated_date
+              oldColumnName:  codeGeneratedDate
+              tableName:  cards_qr
+
+  -  changeSet:
+       id: "a4bd0363-6a14-4920-beee-991838a45dbb"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: created_at
+              oldColumnName:  createdAt
+              tableName:  roles
+
+  -  changeSet:
+       id: "ab7c7bf3-d32c-4aaf-98ab-d5443f84ab08"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: updated_at
+              oldColumnName:  updatedAt
+              tableName:  roles
+
+  -  changeSet:
+       id: "323007c9-5cb6-47c8-8080-7b1942a07511"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: notifier_id
+              oldColumnName:  notifierId
+              tableName:  recovery_password_requests
+
+  -  changeSet:
+       id: "b98fd13f-6a5e-4dac-9851-6f1f32364194"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: created_at
+              oldColumnName:  createdAt
+              tableName:  recovery_password_requests
+
+  -  changeSet:
+       id: "c4f3b8cb-7176-45f6-b440-1eb637ef92b6"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: updated_at
+              oldColumnName:  updatedAt
+              tableName:  recovery_password_requests
+
+  -  changeSet:
+       id: "a0847476-66db-4219-b47e-63c918588344"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: user_id
+              oldColumnName:  userId
+              tableName:  recovery_password_requests
+
+  -  changeSet:
+       id: "29c0f7b4-1377-472c-aced-c6db2142bc35"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: created_at
+              oldColumnName:  createdAt
+              tableName:  triggers_types
+
+  -  changeSet:
+       id: "641f7c4f-71f1-47cd-a53e-58c2db97c030"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: updated_at
+              oldColumnName:  updatedAt
+              tableName:  triggers_types
+
+  -  changeSet:
+       id: "a7dc81bc-f664-4240-a724-c33e9131ad2e"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: notifications_frequency
+              oldColumnName:  notificationsFrequency
+              tableName:  settings
+
+  -  changeSet:
+       id: "032310b0-fec8-4241-a885-275510eb8983"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: created_at
+              oldColumnName:  createdAt
+              tableName:  settings
+
+  -  changeSet:
+       id: "b0fb0184-f800-4db5-9786-26b608302325"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: updated_at
+              oldColumnName:  updatedAt
+              tableName:  settings
+
+  -  changeSet:
+       id: "a84aa0ab-5039-4184-bc05-ac7191c21132"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: city_id
+              oldColumnName:  cityId
+              tableName:  city_onbox_banner
+
+  -  changeSet:
+       id: "cbc6a636-0f2f-4e0e-98b5-7eb35cc16781"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: onbox_banner_id
+              oldColumnName:  onboxBannerId
+              tableName:  city_onbox_banner
+
+  -  changeSet:
+       id: "4f3e6233-eefe-4163-a360-d11a5742866b"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: created_at
+              oldColumnName:  createdAt
+              tableName:  city_onbox_banner
+
+  -  changeSet:
+       id: "76684574-11c0-4807-a75f-245fae8aafa9"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: updated_at
+              oldColumnName:  updatedAt
+              tableName:  city_onbox_banner
+
+  -  changeSet:
+       id: "e4e08b6c-3636-4280-8196-e76722b35ba0"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: check_id
+              oldColumnName:  checkId
+              tableName:  checks_rewards
+
+  -  changeSet:
+       id: "cbb8bbe6-863d-4256-b9a4-b16b687c4f86"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: currency_id
+              oldColumnName:  currencyId
+              tableName:  checks_rewards
+
+  -  changeSet:
+       id: "02158cbf-dab2-40a3-acd2-e49e885f1840"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: created_at
+              oldColumnName:  createdAt
+              tableName:  checks_rewards
+
+  -  changeSet:
+       id: "381861ab-b863-4358-b103-4bb3ce510e60"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: updated_at
+              oldColumnName:  updatedAt
+              tableName:  checks_rewards
+
+  -  changeSet:
+       id: "3b46dcc8-002e-4116-9f33-494e471bca9e"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: created_at
+              oldColumnName:  createdAt
+              tableName:  sms_settings
+
+  -  changeSet:
+       id: "7478d006-7f53-480f-a624-b87ad4ae5ce9"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: updated_at
+              oldColumnName:  updatedAt
+              tableName:  sms_settings
+
+  -  changeSet:
+       id: "1aad9854-8112-4ece-b82c-62a800361594"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: user_id
+              oldColumnName:  userId
+              tableName:  user_requests
+
+  -  changeSet:
+       id: "6b0b1863-6634-4942-8ab4-41b69c03c638"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: subject_id
+              oldColumnName:  subjectId
+              tableName:  user_requests
+
+  -  changeSet:
+       id: "0ed61d9c-0d4e-46d2-9128-666f3f5248a2"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: created_at
+              oldColumnName:  createdAt
+              tableName:  user_requests
+
+  -  changeSet:
+       id: "02c31344-5bf5-44f6-9946-c2c5144b6742"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: updated_at
+              oldColumnName:  updatedAt
+              tableName:  user_requests
+
+  -  changeSet:
+       id: "2cb0ce7e-b6e6-430e-bf51-28ba74bd5936"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: created_at
+              oldColumnName:  createdAt
+              tableName:  triggers_document_types
+
+  -  changeSet:
+       id: "40e1b816-d374-4a51-9fd3-f26921d76cf7"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: updated_at
+              oldColumnName:  updatedAt
+              tableName:  triggers_document_types
+
+  -  changeSet:
+       id: "74262c95-0107-420c-97a9-c62cadbac514"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: created_at
+              oldColumnName:  createdAt
+              tableName:  user_requests_subjects
+
+  -  changeSet:
+       id: "b8f049d2-a672-4b10-8a8c-2708871ea943"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: updated_at
+              oldColumnName:  updatedAt
+              tableName:  user_requests_subjects
+
+  -  changeSet:
+       id: "ab29fca9-5216-428a-8224-e11e8cd4badf"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: user_id
+              oldColumnName:  userId
+              tableName:  user_push_tokens
+
+  -  changeSet:
+       id: "9cf7c83a-f2df-4db8-9571-a5e3bfbf1918"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: device_type_id
+              oldColumnName:  deviceTypeId
+              tableName:  user_push_tokens
+
+  -  changeSet:
+       id: "c3d8f3c4-ba57-40bc-9723-d52431368629"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: created_at
+              oldColumnName:  createdAt
+              tableName:  user_push_tokens
+
+  -  changeSet:
+       id: "482a6d07-e495-4e01-9f97-d17591c5fd47"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: updated_at
+              oldColumnName:  updatedAt
+              tableName:  user_push_tokens
+
+  -  changeSet:
+       id: "a848bcbd-6a99-4651-bf53-e400855c0590"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: triggers_type_id
+              oldColumnName:  triggersTypeId
+              tableName:  triggers_logs
+
+  -  changeSet:
+       id: "7d2d4b0c-4966-4584-aa7e-3b63b2c51f85"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: triggers_document_type_id
+              oldColumnName:  triggersDocumentTypeId
+              tableName:  triggers_logs
+
+  -  changeSet:
+       id: "521bd043-6d8a-4a37-a390-6f67dd34a8a7"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: triggers_document_id
+              oldColumnName:  triggersDocumentId
+              tableName:  triggers_logs
+
+  -  changeSet:
+       id: "36dfb4a2-3a5d-433a-b87b-590958442af7"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: created_at
+              oldColumnName:  createdAt
+              tableName:  triggers_logs
+
+  -  changeSet:
+       id: "670e1fa1-7e36-4deb-9e91-51cb9c55a91d"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: updated_at
+              oldColumnName:  updatedAt
+              tableName:  triggers_logs
+
+  -  changeSet:
+       id: "7aff41d7-59f0-4161-b896-271bdadba738"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: user_id
+              oldColumnName:  userId
+              tableName:  triggers_logs
+
+  -  changeSet:
+       id: "18f27eba-8508-413d-a9e2-24382e12da2c"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: created_at
+              oldColumnName:  createdAt
+              tableName:  screens
+
+  -  changeSet:
+       id: "f3dd598a-9571-4b02-9147-c26eb85badb6"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: updated_at
+              oldColumnName:  updatedAt
+              tableName:  screens
+
+  -  changeSet:
+       id: "f49d2e89-4993-4c83-8ddd-86aad204e0b4"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: created_at
+              oldColumnName:  createdAt
+              tableName:  socials
+
+  -  changeSet:
+       id: "d7fcf07e-3b30-4ba9-849f-93d4506fc563"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: updated_at
+              oldColumnName:  updatedAt
+              tableName:  socials
+
+  -  changeSet:
+       id: "2ebfed74-5d73-468d-85fe-f1740382dab6"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: user_id
+              oldColumnName:  userId
+              tableName:  users_devices
+
+  -  changeSet:
+       id: "33b76ce2-efd5-4d14-875d-2505f7ad00c8"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: created_at
+              oldColumnName:  createdAt
+              tableName:  users_devices
+
+  -  changeSet:
+       id: "cd90ce56-3a03-49c0-890d-796125069712"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: updated_at
+              oldColumnName:  updatedAt
+              tableName:  users_devices
+
+  -  changeSet:
+       id: "7eb38f3c-4922-4157-b819-3387406532ae"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: is_sys
+              oldColumnName:  isSys
+              tableName:  users_groups
+
+  -  changeSet:
+       id: "1c5283d4-ad98-4383-aad6-e19c61dfe42d"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: created_at
+              oldColumnName:  createdAt
+              tableName:  users_groups
+
+  -  changeSet:
+       id: "42c7f507-21cc-4685-bbcc-bd2228d8f8d4"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: updated_at
+              oldColumnName:  updatedAt
+              tableName:  users_groups
+
+  -  changeSet:
+       id: "5c89f1d7-57ed-4861-b9eb-082a3fb18084"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: created_at
+              oldColumnName:  createdAt
+              tableName:  viber_settings
+
+  -  changeSet:
+       id: "2de9cb41-f623-485b-9ed9-2a6692593aab"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: updated_at
+              oldColumnName:  updatedAt
+              tableName:  viber_settings
+
+  -  changeSet:
+       id: "d2505cf0-03f9-480c-a4e0-5ce9a17e66b7"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: created_at
+              oldColumnName:  createdAt
+              tableName:  whatsapp_settings
+
+  -  changeSet:
+       id: "79034066-af9a-4fbb-babe-1ebf0257f05b"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: updated_at
+              oldColumnName:  updatedAt
+              tableName:  whatsapp_settings
+
+  -  changeSet:
+       id: "6a4fa1ed-18fe-47eb-828c-c5692e2de4e4"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: user_id
+              oldColumnName:  userId
+              tableName:  users_unconfirmed_phones
+
+  -  changeSet:
+       id: "6d199771-84a3-41ec-a976-f9f55befefda"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: created_at
+              oldColumnName:  createdAt
+              tableName:  users_unconfirmed_phones
+
+  -  changeSet:
+       id: "acac27c1-5eef-462c-b76c-17325b14eb30"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: updated_at
+              oldColumnName:  updatedAt
+              tableName:  users_unconfirmed_phones
+
+  -  changeSet:
+       id: "501ea9c0-863a-438e-bf9c-808f0f5f1751"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: user_id
+              oldColumnName:  userId
+              tableName:  users_unconfirmed_emails
+
+  -  changeSet:
+       id: "6cf3f5ed-2000-4373-b932-37e620ea5aef"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: created_at
+              oldColumnName:  createdAt
+              tableName:  users_unconfirmed_emails
+
+  -  changeSet:
+       id: "4d34e9c2-c7eb-4116-9f49-b01141e643d1"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: updated_at
+              oldColumnName:  updatedAt
+              tableName:  users_unconfirmed_emails
+
+  -  changeSet:
+       id: "f7ba7975-27c5-449f-99ed-c9e83c979219"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: user_id
+              oldColumnName:  userId
+              tableName:  users_delete
+
+  -  changeSet:
+       id: "9fe2054f-12a4-48c8-95d3-1276e3b28d31"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: created_at
+              oldColumnName:  createdAt
+              tableName:  users_delete
+
+  -  changeSet:
+       id: "3f05756a-48ae-4efa-abb5-c98b39ae8df5"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: updated_at
+              oldColumnName:  updatedAt
+              tableName:  users_delete
+
+  -  changeSet:
+       id: "63ae8983-a42b-4126-8be5-9e7902b7fda7"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: is_public
+              oldColumnName:  isPublic
+              tableName:  coupon_emissions
+
+  -  changeSet:
+       id: "ebc5d939-c67b-4d8e-908a-fa40f7deb4bf"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: created_at
+              oldColumnName:  createdAt
+              tableName:  coupon_emissions
+
+  -  changeSet:
+       id: "6787c34f-319b-4ce8-b990-e68a03f9a978"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: updated_at
+              oldColumnName:  updatedAt
+              tableName:  coupon_emissions
+
+  -  changeSet:
+       id: "9cfe1065-cbf8-41f8-a212-964edf703434"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: created_at
+              oldColumnName:  createdAt
+              tableName:  cities
+
+  -  changeSet:
+       id: "43afffc1-185d-46cf-ac10-012c2962b202"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: updated_at
+              oldColumnName:  updatedAt
+              tableName:  cities
+
+  -  changeSet:
+       id: "9a8965a5-bd94-4be3-9f16-ecdb5ac353fd"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: sms_allowed
+              oldColumnName:  smsAllowed
+              tableName:  users
+
+  -  changeSet:
+       id: "ff8cecdf-6221-4d3e-a0e7-a473289c905d"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: email_allowed
+              oldColumnName:  emailAllowed
+              tableName:  users
+
+  -  changeSet:
+       id: "41628372-5e81-4697-99fe-b2956272a01a"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: viber_allowed
+              oldColumnName:  viberAllowed
+              tableName:  users
+
+  -  changeSet:
+       id: "6db8cf06-966d-4d3c-a413-acf513ed4e28"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: whatsapp_allowed
+              oldColumnName:  whatsappAllowed
+              tableName:  users
+
+  -  changeSet:
+       id: "f8dc59aa-c6c3-43ce-9a19-b582ba7174fb"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: push_allowed
+              oldColumnName:  pushAllowed
+              tableName:  users
+
+  -  changeSet:
+       id: "9217a303-2043-4eb8-8834-3961d8f143de"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: reject_paper_checks
+              oldColumnName:  rejectPaperChecks
+              tableName:  users
+
+  -  changeSet:
+       id: "4a437c7f-dde9-4621-afeb-68546cf83679"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: last_activity
+              oldColumnName:  lastActivity
+              tableName:  users
+
+  -  changeSet:
+       id: "0149b24c-8747-453c-af14-97f74fe951a9"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: last_city_id
+              oldColumnName:  lastCityId
+              tableName:  users
+
+  -  changeSet:
+       id: "f4bb2227-3cb0-47b5-94b1-104ab035f785"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: deleted_at
+              oldColumnName:  deletedAt
+              tableName:  users
+
+  -  changeSet:
+       id: "cf8befa4-66cc-4cec-a2f3-00803dacf269"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: created_at
+              oldColumnName:  createdAt
+              tableName:  users
+
+  -  changeSet:
+       id: "31e01f02-2c2d-4780-9201-58856ccdd4d5"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: updated_at
+              oldColumnName:  updatedAt
+              tableName:  users
+
+  -  changeSet:
+       id: "d0617a2a-3178-4f7e-af5f-f7e8b4728bbb"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: not_activated_amount
+              oldColumnName:  notActivatedAmount
+              tableName:  accounts
+
+  -  changeSet:
+       id: "c1b8515a-492c-4a51-8dd1-470c54cd8588"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: created_at
+              oldColumnName:  createdAt
+              tableName:  accounts
+
+  -  changeSet:
+       id: "1eeae06b-16f7-47f4-88c0-17dc25b77d4c"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: updated_at
+              oldColumnName:  updatedAt
+              tableName:  accounts
+
+  -  changeSet:
+       id: "1e0ed585-7193-4c92-8d32-576e9346dc18"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: user_id
+              oldColumnName:  userId
+              tableName:  accounts
+
+  -  changeSet:
+       id: "229808b8-8bcd-470d-a50c-d5cc324cd80d"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: client_status_id
+              oldColumnName:  clientStatusId
+              tableName:  client_status_user
+
+  -  changeSet:
+       id: "183f25bb-60a3-4fba-b6ff-65e26e2d87a0"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: user_id
+              oldColumnName:  userId
+              tableName:  client_status_user
+
+  -  changeSet:
+       id: "06b6c4ca-f05d-4b65-aa20-5bb2fa2b12da"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: current_value
+              oldColumnName:  currentValue
+              tableName:  client_status_user
+
+  -  changeSet:
+       id: "95661534-453c-4563-9ca1-2ba9465744f7"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: left_until_next_status
+              oldColumnName:  leftUntilNextStatus
+              tableName:  client_status_user
+
+  -  changeSet:
+       id: "d667168f-4a11-4a22-9b26-4233958b61bc"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: created_at
+              oldColumnName:  createdAt
+              tableName:  client_status_user
+
+  -  changeSet:
+       id: "ad64921c-21fc-4fa9-a566-593719655ff9"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: updated_at
+              oldColumnName:  updatedAt
+              tableName:  client_status_user
+
+  -  changeSet:
+       id: "9306581a-6ea0-4a33-9314-d6911b207889"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: is_public
+              oldColumnName:  isPublic
+              tableName:  personal_offers
+
+  -  changeSet:
+       id: "4ee6266b-ef03-4791-b5e8-9ce02d9c7854"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: created_at
+              oldColumnName:  createdAt
+              tableName:  personal_offers
+
+  -  changeSet:
+       id: "65d83454-02a1-43d1-8907-eb216f8b61c2"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: updated_at
+              oldColumnName:  updatedAt
+              tableName:  personal_offers
+
+  -  changeSet:
+       id: "0f0f034d-ac61-47dc-b391-8bd4e2cbbfda"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: personal_offer_id
+              oldColumnName:  personalOfferId
+              tableName:  personal_offer_user
+
+  -  changeSet:
+       id: "b74df875-a72b-404b-bead-79de5e3a872c"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: user_id
+              oldColumnName:  userId
+              tableName:  personal_offer_user
+
+  -  changeSet:
+       id: "7258eb93-1373-4ec0-bde7-dc926384cb61"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: created_at
+              oldColumnName:  createdAt
+              tableName:  personal_offer_user
+
+  -  changeSet:
+       id: "a28e991c-6875-49af-a95d-53df2971699c"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: updated_at
+              oldColumnName:  updatedAt
+              tableName:  personal_offer_user
+
+  -  changeSet:
+       id: "f0159b33-a3f0-4f0a-971c-926b678d64e5"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: users_group_id
+              oldColumnName:  usersGroupId
+              tableName:  users_group_user
+
+  -  changeSet:
+       id: "8715c5b7-b154-423f-9bd5-a4df3a700daf"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: user_id
+              oldColumnName:  userId
+              tableName:  users_group_user
+
+  -  changeSet:
+       id: "35a9825d-d4fb-4e1d-86e6-e4628d82913c"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: created_at
+              oldColumnName:  createdAt
+              tableName:  users_group_user
+
+  -  changeSet:
+       id: "46845eae-bec4-4a49-96b1-32488a479dd6"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: updated_at
+              oldColumnName:  updatedAt
+              tableName:  users_group_user
+
+  -  changeSet:
+       id: "9e8b0e9f-a794-4afc-b728-f13786b28b34"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: created_at
+              oldColumnName:  createdAt
+              tableName:  goods
+
+  -  changeSet:
+       id: "1598b28d-00a8-4cb3-92a0-2a9f5d2efb37"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: updated_at
+              oldColumnName:  updatedAt
+              tableName:  goods
+
+  -  changeSet:
+       id: "4e94e057-541c-446d-abed-6203c069e213"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: merchants_id
+              oldColumnName:  merchantsId
+              tableName:  merchant_attribute_merchant
+
+  -  changeSet:
+       id: "79dfd2d3-e239-4bf6-8cd2-aa943766ebbc"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: attribute_id
+              oldColumnName:  attributeId
+              tableName:  merchant_attribute_merchant
+
+  -  changeSet:
+       id: "16b5dfe8-e0be-4178-b6c3-a91b52452d22"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: created_at
+              oldColumnName:  createdAt
+              tableName:  merchant_attribute_merchant
+
+  -  changeSet:
+       id: "4ca672bf-5d07-481f-95d1-061f0e508cb9"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: updated_at
+              oldColumnName:  updatedAt
+              tableName:  merchant_attribute_merchant
+
+  -  changeSet:
+       id: "e9d21387-e66d-4ecc-935d-125c4deff4ca"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: created_at
+              oldColumnName:  createdAt
+              tableName:  merchant_comments_question_options
+
+  -  changeSet:
+       id: "06e07aad-3557-4770-92f5-7b6d291621a2"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: updated_at
+              oldColumnName:  updatedAt
+              tableName:  merchant_comments_question_options
+
+  -  changeSet:
+       id: "892e8af3-3c61-46da-aa94-8bfb45b1fac5"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: triggers_type_id
+              oldColumnName:  triggersTypeId
+              tableName:  triggers_documents
+
+  -  changeSet:
+       id: "7d7692b0-c08b-4737-9e8c-4726091b994e"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: triggers_document_type_id
+              oldColumnName:  triggersDocumentTypeId
+              tableName:  triggers_documents
+
+  -  changeSet:
+       id: "06e1706b-53ff-43e2-8556-4ce75c5e66b4"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: triggers_document_id
+              oldColumnName:  triggersDocumentId
+              tableName:  triggers_documents
+
+  -  changeSet:
+       id: "91dbb4bc-efc2-4983-9d60-a1226ddcfb2e"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: date_start
+              oldColumnName:  dateStart
+              tableName:  triggers_documents
+
+  -  changeSet:
+       id: "6e2a38a1-2915-4a2a-8ede-c7d28063e4d8"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: date_end
+              oldColumnName:  dateEnd
+              tableName:  triggers_documents
+
+  -  changeSet:
+       id: "846e60f9-cdcc-4f6f-a974-be6cd0cb096b"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: created_at
+              oldColumnName:  createdAt
+              tableName:  triggers_documents
+
+  -  changeSet:
+       id: "f8fa8771-2487-4f84-895c-fcfa72342e29"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: updated_at
+              oldColumnName:  updatedAt
+              tableName:  triggers_documents
+
+  -  changeSet:
+       id: "fb9fdb8f-bc06-48cd-8a1e-db5fc985a950"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: life_time
+              oldColumnName:  lifeTime
+              tableName:  cards_qr
+
+  -  changeSet:
+       id: "58e70d2a-4264-484b-8067-1e58927e890f"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: created_at
+              oldColumnName:  createdAt
+              tableName:  cards_qr
+
+  -  changeSet:
+       id: "ab0694d5-0c2e-4c68-8366-fcdc75b65c6e"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: updated_at
+              oldColumnName:  updatedAt
+              tableName:  cards_qr
+
+  -  changeSet:
+       id: "61d3821f-7ac9-4499-be8a-9865260df907"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: account_id
+              oldColumnName:  accountId
+              tableName:  account_user
+
+  -  changeSet:
+       id: "fefc419f-8e4a-4bdc-a213-0ca3abef95b2"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: user_id
+              oldColumnName:  userId
+              tableName:  account_user
+
+  -  changeSet:
+       id: "217d57ac-da09-4a81-a3dc-5c257d77c942"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: created_at
+              oldColumnName:  createdAt
+              tableName:  account_user
+
+  -  changeSet:
+       id: "29d09b60-26d7-4e90-a388-0c7ccbbe1360"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: updated_at
+              oldColumnName:  updatedAt
+              tableName:  account_user
+
+  -  changeSet:
+       id: "ab3a9001-6bb3-4d51-9a42-498975ccbba1"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: account_id
+              oldColumnName:  accountId
+              tableName:  account_life_times_by_time
+
+  -  changeSet:
+       id: "91e91016-540d-42ca-969a-40eaecbbc9af"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: created_at
+              oldColumnName:  createdAt
+              tableName:  account_life_times_by_time
+
+  -  changeSet:
+       id: "b084ad94-ee1e-495d-a4a3-3d9e257518bd"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: updated_at
+              oldColumnName:  updatedAt
+              tableName:  account_life_times_by_time
+
+  -  changeSet:
+       id: "30e1a2d2-731f-4411-80e9-f58c8368da75"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: account_id
+              oldColumnName:  accountId
+              tableName:  account_life_times_by_period
+
+  -  changeSet:
+       id: "61fbbefa-41d8-4b73-a466-e50cb08f5cc9"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: activation_amount
+              oldColumnName:  activationAmount
+              tableName:  account_life_times_by_period
+
+  -  changeSet:
+       id: "4aa037aa-9f21-4069-bdb7-60f64c5792da"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: expiration_amount
+              oldColumnName:  expirationAmount
+              tableName:  account_life_times_by_period
+
+  -  changeSet:
+       id: "07f5975c-cb6a-4eee-bc72-5c4de882a698"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: created_at
+              oldColumnName:  createdAt
+              tableName:  account_life_times_by_period
+
+  -  changeSet:
+       id: "d31acebe-2b0d-4e93-883b-d10adc903a9d"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: updated_at
+              oldColumnName:  updatedAt
+              tableName:  account_life_times_by_period
+
+  -  changeSet:
+       id: "638dd3a5-2dca-4b44-aa73-5c862a56c567"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: check_id
+              oldColumnName:  checkId
+              tableName:  checks_withdraws
+
+  -  changeSet:
+       id: "853969ce-a459-46d9-89ba-87e5c1484420"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: currency_id
+              oldColumnName:  currencyId
+              tableName:  checks_withdraws
+
+  -  changeSet:
+       id: "457e35ea-def2-4876-95d9-dfc098ab81f6"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: created_at
+              oldColumnName:  createdAt
+              tableName:  checks_withdraws
+
+  -  changeSet:
+       id: "13ef8517-7316-4788-9012-35e4ee1088b6"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: updated_at
+              oldColumnName:  updatedAt
+              tableName:  checks_withdraws
+
+  -  changeSet:
+       id: "9e25ce05-5ae5-4a06-a4bd-cce45a496487"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: info_screen_id
+              oldColumnName:  infoScreenId
+              tableName:  city_info_screen
+
+  -  changeSet:
+       id: "4f5b9fd4-a314-4574-854d-64ad14ad65c0"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: city_id
+              oldColumnName:  cityId
+              tableName:  city_info_screen
+
+  -  changeSet:
+       id: "9e41ec21-009b-4f92-bef1-fe40d2e7c9f2"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: created_at
+              oldColumnName:  createdAt
+              tableName:  city_info_screen
+
+  -  changeSet:
+       id: "544e70fd-063f-4d16-843f-e4a2533ef4cc"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: updated_at
+              oldColumnName:  updatedAt
+              tableName:  city_info_screen
+
+  -  changeSet:
+       id: "9d8f4bcf-5116-4d57-b933-e95a7dd16bbd"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: created_at
+              oldColumnName:  createdAt
+              tableName:  contents
+
+  -  changeSet:
+       id: "c14e8a36-3c1e-455f-b91c-54cd92d9d4f1"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: updated_at
+              oldColumnName:  updatedAt
+              tableName:  contents
+
+  -  changeSet:
+       id: "a1916292-1bdd-4744-b7ca-4e9b0cf87cef"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: max_unsuccessful_attempts
+              oldColumnName:  maxUnsuccessfulAttempts
+              tableName:  confirm_code_settings
+
+  -  changeSet:
+       id: "09dcd1ae-d1ac-41a1-8c37-383220c11410"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: max_in_hour_count
+              oldColumnName:  maxInHourCount
+              tableName:  confirm_code_settings
+
+  -  changeSet:
+       id: "71cb8c1f-edf8-4bba-8fff-a7bb5d360d0b"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: max_dayly_count
+              oldColumnName:  maxDaylyCount
+              tableName:  confirm_code_settings
+
+  -  changeSet:
+       id: "616b4eb2-2abb-4085-b1aa-9d61aa6d4743"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: created_at
+              oldColumnName:  createdAt
+              tableName:  client_statuses
+
+  -  changeSet:
+       id: "351a4643-57d7-4ad4-aba9-70d016dee529"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: updated_at
+              oldColumnName:  updatedAt
+              tableName:  client_statuses
+
+  -  changeSet:
+       id: "fd14a7bb-6453-44c5-9af7-44f68c741766"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: user_id
+              oldColumnName:  userId
+              tableName:  confirm_code_request
+
+  -  changeSet:
+       id: "3ea3907a-b168-4500-b8f9-53e789c1c2b5"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: notifier_id
+              oldColumnName:  notifierId
+              tableName:  confirm_code_request
+
+  -  changeSet:
+       id: "68cbb7cb-a1d2-4774-bc2e-2b475a0c2e47"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: request_count
+              oldColumnName:  requestCount
+              tableName:  confirm_code_request
+
+  -  changeSet:
+       id: "aa90aea2-cfe5-4b8d-854b-b539daeb4d43"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: created_at
+              oldColumnName:  createdAt
+              tableName:  confirm_code_request
+
+  -  changeSet:
+       id: "1a32c913-c403-483e-8946-b9e489138751"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: updated_at
+              oldColumnName:  updatedAt
+              tableName:  confirm_code_request
+
+  -  changeSet:
+       id: "3d4ecc10-eca5-4f9f-93c1-2352868d6759"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: created_at
+              oldColumnName:  createdAt
+              tableName:  confirm_codes_notifiers
+
+  -  changeSet:
+       id: "ed463d27-f0a8-4087-9291-417b39f5d2ce"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: updated_at
+              oldColumnName:  updatedAt
+              tableName:  confirm_codes_notifiers
+
+  -  changeSet:
+       id: "0d1e1c61-af66-4c8c-a98f-4babcc06c089"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: is_deleted
+              oldColumnName:  isDeleted
+              tableName:  currencies
+
+  -  changeSet:
+       id: "7e8e61eb-4a40-4ec9-8809-b681587edcc9"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: created_at
+              oldColumnName:  createdAt
+              tableName:  currencies
+
+  -  changeSet:
+       id: "8b616799-f6cc-4007-8419-85ddcb012a71"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: updated_at
+              oldColumnName:  updatedAt
+              tableName:  currencies
+
+  -  changeSet:
+       id: "6795333d-4146-4cd0-a66a-72b91c3e20e2"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: created_at
+              oldColumnName:  createdAt
+              tableName:  device_types
+
+  -  changeSet:
+       id: "352099bb-9d44-4e7f-9809-f6c7d06c2f35"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: updated_at
+              oldColumnName:  updatedAt
+              tableName:  device_types
+
+  -  changeSet:
+       id: "bf0d16d5-ebd6-4d0c-a7ad-ef5d2a34dc1e"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: coupon_id
+              oldColumnName:  couponId
+              tableName:  coupon_user
+
+  -  changeSet:
+       id: "fd8958d7-5b5d-46c1-9fe8-5f1e7cf28260"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: user_id
+              oldColumnName:  userId
+              tableName:  coupon_user
+
+  -  changeSet:
+       id: "ced99746-bec5-4fe5-907c-1111f3adec62"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: created_at
+              oldColumnName:  createdAt
+              tableName:  coupon_user
+
+  -  changeSet:
+       id: "15b10d17-a656-4ba3-8031-716736c8ecfa"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: updated_at
+              oldColumnName:  updatedAt
+              tableName:  coupon_user
+
+  -  changeSet:
+       id: "d5728c4b-0555-44ed-a704-f161ac01186a"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: is_public
+              oldColumnName:  isPublic
+              tableName:  delivery
+
+  -  changeSet:
+       id: "1fddb252-b0b8-40d3-ac94-da90926ff3ee"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: created_at
+              oldColumnName:  createdAt
+              tableName:  delivery
+
+  -  changeSet:
+       id: "340ba1cd-9dce-462f-9fb1-5aa26cdaaf20"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: updated_at
+              oldColumnName:  updatedAt
+              tableName:  delivery
+
+  -  changeSet:
+       id: "5380237d-eb42-4902-9985-1a7ade74225f"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: created_at
+              oldColumnName:  createdAt
+              tableName:  email_settings
+
+  -  changeSet:
+       id: "0b4b7210-3fa6-49dd-8920-d94be0cdce4f"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: updated_at
+              oldColumnName:  updatedAt
+              tableName:  email_settings
+
+  -  changeSet:
+       id: "2c668c73-38d9-4cb7-b255-0700674de66c"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: created_at
+              oldColumnName:  createdAt
+              tableName:  external_documents
+
+  -  changeSet:
+       id: "4d333188-0c7b-47fe-8284-7db4d6a52e45"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: updated_at
+              oldColumnName:  updatedAt
+              tableName:  external_documents
+
+  -  changeSet:
+       id: "6770ca79-5a33-40e9-9918-c65478eaef38"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: created_at
+              oldColumnName:  createdAt
+              tableName:  faq
+
+  -  changeSet:
+       id: "b6df9a03-5b7e-4877-8c44-d6aec64ca86e"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: updated_at
+              oldColumnName:  updatedAt
+              tableName:  faq
+
+  -  changeSet:
+       id: "3cf520be-5352-423c-b25a-5a2d0754caa3"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: coupon_state
+              oldColumnName:  couponState
+              tableName:  coupons
+
+  -  changeSet:
+       id: "30fc0e21-6c77-4767-9ba9-767439870fd2"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: is_public
+              oldColumnName:  isPublic
+              tableName:  coupons
+
+  -  changeSet:
+       id: "fc89b8c9-0092-4a81-b6ee-351b41154f10"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: created_at
+              oldColumnName:  createdAt
+              tableName:  coupons
+
+  -  changeSet:
+       id: "54215828-5862-4628-97bb-691e53a62978"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: updated_at
+              oldColumnName:  updatedAt
+              tableName:  coupons
+
+  -  changeSet:
+       id: "d2e0903b-34bd-4acd-8d94-3c8e7543b6a0"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: coupon_emmissions_id
+              oldColumnName:  couponEmmissionsId
+              tableName:  coupons
+
+  -  changeSet:
+       id: "03e07c04-0175-4972-b7d2-ebbf6565a9bd"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: user_id
+              oldColumnName:  userId
+              tableName:  favorite_category_user
+
+  -  changeSet:
+       id: "c1e6a448-11c9-4937-b69e-e47927131cd2"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: start_active_date
+              oldColumnName:  startActiveDate
+              tableName:  favorite_category_user
+
+  -  changeSet:
+       id: "e60c9e82-ff31-48b7-9dd1-7204589c0c9c"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: end_active_date
+              oldColumnName:  endActiveDate
+              tableName:  favorite_category_user
+
+  -  changeSet:
+       id: "a6c16d51-01d5-4ad8-8e5e-46c9ea0f24ee"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: preference_type
+              oldColumnName:  preferenceType
+              tableName:  favorite_category_user
+
+  -  changeSet:
+       id: "d3b53c9b-3c78-4aad-b07a-a45e23232d02"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: preference_value
+              oldColumnName:  preferenceValue
+              tableName:  favorite_category_user
+
+  -  changeSet:
+       id: "1288781b-3d22-4ee7-9c3d-ae50e9295eb2"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: created_at
+              oldColumnName:  createdAt
+              tableName:  favorite_category_user
+
+  -  changeSet:
+       id: "9503d707-0e53-46dd-b76e-5ec9bfde1370"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: updated_at
+              oldColumnName:  updatedAt
+              tableName:  favorite_category_user
+
+  -  changeSet:
+       id: "04a8bd63-031a-4ea6-b2ba-28d033cd4970"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: favorite_category_id
+              oldColumnName:  favoriteCategoryId
+              tableName:  favorite_category_user
+
+  -  changeSet:
+       id: "90ad2f2a-54df-4910-9b66-9a8866e9e60f"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: month_id
+              oldColumnName:  monthId
+              tableName:  favorite_category_user
+
+  -  changeSet:
+       id: "4f7c2fcc-3fab-434a-98dc-d40398190336"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: document_id
+              oldColumnName:  documentId
+              tableName:  file_document
+
+  -  changeSet:
+       id: "c569b50e-37c0-40ee-9cc2-da566ed83f19"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: created_at
+              oldColumnName:  createdAt
+              tableName:  file_document
+
+  -  changeSet:
+       id: "0664b9f3-4ffa-4c70-9102-a0a70981c9be"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: updated_at
+              oldColumnName:  updatedAt
+              tableName:  file_document
+
+  -  changeSet:
+       id: "dc23805b-1a9b-41c0-82f7-a7e1fecb3a46"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: file_id
+              oldColumnName:  fileId
+              tableName:  file_document
+
+  -  changeSet:
+       id: "5a5f024a-4ce1-4a80-8eae-e48c041ff832"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: is_public
+              oldColumnName:  isPublic
+              tableName:  favorite_categories
+
+  -  changeSet:
+       id: "1862e9dd-0502-48fa-bb12-97c4b7fefa26"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: created_at
+              oldColumnName:  createdAt
+              tableName:  favorite_categories
+
+  -  changeSet:
+       id: "b7ba2206-b077-4f49-800f-7b4fd79138f0"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: updated_at
+              oldColumnName:  updatedAt
+              tableName:  favorite_categories
+
+  -  changeSet:
+       id: "7b5adcbc-f44a-4e5b-a3ba-bcccac0d02ea"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: user_id
+              oldColumnName:  userId
+              tableName:  favorite_category_months
+
+  -  changeSet:
+       id: "5f14d414-5d94-4916-9947-8e0a40a98d87"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: created_at
+              oldColumnName:  createdAt
+              tableName:  favorite_category_months
+
+  -  changeSet:
+       id: "27c43a8e-9af6-44f5-bdcf-d9cd1228b605"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: updated_at
+              oldColumnName:  updatedAt
+              tableName:  favorite_category_months
+
+  -  changeSet:
+       id: "c92a7d78-f4c5-49ff-a855-0df28c1e9381"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: created_at
+              oldColumnName:  createdAt
+              tableName:  file_storages
+
+  -  changeSet:
+       id: "04f171c7-9348-422e-81e4-7321e452ed72"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: updated_at
+              oldColumnName:  updatedAt
+              tableName:  file_storages
+
+  -  changeSet:
+       id: "65a2b4da-d245-47e1-bb19-59754819e2b2"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: deleted_at
+              oldColumnName:  deletedAt
+              tableName:  files
+
+  -  changeSet:
+       id: "43741a36-f674-4aef-bf66-2a10cd5e49a4"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: created_at
+              oldColumnName:  createdAt
+              tableName:  files
+
+  -  changeSet:
+       id: "81660c63-08ac-49b5-81c6-9b45e4fdcf2b"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: updated_at
+              oldColumnName:  updatedAt
+              tableName:  files
+
+  -  changeSet:
+       id: "25395e45-28f5-4620-aba0-fb2fd3cf815a"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: storage_id
+              oldColumnName:  storageId
+              tableName:  files
+
+  -  changeSet:
+       id: "5e452250-5bb1-4c8b-a800-278c233cc425"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: created_at
+              oldColumnName:  createdAt
+              tableName:  loymax_files
+
+  -  changeSet:
+       id: "2065ca91-37ad-4014-9f45-c9f6a4132979"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: updated_at
+              oldColumnName:  updatedAt
+              tableName:  loymax_files
+
+  -  changeSet:
+       id: "da8d209c-087d-48d0-8544-cee475a2ec3b"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: max_faforite_categories_count
+              oldColumnName:  maxFaforiteCategoriesCount
+              tableName:  loymax_settings
+
+  -  changeSet:
+       id: "47d7452e-1e85-4862-8c54-8ce725991c09"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: check_id
+              oldColumnName:  checkId
+              tableName:  loymax_checks
+
+  -  changeSet:
+       id: "0230092d-1a59-41db-a485-79f9f102fc54"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: created_at
+              oldColumnName:  createdAt
+              tableName:  loymax_checks
+
+  -  changeSet:
+       id: "8d26dd49-2cc9-4484-a758-8f818dffde64"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: updated_at
+              oldColumnName:  updatedAt
+              tableName:  loymax_checks
+
+  -  changeSet:
+       id: "b05a8dec-fc24-421b-aaa5-d3285280b1b3"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: show_counter
+              oldColumnName:  showCounter
+              tableName:  main_blocks
+
+  -  changeSet:
+       id: "7d5b7397-0d9b-4f86-b2cf-2e4d44a89c34"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: show_end_date
+              oldColumnName:  showEndDate
+              tableName:  main_blocks
+
+  -  changeSet:
+       id: "97363703-7274-4b78-9efa-9ff23a6d8bd4"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: show_percents
+              oldColumnName:  showPercents
+              tableName:  main_blocks
+
+  -  changeSet:
+       id: "b40db65c-66b6-4190-bac3-be3abe1f03a9"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: show_billet
+              oldColumnName:  showBillet
+              tableName:  main_blocks
+
+  -  changeSet:
+       id: "0cf1cb88-a2b8-47c4-aec4-d2af020e2bbc"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: created_at
+              oldColumnName:  createdAt
+              tableName:  main_blocks
+
+  -  changeSet:
+       id: "08f36b4d-ce6b-4b0f-838e-7e9b39ee77e3"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: updated_at
+              oldColumnName:  updatedAt
+              tableName:  main_blocks
+
+  -  changeSet:
+       id: "e09fdafe-edb9-4a62-b92d-18c923541426"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: created_at
+              oldColumnName:  createdAt
+              tableName:  merchant_attributes
+
+  -  changeSet:
+       id: "17f09704-be98-429c-8acf-8e439a1a7234"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: updated_at
+              oldColumnName:  updatedAt
+              tableName:  merchant_attributes
+
+  -  changeSet:
+       id: "f4b5f5f2-99bb-41a6-abe8-3d2fad2dac66"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: card_id
+              oldColumnName:  cardId
+              tableName:  card_user
+
+  -  changeSet:
+       id: "5b7b0013-4ed3-4106-8c5a-c071612c27aa"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: user_id
+              oldColumnName:  userId
+              tableName:  card_user
+
+  -  changeSet:
+       id: "8666d026-9d1f-4fb5-abe8-b2573ee8f6f9"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: can_block
+              oldColumnName:  canBlock
+              tableName:  card_user
+
+  -  changeSet:
+       id: "cc097a6c-fcfc-4367-ac1e-916e85dba6ce"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: can_replace
+              oldColumnName:  canReplace
+              tableName:  card_user
+
+  -  changeSet:
+       id: "5c76289e-006b-4755-991e-c8d4a9241fb8"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: created_at
+              oldColumnName:  createdAt
+              tableName:  card_user
+
+  -  changeSet:
+       id: "a47c013a-a0e1-41c1-970d-452c5d241155"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: updated_at
+              oldColumnName:  updatedAt
+              tableName:  card_user
+
+  -  changeSet:
+       id: "cea1f099-cf8a-4552-967f-d9a200cdb766"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: is_public
+              oldColumnName:  isPublic
+              tableName:  info_screens
+
+  -  changeSet:
+       id: "7660ee09-04a1-4265-8193-adbe2864a9c9"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: city_select
+              oldColumnName:  citySelect
+              tableName:  info_screens
+
+  -  changeSet:
+       id: "b4b9c7d0-f5c3-46e3-838a-0d37985f277c"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: created_at
+              oldColumnName:  createdAt
+              tableName:  info_screens
+
+  -  changeSet:
+       id: "d30867d9-22e4-42b7-8ced-0267d4be9ad8"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: updated_at
+              oldColumnName:  updatedAt
+              tableName:  info_screens
+
+  -  changeSet:
+       id: "f9f052bc-f9b0-495e-a5d2-7613469a4dc7"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: user_id
+              oldColumnName:  userId
+              tableName:  loymax_users
+
+  -  changeSet:
+       id: "9170d94c-36d3-43f9-af28-4087a07c1707"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: expires_at
+              oldColumnName:  expiresAt
+              tableName:  loymax_users
+
+  -  changeSet:
+       id: "69fe9d1e-f829-43e7-ad16-4edc946f3afe"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: created_at
+              oldColumnName:  createdAt
+              tableName:  loymax_users
+
+  -  changeSet:
+       id: "7154e84e-eb5f-4120-bfa3-23f595664990"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: updated_at
+              oldColumnName:  updatedAt
+              tableName:  loymax_users
+
+  -  changeSet:
+       id: "628725ac-6256-46ea-a4c6-da8065d93f5e"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: set_mobile_application_installed
+              oldColumnName:  setMobileApplicationInstalled
+              tableName:  loymax_users
+
+  -  changeSet:
+       id: "78e5bd1c-7dd6-47e7-8686-2b6577ab2b3d"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: loymax_user_id
+              oldColumnName:  loymaxUserId
+              tableName:  loymax_users
+
+  -  changeSet:
+       id: "5a72adec-ee13-404f-b84d-725e46c8ca62"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: check_item_id
+              oldColumnName:  checkItemId
+              tableName:  loymax_checks_items
+
+  -  changeSet:
+       id: "b1430799-799d-4113-8e0e-f40feab6e940"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: created_at
+              oldColumnName:  createdAt
+              tableName:  loymax_checks_items
+
+  -  changeSet:
+       id: "e6bddda5-6403-48d6-b95b-1b5e3777caa3"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: updated_at
+              oldColumnName:  updatedAt
+              tableName:  loymax_checks_items
+
+  -  changeSet:
+       id: "fc2b5d3e-4f5b-4bb0-a99e-4a095dd2d25f"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: coupon_id
+              oldColumnName:  couponId
+              tableName:  loymax_coupons
+
+  -  changeSet:
+       id: "d1a57336-6d1e-43eb-b489-8adbf825b5bc"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: loymax_coupon_id
+              oldColumnName:  loymaxCouponId
+              tableName:  loymax_coupons
+
+  -  changeSet:
+       id: "607bcfe9-5ad7-49a3-b0ca-62adb1bacfc4"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: created_at
+              oldColumnName:  createdAt
+              tableName:  loymax_coupons
+
+  -  changeSet:
+       id: "d783baf2-bd61-422a-b867-f5b274fa8ef9"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: updated_at
+              oldColumnName:  updatedAt
+              tableName:  loymax_coupons
+
+  -  changeSet:
+       id: "180d2f1d-8256-44a6-9e10-0151aca382b8"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: offer_id
+              oldColumnName:  offerId
+              tableName:  loymax_offers
+
+  -  changeSet:
+       id: "fd925462-3994-40d3-8919-fbfe7cac5d82"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: loymax_offer_id
+              oldColumnName:  loymaxOfferId
+              tableName:  loymax_offers
+
+  -  changeSet:
+       id: "46349615-1748-48b3-a1a4-a6ff7f0e85c2"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: created_at
+              oldColumnName:  createdAt
+              tableName:  loymax_offers
+
+  -  changeSet:
+       id: "912da97a-713a-402e-82e6-a6de47610038"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: updated_at
+              oldColumnName:  updatedAt
+              tableName:  loymax_offers
+
+  -  changeSet:
+       id: "421506e2-fd03-408e-9af1-2b63acf74870"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: personal_offer_id
+              oldColumnName:  personalOfferId
+              tableName:  loymax_personal_offers
+
+  -  changeSet:
+       id: "79121bc3-1da9-47ec-9144-ac7b3bae8ac1"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: loymax_offer_id
+              oldColumnName:  loymaxOfferId
+              tableName:  loymax_personal_offers
+
+  -  changeSet:
+       id: "74172400-7f83-4d96-ae8e-e4c590ebaa8e"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: created_at
+              oldColumnName:  createdAt
+              tableName:  loymax_personal_offers
+
+  -  changeSet:
+       id: "c391778d-6603-492c-ae7a-6f40caf5265f"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: updated_at
+              oldColumnName:  updatedAt
+              tableName:  loymax_personal_offers
+
+  -  changeSet:
+       id: "e19b8c2e-9cdd-424d-b28b-9a40f97222ed"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: personal_good_id
+              oldColumnName:  personalGoodId
+              tableName:  loymax_personal_goods
+
+  -  changeSet:
+       id: "0b2f5d81-fee7-431f-b95d-28a8322196bd"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: loymax_good_id
+              oldColumnName:  loymaxGoodId
+              tableName:  loymax_personal_goods
+
+  -  changeSet:
+       id: "e00f8534-aa75-4b74-9195-dd44ad832353"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: created_at
+              oldColumnName:  createdAt
+              tableName:  loymax_personal_goods
+
+  -  changeSet:
+       id: "6407783d-d7e4-4c31-b9f2-c43fe2eab534"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: updated_at
+              oldColumnName:  updatedAt
+              tableName:  loymax_personal_goods
+
+  -  changeSet:
+       id: "a93ab402-9a0b-414a-bf4c-d336fc6c4e11"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: card_id
+              oldColumnName:  cardId
+              tableName:  loymax_cards
+
+  -  changeSet:
+       id: "db2af5bb-7a47-47ec-a637-7a2afbf5389d"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: loymax_card_id
+              oldColumnName:  loymaxCardId
+              tableName:  loymax_cards
+
+  -  changeSet:
+       id: "3397e082-48f5-4bdd-9489-de4d72b1b67d"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: created_at
+              oldColumnName:  createdAt
+              tableName:  loymax_cards
+
+  -  changeSet:
+       id: "0ef64586-5ee6-487a-bf5c-df90f1a857d4"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: updated_at
+              oldColumnName:  updatedAt
+              tableName:  loymax_cards
+
+  -  changeSet:
+       id: "ff7a49ae-6ef9-45b3-88da-24f704883ffd"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: user_id
+              oldColumnName:  userId
+              tableName:  loymax_last_user_requests
+
+  -  changeSet:
+       id: "8c80d85e-57c3-4202-994d-92006191f2a5"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: request_type_id
+              oldColumnName:  requestTypeId
+              tableName:  loymax_last_user_requests
+
+  -  changeSet:
+       id: "456e2862-4435-45c0-ab46-940efd7b6015"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: created_at
+              oldColumnName:  createdAt
+              tableName:  loymax_last_user_requests
+
+  -  changeSet:
+       id: "8d329dc2-eeb6-4d6e-bb70-1ce179878993"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: updated_at
+              oldColumnName:  updatedAt
+              tableName:  loymax_last_user_requests
+
+  -  changeSet:
+       id: "290f3dcb-c64b-4450-b4b3-ae0179c518e9"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: card_id
+              oldColumnName:  cardId
+              tableName:  checks
+
+  -  changeSet:
+       id: "700f9b2e-49b6-40b8-bd37-5d23b1c7dd82"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: user_id
+              oldColumnName:  userId
+              tableName:  checks
+
+  -  changeSet:
+       id: "91da5a63-280c-418e-92ee-4fe6ad37abd8"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: merchant_id
+              oldColumnName:  merchantId
+              tableName:  checks
+
+  -  changeSet:
+       id: "789d0342-289e-48d8-a786-179677d667b6"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: date_time
+              oldColumnName:  dateTime
+              tableName:  checks
+
+  -  changeSet:
+       id: "52b69be6-e274-41dc-8de6-0b73965dc1ed"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: is_refund
+              oldColumnName:  isRefund
+              tableName:  checks
+
+  -  changeSet:
+       id: "cd4018e6-da09-4951-829e-57e0078c3d07"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: currency_id
+              oldColumnName:  currencyId
+              tableName:  checks
+
+  -  changeSet:
+       id: "5536bcdb-1919-4e1c-82d2-ba7a802f1984"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: created_at
+              oldColumnName:  createdAt
+              tableName:  checks
+
+  -  changeSet:
+       id: "7f7f7b2a-4847-41af-aa67-8170b820ebda"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: updated_at
+              oldColumnName:  updatedAt
+              tableName:  checks
+
+  -  changeSet:
+       id: "2638f543-ccd7-4b84-91c6-cca89968d606"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: is_notif_sent
+              oldColumnName:  isNotifSent
+              tableName:  checks
+
+  -  changeSet:
+       id: "f92df5af-9359-4305-af52-2192c5dbc2c4"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: created_at
+              oldColumnName:  createdAt
+              tableName:  loymax_request_types
+
+  -  changeSet:
+       id: "e55bdb5d-0f81-4526-91dd-33bc952a64f4"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: updated_at
+              oldColumnName:  updatedAt
+              tableName:  loymax_request_types
+
+  -  changeSet:
+       id: "4a4b9d51-bf55-4697-b60d-4f0afa72d2e4"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: request_type_id
+              oldColumnName:  requestTypeId
+              tableName:  loymax_last_request
+
+  -  changeSet:
+       id: "2df40783-f8de-4428-af9e-d4fc795caa20"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: created_at
+              oldColumnName:  createdAt
+              tableName:  loymax_last_request
+
+  -  changeSet:
+       id: "55d63ba6-b3d7-4025-9f79-de3aac4cf723"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: updated_at
+              oldColumnName:  updatedAt
+              tableName:  loymax_last_request
+
+  -  changeSet:
+       id: "599dee21-48c3-460f-ac1d-4383067f4b06"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: user_id
+              oldColumnName:  userId
+              tableName:  loymax_users_socials
+
+  -  changeSet:
+       id: "d3678981-e11b-40a3-8075-81bebff7799d"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: social_id
+              oldColumnName:  socialId
+              tableName:  loymax_users_socials
+
+  -  changeSet:
+       id: "e5a0d122-7d72-4bab-88a0-f909a81cf6fe"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: created_at
+              oldColumnName:  createdAt
+              tableName:  loymax_users_socials
+
+  -  changeSet:
+       id: "2211ae53-f99d-42b4-880c-b22426507bed"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: updated_at
+              oldColumnName:  updatedAt
+              tableName:  loymax_users_socials
+
+  -  changeSet:
+       id: "2317d7c9-3f1d-427a-b8fd-f49029b8348d"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: created_at
+              oldColumnName:  createdAt
+              tableName:  merchant_comments_questions
+
+  -  changeSet:
+       id: "c76f17e0-4133-4829-8dfa-492fa3bbc079"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: updated_at
+              oldColumnName:  updatedAt
+              tableName:  merchant_comments_questions
+
+  -  changeSet:
+       id: "d74e442b-bdc4-43c0-9468-c8c24e2f126a"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: merchant_comment_id
+              oldColumnName:  merchantCommentId
+              tableName:  merchant_comment_answers
+
+  -  changeSet:
+       id: "a7e6df2a-bcd6-48bd-8ed1-c61804d455c8"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: option_id
+              oldColumnName:  optionId
+              tableName:  merchant_comment_answers
+
+  -  changeSet:
+       id: "e1009f4a-181d-4e54-8d35-1a2277a04f2d"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: created_at
+              oldColumnName:  createdAt
+              tableName:  merchant_comment_answers
+
+  -  changeSet:
+       id: "35ad6e4e-0ab0-4ef1-9f5e-074f898f609f"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: updated_at
+              oldColumnName:  updatedAt
+              tableName:  merchant_comment_answers
+
+  -  changeSet:
+       id: "d84d2846-5b87-4258-abe4-3056322444a3"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: created_at
+              oldColumnName:  createdAt
+              tableName:  merchant_formats
+
+  -  changeSet:
+       id: "0f6970fc-55a6-4579-9290-358ea4f1c0dc"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: updated_at
+              oldColumnName:  updatedAt
+              tableName:  merchant_formats
+
+  -  changeSet:
+       id: "406bb5c4-e576-4bae-8640-07fea545a6d8"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: format_id
+              oldColumnName:  formatId
+              tableName:  merchants
+
+  -  changeSet:
+       id: "b606313f-8ee7-408c-8b98-dd60d5d77a79"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: working_status
+              oldColumnName:  workingStatus
+              tableName:  merchants
+
+  -  changeSet:
+       id: "3ef47975-1d7f-45b1-82dd-3be08f532b8e"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: is_public
+              oldColumnName:  isPublic
+              tableName:  merchants
+
+  -  changeSet:
+       id: "96b0e59d-4e8a-4789-b721-c315848ee3b8"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: created_at
+              oldColumnName:  createdAt
+              tableName:  merchants
+
+  -  changeSet:
+       id: "d9dee1c2-b2d7-4041-9ad8-03400619482a"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: updated_at
+              oldColumnName:  updatedAt
+              tableName:  merchants
+
+  -  changeSet:
+       id: "4c2d0559-30b4-4340-bbd4-ec21cd53e8e3"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: created_at
+              oldColumnName:  createdAt
+              tableName:  notifications_types
+
+  -  changeSet:
+       id: "fe34a82f-72ae-4535-a041-05a7924b076d"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: updated_at
+              oldColumnName:  updatedAt
+              tableName:  notifications_types
+
+  -  changeSet:
+       id: "1c92ef30-d57a-45b8-b349-40c83efd6278"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: created_at
+              oldColumnName:  createdAt
+              tableName:  offers
+
+  -  changeSet:
+       id: "c412e7ff-3a57-48ba-a537-c368f86c1e20"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: updated_at
+              oldColumnName:  updatedAt
+              tableName:  offers
+
+  -  changeSet:
+       id: "242b240f-a720-4831-8d8b-2ab64e4f7261"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: check_id
+              oldColumnName:  checkId
+              tableName:  checks_items
+
+  -  changeSet:
+       id: "3a253df3-85ed-4e88-93e4-516f71048c3f"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: position_id
+              oldColumnName:  positionId
+              tableName:  checks_items
+
+  -  changeSet:
+       id: "3755350b-2f39-4022-aa45-939c423c4b50"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: created_at
+              oldColumnName:  createdAt
+              tableName:  checks_items
+
+  -  changeSet:
+       id: "8e42ad28-e4f2-428b-8811-7b2079e1bce2"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: updated_at
+              oldColumnName:  updatedAt
+              tableName:  checks_items
+
+  -  changeSet:
+       id: "16385262-f2f2-4545-a2e8-0058ed3ca545"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: message_template_id
+              oldColumnName:  messageTemplateId
+              tableName:  messages
+
+  -  changeSet:
+       id: "c0d96112-d5ab-4ae3-869a-b914fd3bbe71"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: user_id
+              oldColumnName:  userId
+              tableName:  messages
+
+  -  changeSet:
+       id: "7ee21f29-750b-47c7-88f5-b18902c099b4"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: sended_at
+              oldColumnName:  sendedAt
+              tableName:  messages
+
+  -  changeSet:
+       id: "6cbcedb4-2204-469d-b2e5-c5b5c0c978ca"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: created_at
+              oldColumnName:  createdAt
+              tableName:  messages
+
+  -  changeSet:
+       id: "756453f0-e1bc-46da-b242-33060aedf391"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: updated_at
+              oldColumnName:  updatedAt
+              tableName:  messages
+
+  -  changeSet:
+       id: "1aa5fd51-72b9-42eb-b8bc-9c8a7b60ac71"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: trigger_log_id
+              oldColumnName:  triggerLogId
+              tableName:  messages
+
+  -  changeSet:
+       id: "58409bcb-2beb-4559-bb7a-55c2fd30622b"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: user_id
+              oldColumnName:  userId
+              tableName:  merchant_comments
+
+  -  changeSet:
+       id: "e77b02b7-035a-4763-b7c0-926d91fbe73f"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: card_id
+              oldColumnName:  cardId
+              tableName:  merchant_comments
+
+  -  changeSet:
+       id: "7e668396-9fb0-447d-85c1-e5451963dac3"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: merchant_id
+              oldColumnName:  merchantId
+              tableName:  merchant_comments
+
+  -  changeSet:
+       id: "5d0ee390-a4c3-4fa3-b7c8-5175d5814f61"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: created_at
+              oldColumnName:  createdAt
+              tableName:  merchant_comments
+
+  -  changeSet:
+       id: "5bfe3890-7899-4a69-a97a-85b6ac690bad"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: updated_at
+              oldColumnName:  updatedAt
+              tableName:  merchant_comments
+
+  -  changeSet:
+       id: "297ad30b-0edc-4592-906f-a14388910293"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: created_at
+              oldColumnName:  createdAt
+              tableName:  messages_types
+
+  -  changeSet:
+       id: "3210b09c-8fbb-4900-a6a3-7f706ebd7515"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: updated_at
+              oldColumnName:  updatedAt
+              tableName:  messages_types
+
+  -  changeSet:
+       id: "c1236c6a-4784-4064-90f9-4b042194569f"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: message_type_id
+              oldColumnName:  messageTypeId
+              tableName:  messages_templates
+
+  -  changeSet:
+       id: "ff881200-ada8-484e-ae79-71914449c080"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: screen_id
+              oldColumnName:  screenId
+              tableName:  messages_templates
+
+  -  changeSet:
+       id: "8b3e69c7-9844-4bba-8150-a2f32b5f1707"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: notification_type_id
+              oldColumnName:  notificationTypeId
+              tableName:  messages_templates
+
+  -  changeSet:
+       id: "e86b13a2-c500-41a4-b4eb-afd79f41c33e"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: send_to_everyone
+              oldColumnName:  sendToEveryone
+              tableName:  messages_templates
+
+  -  changeSet:
+       id: "aa859228-8ac1-4ae3-b7f8-a1fb23d2b7bc"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: is_system
+              oldColumnName:  isSystem
+              tableName:  messages_templates
+
+  -  changeSet:
+       id: "476c1ab2-2a8e-4d8a-8a2e-d067e9dbc1c2"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: created_at
+              oldColumnName:  createdAt
+              tableName:  messages_templates
+
+  -  changeSet:
+       id: "24dbc369-0785-49ea-8cdb-8009fd3192f9"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: updated_at
+              oldColumnName:  updatedAt
+              tableName:  messages_templates
+
+  -  changeSet:
+       id: "ddcc4f64-8da8-417a-8dbb-4709c345b179"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: message_template_id
+              oldColumnName:  messageTemplateId
+              tableName:  messages_template_user
+
+  -  changeSet:
+       id: "f78904aa-3fff-4d61-8a26-8fed92ce3649"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: user_id
+              oldColumnName:  userId
+              tableName:  messages_template_user
+
+  -  changeSet:
+       id: "0f36216e-6165-4cc7-86de-a493352c0985"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: created_at
+              oldColumnName:  createdAt
+              tableName:  messages_template_user
+
+  -  changeSet:
+       id: "1afc4fa1-cdef-47cf-9e09-16da9cb5b685"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: updated_at
+              oldColumnName:  updatedAt
+              tableName:  messages_template_user
+
+  -  changeSet:
+       id: "9f04da1c-83a9-46de-a24a-e921ecdbce61"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: message_template
+              oldColumnName:  messageTemplate
+              tableName:  messages_template_users_group
+
+  -  changeSet:
+       id: "67612127-36d8-43ed-9229-6e6ba872961c"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: users_group_id
+              oldColumnName:  usersGroupId
+              tableName:  messages_template_users_group
+
+  -  changeSet:
+       id: "28dc38f3-398a-4224-bf9a-dd09320d3789"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: created_at
+              oldColumnName:  createdAt
+              tableName:  messages_template_users_group
+
+  -  changeSet:
+       id: "56ab3de3-7d4b-4de4-a196-002e8a834fdc"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: updated_at
+              oldColumnName:  updatedAt
+              tableName:  messages_template_users_group
+
+  -  changeSet:
+       id: "2d11e4b4-dc63-4f61-9c25-a2b790b48139"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: user_id
+              oldColumnName:  userId
+              tableName:  notifications
+
+  -  changeSet:
+       id: "58d954e0-4ca1-40ea-808d-7c6a32182346"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: type_id
+              oldColumnName:  typeId
+              tableName:  notifications
+
+  -  changeSet:
+       id: "4ab3beb3-4d1e-4079-94a6-632e8c14d7ce"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: sended_at
+              oldColumnName:  sendedAt
+              tableName:  notifications
+
+  -  changeSet:
+       id: "81510ce0-8542-4cfe-9dd6-fac356717e53"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: is_readed
+              oldColumnName:  isReaded
+              tableName:  notifications
+
+  -  changeSet:
+       id: "c16a035c-9626-4451-bbb3-d25cbefb81d6"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: created_at
+              oldColumnName:  createdAt
+              tableName:  notifications
+
+  -  changeSet:
+       id: "cb3590bd-43de-4077-bf63-f3374f493230"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: updated_at
+              oldColumnName:  updatedAt
+              tableName:  notifications
+
+  -  changeSet:
+       id: "178b35d2-3a8e-46e5-904f-54d827df3c72"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: screen_id
+              oldColumnName:  screenId
+              tableName:  notifications
+
+  -  changeSet:
+       id: "b06f45e6-ca37-4a93-92c8-4fbcbb0a9717"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: merchant_id
+              oldColumnName:  merchantId
+              tableName:  notifications
+
+  -  changeSet:
+       id: "5c9201d0-1342-452b-99cb-273c2ac38177"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: user_id
+              oldColumnName:  userId
+              tableName:  registrations
+
+  -  changeSet:
+       id: "a3a513c2-295a-4f09-8402-6d6dce01a414"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: created_at
+              oldColumnName:  createdAt
+              tableName:  registrations
+
+  -  changeSet:
+       id: "67a302ef-40a5-41a1-a399-da3cdeed5e56"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: updated_at
+              oldColumnName:  updatedAt
+              tableName:  registrations
+
+  -  changeSet:
+       id: "272f5f60-56f7-448b-9939-201aa34826c5"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: created_at
+              oldColumnName:  createdAt
+              tableName:  payment_settings
+
+  -  changeSet:
+       id: "c9755813-9c09-4b32-9d54-d4bad72d46b5"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: updated_at
+              oldColumnName:  updatedAt
+              tableName:  payment_settings
+
+  -  changeSet:
+       id: "3aa9217c-8e92-4815-bc86-73deeca75e1d"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: user_id
+              oldColumnName:  userId
+              tableName:  personal_goods
+
+  -  changeSet:
+       id: "362769ef-d4a8-4874-a000-751b4006d25c"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: goods_id
+              oldColumnName:  goodsId
+              tableName:  personal_goods
+
+  -  changeSet:
+       id: "ab57bfe6-070a-4933-aa8f-c6ec08643d1e"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: start_date
+              oldColumnName:  startDate
+              tableName:  personal_goods
+
+  -  changeSet:
+       id: "900c4023-3e1f-43ce-bec4-d5de012cfd74"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: end_date
+              oldColumnName:  endDate
+              tableName:  personal_goods
+
+  -  changeSet:
+       id: "1808e221-d05a-4d76-9636-a9d7b54db45f"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: preference_type
+              oldColumnName:  preferenceType
+              tableName:  personal_goods
+
+  -  changeSet:
+       id: "895b605d-4860-4f64-8729-442735925580"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: calculation_method
+              oldColumnName:  calculationMethod
+              tableName:  personal_goods
+
+  -  changeSet:
+       id: "9ae3cc59-697f-4ad6-b21b-392d02bb5363"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: preference_value
+              oldColumnName:  preferenceValue
+              tableName:  personal_goods
+
+  -  changeSet:
+       id: "ef562f77-0028-47fb-8839-fc6bb638f942"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: created_at
+              oldColumnName:  createdAt
+              tableName:  personal_goods
+
+  -  changeSet:
+       id: "7e7e2aa0-f3be-41c7-badf-774b5d2db282"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: updated_at
+              oldColumnName:  updatedAt
+              tableName:  personal_goods
+
+  -  changeSet:
+       id: "37ede5ef-ad63-403e-8eb4-baf9dcc6deba"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: user_id
+              oldColumnName:  userId
+              tableName:  role_user
+
+  -  changeSet:
+       id: "0b6450a8-3e4f-4845-b587-34e1148ac203"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: role_id
+              oldColumnName:  roleId
+              tableName:  role_user
+
+  -  changeSet:
+       id: "b77338fc-0874-476b-86f3-adcae588ed45"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: created_at
+              oldColumnName:  createdAt
+              tableName:  role_user
+
+  -  changeSet:
+       id: "d582d259-7caa-4ac1-8439-075092378499"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: updated_at
+              oldColumnName:  updatedAt
+              tableName:  role_user
+
+  -  changeSet:
+       id: "a46e9374-d967-41a0-8221-acc60dab1fa0"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: created_at
+              oldColumnName:  createdAt
+              tableName:  push_settings
+
+  -  changeSet:
+       id: "4f5cc0df-9676-45d4-8d35-c77900086716"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: updated_at
+              oldColumnName:  updatedAt
+              tableName:  push_settings
+
+  -  changeSet:
+       id: "27703872-d198-4af6-b7bf-6ee64652660f"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: check_id
+              oldColumnName:  checkId
+              tableName:  checks_additional_attributes
+
+  -  changeSet:
+       id: "8c310a4f-5f49-4ce1-80e1-55008048fa80"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: decimal_value
+              oldColumnName:  decimalValue
+              tableName:  checks_additional_attributes
+
+  -  changeSet:
+       id: "fb2ea89a-3589-4a4a-aca5-cf713a402138"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: created_at
+              oldColumnName:  createdAt
+              tableName:  checks_additional_attributes
+
+  -  changeSet:
+       id: "37e8ee22-2499-4ce8-b9ac-a107b395c44d"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: updated_at
+              oldColumnName:  updatedAt
+              tableName:  checks_additional_attributes
+
+  -  changeSet:
+       id: "fe1dde48-a548-472d-8c63-d8a5bbe4e608"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: expiry_date
+              oldColumnName:  expiryDate
+              tableName:  cards
+
+  -  changeSet:
+       id: "fffb1ea9-1ca6-4d0c-aeb6-9af87be42f91"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: owner_id
+              oldColumnName:  ownerId
+              tableName:  cards
+
+  -  changeSet:
+       id: "816b440f-6e19-4a43-b4f6-42913bea6466"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: created_at
+              oldColumnName:  createdAt
+              tableName:  cards
+
+  -  changeSet:
+       id: "8e74d004-155d-4493-9dd4-27ef9ddbc22f"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: updated_at
+              oldColumnName:  updatedAt
+              tableName:  cards
+
+  -  changeSet:
+       id: "30f045aa-8845-4821-8bbe-231ffa6fe94a"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: currency_id
+              oldColumnName:  currencyId
+              tableName:  accounts_types
+
+  -  changeSet:
+       id: "ae70f233-1e13-428f-af69-33c3c70a50fa"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: created_at
+              oldColumnName:  createdAt
+              tableName:  accounts_types
+
+  -  changeSet:
+       id: "2fba7a4b-61b4-4c5b-af68-9c072a64e66e"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: updated_at
+              oldColumnName:  updatedAt
+              tableName:  accounts_types
+
+  -  changeSet:
+       id: "0881535b-dfd9-4a4f-9184-b3373aae3f1a"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: city_select
+              oldColumnName:  citySelect
+              tableName:  catalogs
+
+  -  changeSet:
+       id: "933194d6-c00c-40f9-944d-65f681b7d264"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: created_at
+              oldColumnName:  createdAt
+              tableName:  catalogs
+
+  -  changeSet:
+       id: "cf8a0e6d-bc75-4ae4-a0a2-f55afcc8ee35"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: updated_at
+              oldColumnName:  updatedAt
+              tableName:  catalogs
+
+  -  changeSet:
+       id: "6bc38dd4-b234-44ef-9a31-7febace9b7d8"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: catalog_id
+              oldColumnName:  catalogId
+              tableName:  catalog_city
+
+  -  changeSet:
+       id: "1160638f-4d89-4345-9c5f-cc7882cb4370"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: city_id
+              oldColumnName:  cityId
+              tableName:  catalog_city
+
+  -  changeSet:
+       id: "187e82f1-07ac-4afb-8f1a-4a8672536898"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: created_at
+              oldColumnName:  createdAt
+              tableName:  catalog_city
+
+  -  changeSet:
+       id: "fe301570-73d6-41d4-89cf-9b31c8c3910e"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: updated_at
+              oldColumnName:  updatedAt
+              tableName:  catalog_city
+
+  -  changeSet:
+       id: "fcf4d4b0-812b-4d3a-9fc7-542051f7718a"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: screen_id
+              oldColumnName:  screenId
+              tableName:  onbox_banners
+
+  -  changeSet:
+       id: "2750e6af-2a16-450f-9120-33583e9bb9a5"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: city_select
+              oldColumnName:  citySelect
+              tableName:  onbox_banners
+
+  -  changeSet:
+       id: "562dd4bf-2753-4fda-8d4c-2e95dc355d2a"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: is_public
+              oldColumnName:  isPublic
+              tableName:  onbox_banners
+
+  -  changeSet:
+       id: "d13ee27b-8b3f-485a-ad89-78d786030a99"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: created_at
+              oldColumnName:  createdAt
+              tableName:  onbox_banners
+
+  -  changeSet:
+       id: "213c4a68-3765-4797-a7d5-bc57fe8afe26"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: updated_at
+              oldColumnName:  updatedAt
+              tableName:  onbox_banners
+
+  -  changeSet:
+       id: "e4b00cca-22a9-44d4-9c80-cea96c5b14d8"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: sender_name
+              oldColumnName:  senderName
+              tableName:  sms_settings
+
+  -  changeSet:
+       id: "1db50686-6ed9-4430-aad6-67cf39671d0a"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: phone_number
+              oldColumnName:  phoneNumber
+              tableName:  users_unconfirmed_phones
+
+  -  changeSet:
+       id: "0d640e48-5988-4778-b0b9-930df1fd6dff"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: gateway_login
+              oldColumnName:  gatewayLogin
+              tableName:  sms_settings
+
+  -  changeSet:
+       id: "1f0c3a40-db63-4bd9-9550-842c7e6da2fa"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: gateway_password
+              oldColumnName:  gatewayPassword
+              tableName:  sms_settings
+
+  -  changeSet:
+       id: "7ac736e5-7add-405c-9b25-f20e8a0e76e3"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: file_uuid
+              oldColumnName:  fileUuid
+              tableName:  loymax_files
+
+  -  changeSet:
+       id: "9928de94-d2d6-4598-b950-f6cf1fabf34d"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: loymax_file_id
+              oldColumnName:  loymaxFileId
+              tableName:  loymax_files
+
+  -  changeSet:
+       id: "3c7fe2ef-0339-4e02-8dff-0f332ee6fba7"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: working_hours_from
+              oldColumnName:  workingHoursFrom
+              tableName:  merchants
+
+  -  changeSet:
+       id: "89feb107-2dad-4add-9020-14ebb8cd6057"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: working_hours_to
+              oldColumnName:  workingHoursTo
+              tableName:  merchants
+
+  -  changeSet:
+       id: "164fa109-5c96-406f-97f6-a2914233be49"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: time_start
+              oldColumnName:  timeStart
+              tableName:  triggers_documents
+
+  -  changeSet:
+       id: "8fe9c55d-167b-40d9-8162-ad2d3c2a64ed"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: site_key
+              oldColumnName:  siteKey
+              tableName:  loymax_settings
+
+  -  changeSet:
+       id: "2d7e3868-8e34-4078-8c4b-d9b70adc94db"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: question_id
+              oldColumnName:  questionId
+              tableName:  merchant_comments_question_options
+
+  -  changeSet:
+       id: "0a37790b-fb41-48f3-b7fc-4a7cc9cf8e2d"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: history_id
+              oldColumnName:  historyId
+              tableName:  loymax_checks
+
+  -  changeSet:
+       id: "3c23732f-2ac8-44f5-82f7-a31e0b083317"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: withdraw_type
+              oldColumnName:  withdrawType
+              tableName:  checks_withdraws
+
+  -  changeSet:
+       id: "93280089-5bb8-49bb-a512-012547b44cc1"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: loymax_location_id
+              oldColumnName:  loymaxLocationId
+              tableName:  merchants
+
+  -  changeSet:
+       id: "dd43cc69-ebfe-497f-a47c-2b1e056b25d9"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: message_type
+              oldColumnName:  messageType
+              tableName:  support_chat_messages
+
+  -  changeSet:
+       id: "fc9d3ff0-3806-48a2-a328-ced47099d765"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: tinkoff_merchant_id
+              oldColumnName:  tinkoffMerchantId
+              tableName:  payment_settings
+
+  -  changeSet:
+       id: "f990b16b-0ba9-41a1-8aec-1ad683c84258"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: short_description
+              oldColumnName:  shortDescription
+              tableName:  offers
+
+  -  changeSet:
+       id: "eafc1af5-1003-462c-96d0-25f154457c6c"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: full_name
+              oldColumnName:  fullName
+              tableName:  user_requests
+
+  -  changeSet:
+       id: "789fd045-ee39-4417-8b11-a869c4562952"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: external_id
+              oldColumnName:  externalId
+              tableName:  currencies
+
+  -  changeSet:
+       id: "4108fc66-347f-41e0-9693-e13fafe7b14d"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: name_cases
+              oldColumnName:  nameCases
+              tableName:  currencies
+
+  -  changeSet:
+       id: "4a39203d-87aa-4469-b836-4bee9c998aba"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: brand_id
+              oldColumnName:  brandId
+              tableName:  personal_goods
+
+  -  changeSet:
+       id: "614af78e-b641-4c3e-b298-0a2d12633ab4"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: refresh_token
+              oldColumnName:  refreshToken
+              tableName:  loymax_users
+
+  -  changeSet:
+       id: "e72ab078-e1af-46a9-ab22-15e4c5c9b551"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: person_uid
+              oldColumnName:  personUid
+              tableName:  loymax_users
+
+  -  changeSet:
+       id: "f3d83acf-46e8-439f-9ce4-ab6795fc05ee"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: notifier_identity
+              oldColumnName:  notifierIdentity
+              tableName:  recovery_password_requests
+
+  -  changeSet:
+       id: "49e6dd8c-e4e6-43ec-89a9-1ee6c987575e"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: item_id
+              oldColumnName:  itemId
+              tableName:  loymax_checks_items
+
+  -  changeSet:
+       id: "0f87beec-612d-425e-8444-6539da26c087"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: firebase_project_id
+              oldColumnName:  firebaseProjectId
+              tableName:  push_settings
+
+  -  changeSet:
+       id: "01a5cc7d-80eb-49e6-8f65-5a84b0d7713d"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: huawei_app_id
+              oldColumnName:  huaweiAppId
+              tableName:  push_settings
+
+  -  changeSet:
+       id: "2344f685-2486-4f40-9611-e9096929b7f6"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: huawei_app_secret
+              oldColumnName:  huaweiAppSecret
+              tableName:  push_settings
+
+  -  changeSet:
+       id: "0dd6c6d7-cf8b-406f-8fd9-9d4109e004c7"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: time_end
+              oldColumnName:  timeEnd
+              tableName:  triggers_documents
+
+  -  changeSet:
+       id: "6ef8852b-2def-43f8-baa5-caaf1f19ab51"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: short_description
+              oldColumnName:  shortDescription
+              tableName:  delivery
+
+  -  changeSet:
+       id: "2421ae54-fb81-48b4-a777-78a93b3e7f79"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: sender_email
+              oldColumnName:  senderEmail
+              tableName:  email_settings
+
+  -  changeSet:
+       id: "11d1688e-48e5-4002-8e9f-84a780398b87"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: sender_name
+              oldColumnName:  senderName
+              tableName:  email_settings
+
+  -  changeSet:
+       id: "9b4dc4dd-ceed-4941-b128-92029c91aa5a"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: phone_number
+              oldColumnName:  phoneNumber
+              tableName:  users
+
+  -  changeSet:
+       id: "9de0aa9e-fdbc-4542-a9b9-c81d99e7ce18"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: devino_login
+              oldColumnName:  devinoLogin
+              tableName:  email_settings
+
+  -  changeSet:
+       id: "e1235b50-1c71-45e7-8820-f88a6997dfbb"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: devino_password
+              oldColumnName:  devinoPassword
+              tableName:  email_settings
+
+  -  changeSet:
+       id: "ef4b815b-1e91-4712-8034-c7a1704da9af"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: message_h_t_m_l
+              oldColumnName:  messageHTML
+              tableName:  messages_templates
+
+  -  changeSet:
+       id: "d5fa324d-550e-47d1-8ef4-9c482a67f817"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: sender_name
+              oldColumnName:  senderName
+              tableName:  viber_settings
+
+  -  changeSet:
+       id: "1e35290b-6f90-4b90-b1f1-996801dd2042"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: qr_content
+              oldColumnName:  qrContent
+              tableName:  coupons
+
+  -  changeSet:
+       id: "35f0252f-d4dd-4473-983d-d8d2efe32583"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: string_value
+              oldColumnName:  stringValue
+              tableName:  checks_additional_attributes
+
+  -  changeSet:
+       id: "48ee115d-df97-4fa1-8f8d-d2c2da111872"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: first_name
+              oldColumnName:  firstName
+              tableName:  users
+
+  -  changeSet:
+       id: "7a9939cf-bc95-4041-b572-d526b9ce35ea"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: devino_login
+              oldColumnName:  devinoLogin
+              tableName:  viber_settings
+
+  -  changeSet:
+       id: "060e4cef-1a97-4c9f-b1c4-12256413592c"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: bar_code
+              oldColumnName:  barCode
+              tableName:  cards
+
+  -  changeSet:
+       id: "9270636b-e533-4a47-ac9a-22e0c24ac1e4"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: devino_password
+              oldColumnName:  devinoPassword
+              tableName:  viber_settings
+
+  -  changeSet:
+       id: "da246df9-232b-4b72-bfae-6130272e706a"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: last_name
+              oldColumnName:  lastName
+              tableName:  users
+
+  -  changeSet:
+       id: "da6b40be-e62a-43c4-8c34-768757cbc9d5"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: sender_name
+              oldColumnName:  senderName
+              tableName:  whatsapp_settings
+
+  -  changeSet:
+       id: "8801e577-130b-4d4c-8adf-51491c7cb396"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: patronymic_name
+              oldColumnName:  patronymicName
+              tableName:  users
+
+  -  changeSet:
+       id: "d2765d26-7789-4823-beb4-401782d1b4c8"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: ext_goods_id
+              oldColumnName:  extGoodsId
+              tableName:  goods
+
+  -  changeSet:
+       id: "37d1e11c-f4a3-4318-9e2e-f91bf18ad091"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: external_purchase_id
+              oldColumnName:  externalPurchaseId
+              tableName:  checks
+
+  -  changeSet:
+       id: "f77f1bca-5982-4ddd-9db7-0138bcfe2047"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: check_number
+              oldColumnName:  checkNumber
+              tableName:  checks
+
+  -  changeSet:
+       id: "55f4bdeb-7aec-48e8-9399-b15536a0ed18"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: card_type
+              oldColumnName:  cardType
+              tableName:  cards
+
+  -  changeSet:
+       id: "49b70b60-dc63-4dd3-8dff-52417d3ef4d5"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: secret_key
+              oldColumnName:  secretKey
+              tableName:  auth_settings
+
+  -  changeSet:
+       id: "da6c17b5-b31c-4d9d-8f42-4be2a0c9e8d9"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: goods_group_u_i_d
+              oldColumnName:  goodsGroupUID
+              tableName:  favorite_categories
+
+  -  changeSet:
+       id: "a29d7d06-bdef-494c-87d4-d73e592cde59"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: loymax_id
+              oldColumnName:  loymaxId
+              tableName:  favorite_categories
+
+  -  changeSet:
+       id: "dc0b1668-e7e7-42f8-8239-e0c26f342390"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: devino_login
+              oldColumnName:  devinoLogin
+              tableName:  whatsapp_settings
+
+  -  changeSet:
+       id: "8a78b31c-5f15-4512-a753-ca7fae07728b"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: reward_type
+              oldColumnName:  rewardType
+              tableName:  checks_rewards
+
+  -  changeSet:
+       id: "cd573a7d-0c1a-4ca4-952a-b5aa4b8f9a77"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: loymax_social_user_id
+              oldColumnName:  loymaxSocialUserId
+              tableName:  loymax_users_socials
+
+  -  changeSet:
+       id: "5bbde70b-d1c8-4734-a63c-e4660cfb1028"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: devino_password
+              oldColumnName:  devinoPassword
+              tableName:  whatsapp_settings
+
+  -  changeSet:
+       id: "17aa8888-a075-4289-9bcc-bedf10c98e56"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: app_id
+              oldColumnName:  appId
+              tableName:  socials
+
+  -  changeSet:
+       id: "199d2383-da17-4f0f-9bfb-5afef1cb8bef"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: app_secret
+              oldColumnName:  appSecret
+              tableName:  socials
+
+  -  changeSet:
+       id: "ab65022d-b284-4a15-9c40-6917efe54777"
+       author: "owpk(generated)"
+       changes:
+         -  renameColumn:
+              newColumnName: photo_id
+              oldColumnName:  photoId
+              tableName:  users
+

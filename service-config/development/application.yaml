@@ -1,0 +1,20 @@
+spring:
+  redis:
+    host: dev07
+
+sparural:
+  loymax:
+    rest.base-url: https://sparch.loymax.tech
+  kafka:
+    consumer:
+      threads:
+        max: 15
+        start: 5
+    bootstrap-servers: dev03.ctmol.ru:9092
+    request-topics:
+      engine:   dev.db.request
+      file:     dev.file.request
+      triggers: dev.trigger.request
+      notification:
+        main:     dev.notification.main.request
+        required: dev.notification.required.request

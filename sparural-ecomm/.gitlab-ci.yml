@@ -1,0 +1,174 @@
+variables:
+  JAVA_HOME: /lib/jvm/java-11-openjdk-amd64
+
+stages:
+  - build
+  - deploy
+  - deploy-prod
+
+build:
+  variables:
+    GIT_STRATEGY: clone
+    SPARURAL_JDBC: jdbc:postgresql://172.18.0.10/sparural
+    SPARURAL_DB_USER: postgres
+    SPARURAL_DB_PASSWORD: postgres
+
+  stage: build
+  script:
+    - SPARURAL_ENGINE_SERVICE_VERSION=`gradle sparural-engine-service:properties |grep version |sed -r 's/.{9}//'`
+    - echo "SPARURAL_ENGINE_SERVICE_VERSION=${SPARURAL_ENGINE_SERVICE_VERSION}" >> build.env
+
+    - SPARURAL_REST_PROXY_VERSION=`gradle sparural-rest-proxy:properties |grep version |sed -r 's/.{9}//'`
+    - echo "SPARURAL_REST_PROXY_VERSION=${SPARURAL_REST_PROXY_VERSION}" >> build.env
+
+    - SPARURAL_NOTIFICAITON_SERVICE_VERSION=`gradle sparural-notification-service:properties |grep version |sed -r 's/.{9}//'`
+    - echo "SPARURAL_NOTIFICAITON_SERVICE_VERSION=${SPARURAL_NOTIFICAITON_SERVICE_VERSION}" >> build.env
+
+    - SPARURAL_TRIGGER_VERSION=`gradle sparural-trigger:properties |grep version |sed -r 's/.{9}//'`
+    - echo "SPARURAL_TRIGGER_VERSION=${SPARURAL_TRIGGER_VERSION}" >> build.env
+
+    - docker exec postgres /root/recreatedb.sh
+    - echo ${SPARURAL_JDBC}
+    - gradle build
+  artifacts:
+    reports:
+      dotenv: build.env
+
+deploy-engine:
+  stage: deploy
+  variables:
+    GIT_STRATEGY: none
+  script:
+    - echo "Deploy engine"
+    - echo ${SPARURAL_ENGINE_SERVICE_VERSION}
+    - scp sparural-engine-service/build/libs/sparural-engine-service-${SPARURAL_ENGINE_SERVICE_VERSION}.jar engine@dev06.ctmol.ru:/opt/engine/sparural-engine-service.jar
+    - ssh engine@dev06.ctmol.ru "sudo systemctl stop sparural-engine-service"
+    - sleep 10
+    - export SPARURAL_JDBC=${SPARURAL_JDBC_TEST}
+    - export SPARURAL_DB_PASSWORD=${SPARURAL_DB_PASSWORD_TEST}
+    - export SPARURAL_DB_USER=${SPARURAL_DB_USER_TEST}
+    - gradle sparural-engine-service:update
+    - ssh engine@dev06.ctmol.ru "sudo systemctl start sparural-engine-service"
+  dependencies:
+    - build
+  only:
+    - master
+
+deploy-rest:
+  stage: deploy
+  variables:
+    GIT_STRATEGY: none
+  script:
+    - echo "Deploy rest"
+    - scp sparural-rest-proxy/build/libs/sparural-rest-proxy-${SPARURAL_REST_PROXY_VERSION}.jar rest@dev05.ctmol.ru:/opt/rest/sparural-rest-proxy.jar
+    - export SPARURAL_REST_PROXY_PORT=${SPARURAL_REST_PROXY_PORT}
+    - ssh rest@dev05.ctmol.ru "sudo systemctl stop sparural-rest-proxy"
+    - sleep 10
+    - ssh rest@dev05.ctmol.ru "sudo systemctl start sparural-rest-proxy"
+  dependencies:
+    - build
+  only:
+    - master
+
+deploy-notification:
+  stage: deploy
+  variables:
+    GIT_STRATEGY: none
+  script:
+    - echo "Deploy notification service"
+    - scp sparural-notification-service/build/libs/sparural-notification-service-${SPARURAL_NOTIFICAITON_SERVICE_VERSION}.jar notif@dev06.ctmol.ru:/opt/notify/sparural-notification-service.jar
+    - ssh notif@dev06.ctmol.ru "sudo systemctl stop sparural-notification-service"
+    - sleep 10
+    - ssh notif@dev06.ctmol.ru "sudo systemctl start sparural-notification-service"
+  dependencies:
+    - build
+  only:
+    - master
+
+deploy-trigger:
+  stage: deploy
+  variables:
+    GIT_STRATEGY: none
+  script:
+    - echo "Deploy trigger service"
+    - scp sparural-trigger/build/libs/sparural-trigger-${SPARURAL_TRIGGER_VERSION}.jar trigger@dev06.ctmol.ru:/opt/trigger/sparural-trigger.jar
+    - ssh trigger@dev06.ctmol.ru "sudo systemctl stop sparural-trigger"
+    - sleep 10
+    - export SPARURAL_TRIGGER_JDBC=${SPARURAL_TRIGGER_JDBC_TEST}
+    - export SPARURAL_TRIGGER_DB_PASSWORD=${SPARURAL_TRIGGER_DB_PASSWORD_TEST}
+    - export SPARURAL_TRIGGER_DB_USER=${SPARURAL_TRIGGER_DB_USER_TEST}
+    - gradle sparural-trigger:update
+    - ssh trigger@dev06.ctmol.ru "sudo systemctl start sparural-trigger"
+  dependencies:
+    - build
+  only:
+    - master
+
+deploy-engine-prod:
+  stage: deploy-prod
+  variables:
+    GIT_STRATEGY: none
+  script:
+    - echo "Deploy engine"
+    - echo ${SPARURAL_ENGINE_SERVICE_VERSION}
+    - scp sparural-engine-service/build/libs/sparural-engine-service-${SPARURAL_ENGINE_SERVICE_VERSION}.jar engine@mob03.ctmol.ru:/home/engine/bin/sparural-engine-service.jar
+    - ssh engine@mob03.ctmol.ru "sudo systemctl stop sparural-engine-service"
+    - export SPARURAL_JDBC=${SPARURAL_JDBC_PROD}
+    - export SPARURAL_DB_PASSWORD=${SPARURAL_DB_PASSWORD_PROD}
+    - export SPARURAL_DB_USER=${SPARURAL_DB_USER_PROD}
+    - gradle sparural-engine-service:update
+    - sleep 10
+    - ssh engine@mob03.ctmol.ru "sudo systemctl start sparural-engine-service"
+  dependencies:
+    - build
+  only:
+    - product
+
+deploy-trigger-prod:
+  stage: deploy-prod
+  variables:
+    GIT_STRATEGY: none
+  script:
+    - echo "Deploy trigger service"
+    - scp sparural-trigger/build/libs/sparural-trigger-${SPARURAL_TRIGGER_VERSION}.jar trigger@mob03.ctmol.ru:/home/trigger/bin/sparural-trigger.jar
+    - ssh trigger@mob03.ctmol.ru "sudo systemctl stop sparural-trigger"
+    - sleep 10
+    - export SPARURAL_TRIGGER_JDBC=${SPARURAL_TRIGGER_JDBC_TEST}
+    - export SPARURAL_TRIGGER_DB_PASSWORD=${SPARURAL_TRIGGER_DB_PASSWORD_TEST}
+    - export SPARURAL_TRIGGER_DB_USER=${SPARURAL_TRIGGER_DB_USER_TEST}
+    - gradle sparural-trigger:update
+    - ssh trigger@mob03.ctmol.ru "sudo systemctl start sparural-trigger"
+  dependencies:
+    - build
+  only:
+    - product
+
+deploy-rest-prod:
+  stage: deploy-prod
+  variables:
+    GIT_STRATEGY: none
+  script:
+    - echo "Deploy rest"
+    - scp sparural-rest-proxy/build/libs/sparural-rest-proxy-${SPARURAL_REST_PROXY_VERSION}.jar rest@mob03.ctmol.ru:/home/rest/bin/sparural-rest-proxy.jar
+    - ssh rest@mob03.ctmol.ru "sudo systemctl stop sparural-rest-proxy"
+    - sleep 10
+    - ssh rest@mob03.ctmol.ru "sudo systemctl start sparural-rest-proxy"
+  dependencies:
+    - build
+  only:
+    - product
+
+deploy-notification-prod:
+  stage: deploy-prod
+  variables:
+    GIT_STRATEGY: none
+  script:
+    - echo "Deploy notification service"
+    - scp sparural-notification-service/build/libs/sparural-notification-service-${SPARURAL_NOTIFICAITON_SERVICE_VERSION}.jar notif@mob03.ctmol.ru:/home/notif/bin/sparural-notification-service.jar
+    - ssh notif@mob03.ctmol.ru "sudo systemctl stop sparural-notification-service"
+    - sleep 10
+    - ssh notif@mob03.ctmol.ru "sudo systemctl start sparural-notification-service"
+  dependencies:
+    - build
+  only:
+    - product

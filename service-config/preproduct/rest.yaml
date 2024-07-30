@@ -1,0 +1,22 @@
+security:
+  cookie:
+    secured: false
+  jwt:
+    # seconds
+    expiration-time: 20000
+    secret-key: "{cipher}{key:dev}AQASvNgB9ub8xgN5cklYAg+Ps68mAdVybqANPnMUuEvh2hRcNFcV9kk2uKptCp6Aq02srl/LhwAkfZPKVn26KvOiLXWKx0ICo1QzBmUKic562fkTbCsLMLMZiuB44wvESB1ZhytAkxwCH+TdVxrR2vi2XlofU9NZWfsjfrMxfcLCjaNuOim5ykUNI2QH9drvwtNon2fdmd7CzXf1p/4Qy71ephJW+QIRS5GAEpx/GIWAGjeboDTnGq4E7AFbpxLuoMGdcWl7AifYYR24kGvgIhnKc+nziUSOEhIddgeITddHlvracePQUT3YWyUW3ZKLAChBjhZfoLzmrqP2cpt0P1mKaj5jP6n/Ej8w1rTD2kd696OMm7psPolK2nKxgfn9Ci0="
+    token-prefix: "Bearer "
+    token-header: Authorization
+  refresh:
+    # seconds
+    expiration-time: ${SPARURAL_REFRESH_TOKEN_EXPIRATION_TIME:1092000}
+    
+logging:
+  file:
+    name: /home/rest/log/rest.log
+  level:
+    root: INFO
+sparural:
+  kafka:
+    consumer.name: "preprod.rest-consumer"
+    producer.replyTopic: "preprod.rest.response" 

@@ -1,0 +1,25 @@
+sparural:
+  loymax:
+    social:
+      # use '$' to declare social name wildcard: example http://localhost/$/success-login
+      redirect-url:
+        login: https%3A%2F%2Fpreprod.sparural.ru/api/v1/socials/$/login-success
+        set: https%3A%2F%2Fpreprod.sparural.ru/api/v1/socials/$/binding-success
+  kafka:
+    consumer.name: "preprod.engine-consumer"
+    producer.replyTopic: "preprod.db.response"
+    
+spring:
+  datasource:
+    url: jdbc:postgresql://postgres.ctmol.ru/sparural_preprod
+    password: "{cipher}{key:dev}AQBoR/P5mf7D0ADR/3q9Q0kqGXIP2k+6fkVEEaM8hrqZwdxnCWRIk890bpJbnudQkeyayEGIaJ0sa5n90ZL41wp3RYxu1zIKwj3F26R6pzlbvLelTYSX/0gmpZsaEdxvF7NChfDpnIeluXjCWns1kUYpOCxqo0AjWh4kac9PKNeuAj1NeNQmFSixLqSvAMigl1SGjWMvFF3SAvrXfNghEER+fHyyYZCoBA6dY08JQIABx/cS/OTaTKVoSDJ3pfiHVIPwzMYnmjs84+wZdP9coFxUmJTCxv0dCn2KqpaNKSgNClUElTHyH7/LvFQ+TfOIm62kLLECaATpGzDrmvliR15FW4SY3INok2BUI43jLoTAqCOV4Csro4m1Dp6l3WRcuvIYoE89CScL0cQ7e1M5Cjsi"
+    username: sparural_preprod
+    
+performance_log:
+  enabled: true
+
+logging:
+  file:
+    name: /home/engine/log/engine.log
+  level:
+    root: INFO

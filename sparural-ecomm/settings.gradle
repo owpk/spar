@@ -1,0 +1,14 @@
+pluginManagement {
+    repositories {
+        maven { url 'http://nexus.ctmol.ru/repository/maven-public/'; allowInsecureProtocol = true }
+    }
+}
+def prefix = 'sparural'
+rootProject.name = 'composed'
+include "${prefix}-engine-service"
+include "${prefix}-rest-proxy"
+include "${prefix}-rest-template"
+include "${prefix}-notification-service"
+include "${prefix}-globals"
+include "${prefix}-trigger"
+

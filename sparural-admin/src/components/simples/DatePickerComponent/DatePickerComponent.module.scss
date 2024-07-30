@@ -1,0 +1,35 @@
+
+@import '../../../styles/config.scss';
+.input {
+    border: 1px solid $color-grey;
+    width: 100%;
+    border-radius: 10px;
+    background-color: #fff;
+    min-height: $input-height;
+}
+
+.label {
+    display: block;
+    margin-bottom: 3px;
+    font-family: SFProDisplay;
+    font-weight: normal;
+    font-size: 18px;
+}
+
+.topLabel {
+    font-size: 16px;
+}
+.chevron {
+    stroke: $color-primary;
+}
+
+.error {
+    border-color: $color-red!important;
+}
+.errorText {
+    color: $color-red;
+    font-size: 12px;
+    position: absolute;
+    bottom: -17px;
+    left: 5px
+}

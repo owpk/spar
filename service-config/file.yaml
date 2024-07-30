@@ -1,0 +1,15 @@
+sparural:
+  kafka:
+    consumer.name: "file-consumer"
+    producer.replyTopic: "lp.file.response"
+
+spring:
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+      
+security:
+  jwt:
+    token-prefix: "Bearer "
+    token-header: Authorization

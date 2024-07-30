@@ -1,0 +1,53 @@
+@import '../../../../../styles/config.scss';
+.block {
+    display: flex;
+    gap: 20px;
+    padding-bottom: 20px;
+    flex-wrap: wrap;
+}
+.blockOne {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    margin-bottom: 40px;
+    span {
+        font-style: normal;
+        font-weight: 300;
+        font-size: 20px;
+        line-height: 130%;
+        color: $color-font-color;
+        margin-bottom: 24px;
+    }
+}
+.blockTwo {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    span {
+        font-style: normal;
+        font-weight: 300;
+        font-size: 20px;
+        line-height: 130%;
+        color: $color-font-color;
+        margin-bottom: 24px;
+    }
+}
+.blockThree {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    span {
+        font-style: normal;
+        font-weight: 300;
+        font-size: 20px;
+        line-height: 130%;
+        color: $color-font-color;
+        margin-bottom: 24px;
+    }
+}
+.btn {
+    display: flex;
+    justify-content: flex-end;
+    padding: 0 35px;
+    margin-top: 20px;
+}

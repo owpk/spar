@@ -1,0 +1,104 @@
+databaseChangeLog:
+  -  changeSet:
+       id:  "4541a9b0-3396-4f8f-8178-83e14f801786"
+       author:  owpk(generated)
+       context: "tableSchema"
+       changes:
+         - sql:
+             sql: "DROP TYPE IF EXISTS card_statuses"
+
+  -  changeSet:
+       id:  "863faf7a-daec-4271-ac17-28b7c9c9f281"
+       author:  owpk(generated)
+       context: "tableSchema"
+       changes:
+         - sql:
+             sql: "DROP TYPE IF EXISTS question_type"
+
+  -  changeSet:
+       id:  "218b61a0-ebfc-4350-9591-e69b462a0ada"
+       author:  owpk(generated)
+       context: "tableSchema"
+       changes:
+         - sql:
+             sql: "DROP TYPE IF EXISTS merchant_working_statuses"
+
+  -  changeSet:
+       id:  "adc153d5-acb1-4dd4-9554-07aa18ee2342"
+       author:  owpk(generated)
+       context: "tableSchema"
+       changes:
+         - sql:
+             sql: "DROP TYPE IF EXISTS message_statuses"
+
+  -  changeSet:
+       id:  "a66896fd-d896-4c8d-bc9d-f675afdb9f62"
+       author:  owpk(generated)
+       context: "tableSchema"
+       changes:
+         - sql:
+             sql: "DROP TYPE IF EXISTS city_select_values"
+
+  -  changeSet:
+       id:  "98b9cae8-3390-4a32-95d4-2e7d7ebd69a8"
+       author:  owpk(generated)
+       context: "tableSchema"
+       changes:
+         - sql:
+             sql: "DROP TYPE IF EXISTS users_delete_reasons"
+
+  -  changeSet:
+       id:  "04f426c7-5d4a-4209-a806-d01ffcb7319a"
+       author:  owpk(generated)
+       context: "tableSchema"
+       changes:
+         - sql:
+             sql: "DROP TYPE IF EXISTS coupon_states"
+
+  -  changeSet:
+       id:  "1dd5fbcc-1128-40ce-a4a1-bcdd258c8982"
+       author:  owpk(generated)
+       context: "tableSchema"
+       changes:
+         - sql:
+             sql: "DROP TYPE IF EXISTS life_times_periods"
+
+  -  changeSet:
+       id:  "fad093dd-cb9f-469f-a729-85c76ce7bbad"
+       author:  owpk(generated)
+       context: "tableSchema"
+       changes:
+         - sql:
+             sql: "DROP TYPE IF EXISTS personal_goods_preference_types"
+
+  -  changeSet:
+       id:  "e60e380a-7aa5-467b-850d-bc1babc24ebd"
+       author:  owpk(generated)
+       context: "tableSchema"
+       changes:
+         - sql:
+             sql: "DROP TYPE IF EXISTS personal_goods_calculation_methods"
+
+  -  changeSet:
+       id:  "494cc254-a2b1-4148-b0c6-5801c8ed3edd"
+       author:  owpk(generated)
+       context: "tableSchema"
+       changes:
+         - sql:
+             sql: "DROP TYPE IF EXISTS support_message_types"
+
+  -  changeSet:
+       id:  "0ee7f9b5-e347-4496-b27b-8b2e06ec9edd"
+       author:  owpk(generated)
+       context: "tableSchema"
+       changes:
+         - sql:
+             sql: "DROP TYPE IF EXISTS genders"
+
+  -  changeSet:
+       id:  "95e9ad0c-6bbb-4c1d-ac24-b8029780a79e"
+       author:  owpk(generated)
+       context: "tableSchema"
+       changes:
+         - sql:
+             sql: "DROP TYPE IF EXISTS confirm_code_statuses"

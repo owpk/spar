@@ -1,0 +1,27 @@
+plugins {
+    id 'java'
+    id 'java-library'
+    id 'ru.sparural.microservice-configurer' version '1.8.2'
+}
+
+group = 'ru.sparural'
+
+repositories {
+    mavenCentral()
+    maven { url 'http://nexus.ctmol.ru/repository/maven-public/'; allowInsecureProtocol = true }
+}
+
+microservice {
+    nexus()
+    gitVersion()
+}
+
+dependencies {
+    compileOnly 'org.projectlombok:lombok:1.18.24'
+    annotationProcessor 'org.projectlombok:lombok:1.18.24'
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.15.2'
+}
+
+test {
+    useJUnitPlatform()
+}

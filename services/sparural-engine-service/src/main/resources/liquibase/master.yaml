@@ -1,0 +1,7 @@
+databaseChangeLog:
+  - include:
+      file: init.yaml
+  - include:
+      file: db.changelog-1.0.yaml
+  - include:
+      file: db.support_chat-1.0.yaml

@@ -1,0 +1,23 @@
+build/
+bin/
+.idea/
+.vscode/
+.gradle/
+.jpb/
+node_modules/
+*.log
+*.pid
+*.gz
+*.tmp
+*dump*
+scripts
+.run/
+
+# jdtls ignores
+.factorypath
+.project
+.settings/
+
+sparural-rest-proxy/gradle.properties
+sparural-engine-service/gradle.properties
+sparural-notification-service/front-example/package-lock.json

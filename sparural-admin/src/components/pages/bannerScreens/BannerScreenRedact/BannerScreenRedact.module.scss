@@ -1,0 +1,77 @@
+@import '../../../../styles/config.scss';
+
+.BannerScreenRedact {
+    background: #ffffff;
+    box-shadow: 0px 10px 35px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+    padding: 25px 50px 40px 20px;
+    .BannerScreenRedact__title {
+        margin-bottom: 32px;
+        .BannerScreenRedact__title__text {
+            font-style: normal;
+            font-weight: 300;
+            font-size: 30px;
+            line-height: 130%;
+            letter-spacing: 0.01em;
+            text-transform: uppercase;
+            color: #2e2e2e;
+        }
+    }
+    .BannerScreenRedact__title__text::before {
+        content: '';
+        display: block;
+        height: 2px;
+        background: #b7b7b7;
+        position: relative;
+        width: 65%;
+        top: 20px;
+        left: 32%;
+    }
+}
+.BannerScreenRedact__contener {
+    display: flex;
+    width: 100%;
+}
+.BannerScreenRedact__item {
+    display: flex;
+    gap: 20px;
+    width: 80%;
+}
+.BannerScreenRedact__item__one {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+.BannerScreenRedact__item__two {
+    width: 50%;
+}
+.BannerScreenRedact__item__two__link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 16px 0;
+    width: 100%;
+    .BannerScreenRedact__item__two__link__radio {
+        position: relative;
+        top: 20px;
+    }
+}
+.BannerScreenRedact__loading {
+    position: relative;
+    top: 27px;
+    margin-left: 20px;
+}
+
+.BannerScreenRedact__datepicker_container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.BannerScreenRedact__datepicker_root {
+    width: 50%;
+}
+
+.BannerScreenRedact__datepicker span {
+    opacity: 1;
+}

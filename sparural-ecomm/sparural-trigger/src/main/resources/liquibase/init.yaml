@@ -1,0 +1,437 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1652592839476-62
+      context: tableSchema
+      author: aeysner (generated)
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: messages_types_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  name: created_at
+                  type: BIGINT
+              - column:
+                  name: updated_at
+                  type: BIGINT
+            tableName: messages_types
+  - changeSet:
+      id: 1652592839476-63
+      context: tableSchema
+      author: aeysner (generated)
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: messages_templates_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: message_type_id
+                  type: BIGINT
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  name: subject
+                  type: VARCHAR(255)
+              - column:
+                  name: message
+                  type: TEXT
+              - column:
+                  name: message_html
+                  type: TEXT
+              - column:
+                  name: screen_id
+                  type: BIGINT
+              - column:
+                  name: notification_type_id
+                  type: BIGINT
+              - column:
+                  name: send_to_everyone
+                  type: BOOLEAN
+              - column:
+                  name: is_system
+                  type: BOOLEAN
+              - column:
+                  name: required
+                  type: BOOLEAN
+              - column:
+                  name: lifetime
+                  remarks: seconds
+                  type: INTEGER
+              - column:
+                  name: created_at
+                  type: BIGINT
+              - column:
+                  name: updated_at
+                  type: BIGINT
+            tableName: messages_templates
+
+  - changeSet:
+      id: 1652592839476-210
+      context: "constraintSchema"
+      author: aeysner (generated)
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: message_type_id
+            baseTableName: messages_templates
+            constraintName: fk_72
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: messages_types
+            validate: true
+
+  - changeSet:
+      id: 1652592839476-65
+      context: tableSchema
+      author: aeysner (generated)
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: messages_template_user_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: message_template_id
+                  type: BIGINT
+              - column:
+                  name: user_id
+                  type: BIGINT
+              - column:
+                  name: created_at
+                  type: BIGINT
+              - column:
+                  name: updated_at
+                  type: BIGINT
+            tableName: messages_template_user
+
+  - changeSet:
+      id: 1652592839476-66
+      context: tableSchema
+      author: aeysner (generated)
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: messages_template_users_group_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: message_template
+                  type: BIGINT
+              - column:
+                  name: users_group_id
+                  type: BIGINT
+              - column:
+                  name: created_at
+                  type: BIGINT
+              - column:
+                  name: updated_at
+                  type: BIGINT
+            tableName: messages_template_users_group
+
+  - changeSet:
+      id: "2022-05-15 15:00"
+      context: tableSchema
+      author: "Alex Eysner"
+      changes:
+        - sql:
+            sql: "CREATE TYPE MESSAGE_STATUSES AS ENUM ('BeingSent', 'Sent', 'NotSent')"
+
+  - changeSet:
+      id: 1652592839476-121
+      context: tableSchema
+      author: aeysner (generated)
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  name: uuid
+                  remarks: uuid
+                  type: VARCHAR(255)
+              - column:
+                  name: message_template_id
+                  type: BIGINT
+              - column:
+                  name: user_id
+                  type: BIGINT
+              - column:
+                  name: data
+                  type: JSON
+              - column:
+                  name: status
+                  type: MESSAGE_STATUSES
+              - column:
+                  name: sended_at
+                  type: BIGINT
+              - column:
+                  name: created_at
+                  type: BIGINT
+              - column:
+                  name: updated_at
+                  type: BIGINT
+            tableName: messages
+  - changeSet:
+      id: 1652592839476-59
+      context: tableSchema
+      author: aeysner (generated)
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: triggers_document_types_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  name: created_at
+                  type: BIGINT
+              - column:
+                  name: updated_at
+                  type: BIGINT
+            tableName: triggers_document_types
+
+  - changeSet:
+      id: 1652592839476-58
+      context: tableSchema
+      author: aeysner (generated)
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: triggers_types_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: code
+                  remarks: ex. made-purchase-in-store
+                  type: VARCHAR(255)
+              - column:
+                  name: name
+                  remarks: Совершена покупка в магазине
+                  type: VARCHAR(255)
+              - column:
+                  name: created_at
+                  type: BIGINT
+              - column:
+                  name: updated_at
+                  type: BIGINT
+            tableName: triggers_types
+  - changeSet:
+      id: 1652592839476-59
+      context: tableSchema
+      author: aeysner (generated)
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: triggers_document_types_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  name: created_at
+                  type: BIGINT
+              - column:
+                  name: updated_at
+                  type: BIGINT
+            tableName: triggers_document_types
+
+  - changeSet:
+      id: 1652592839476-60
+      context: tableSchema
+      author: aeysner (generated)
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: triggers_documents_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: triggers_type_id
+                  type: BIGINT
+              - column:
+                  name: triggers_document_type_id
+                  type: BIGINT
+              - column:
+                  name: triggers_document_id
+                  remarks: ex. messagesTemplate.id
+                  type: BIGINT
+              - column:
+                  name: date_start
+                  type: BIGINT
+              - column:
+                  name: date_end
+                  type: BIGINT
+              - column:
+                  name: frequency
+                  remarks: seconds
+                  type: INTEGER
+              - column:
+                  name: time_start
+                  type: VARCHAR(10)
+              - column:
+                  name: time_end
+                  type: VARCHAR(10)
+              - column:
+                  name: created_at
+                  type: BIGINT
+              - column:
+                  name: updated_at
+                  type: BIGINT
+            tableName: triggers_documents
+
+  - changeSet:
+      id: 1652592839476-61
+      context: tableSchema
+      author: aeysner (generated)
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: triggers_logs_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: triggers_type_id
+                  type: BIGINT
+              - column:
+                  name: triggers_document_type_id
+                  type: BIGINT
+              - column:
+                  name: triggers_document_id
+                  remarks: ex. messagesTemplate.id
+                  type: BIGINT
+              - column:
+                  name: datetime
+                  type: BIGINT
+              - column:
+                  name: data
+                  type: JSON
+              - column:
+                  name: created_at
+                  type: BIGINT
+              - column:
+                  name: updated_at
+                  type: BIGINT
+            tableName: triggers_logs
+
+  - changeSet:
+      id: 1652592839476-205
+      context: "constraintSchema"
+      author: aeysner (generated)
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: triggers_type_id
+            baseTableName: triggers_documents
+            constraintName: fk_68
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: triggers_types
+            validate: true
+
+  - changeSet:
+      id: 1652592839476-206
+      context: "constraintSchema"
+      author: aeysner (generated)
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: triggers_document_type_id
+            baseTableName: triggers_documents
+            constraintName: fk_69
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: triggers_document_types
+            validate: true
+
+  - changeSet:
+      id: 1652592839476-208
+      context: "constraintSchema"
+      author: aeysner (generated)
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: triggers_type_id
+            baseTableName: triggers_logs
+            constraintName: fk_70
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: triggers_types
+            validate: true
+
+  - changeSet:
+      id: 1652592839476-209
+      context: "constraintSchema"
+      author: aeysner (generated)
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: triggers_document_type_id
+            baseTableName: triggers_logs
+            constraintName: fk_71
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: triggers_document_types
+            validate: true
+

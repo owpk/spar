@@ -1,0 +1,113 @@
+@import '/src/styles/config.scss';
+
+.optionItem {
+    display: flex;
+    height: 40px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 20px;
+    font-weight: 300;
+}
+
+.root {
+    position: relative;
+    height: $input-height;
+    width: 273px;
+
+}
+
+.wrapper {
+    width: 100%;
+    min-height: $input-height;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    // align-items: center;
+    border: 1px solid $color-grey;
+    border-radius: 5px;
+    background-color: #fff;
+    overflow: hidden;
+    padding: 0 10px;
+    z-index: 9;
+
+    &.opened {
+        border: 1px solid $color-primary;
+        height: auto;
+        position: absolute;
+        z-index: 10;
+        box-shadow: $box-shadow-button;
+        // padding: 0 25px 40px 21px;
+    }
+}
+
+.openBlock {
+    padding: 0 0px 40px 0px;
+}
+
+.selectWrap {
+    position: relative;
+
+    user-select: none;
+}
+
+.openIcon {
+    transform: rotateX(180deg);
+}
+
+.top {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+    height: $input-height;
+}
+
+.emptyLabel {
+    height: 25px;
+    margin-bottom: 3px;
+}
+
+.chevron {
+    stroke: $color-primary;
+
+}
+
+.nameFilter {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 28px;
+    color: #1F1F1F;
+}
+
+.blockDate {
+    display: flex;
+    margin-bottom: 40px;
+    justify-content: space-between;
+}
+
+.blockDateOne,
+.blockDateTwo {
+    width: 105px;
+    max-height: 30px;
+
+    div {
+        min-height: 30px;
+        height: 30px;
+
+        input {
+            font-weight: 300;
+            font-size: 12px;
+            line-height: 130%;
+        }
+
+        // span {
+        //     opacity: 0;
+        // }
+    }
+}
+
+.blockDateTwo {
+    margin-left: 17px;
+}

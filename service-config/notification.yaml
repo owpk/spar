@@ -1,0 +1,41 @@
+mail:
+  from: spar 
+
+server:
+  port: 8085
+  
+dkim:
+  domain: sparural.ru
+  selector: sparuralrukey55968
+  key: MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDkk2JzSMheoVsGwXjHAz/wa7vhkQ3PHbogse74TNfpCLxn8PW8vBHca6gHM5Cgs80PfJgERSzK8ufR1n3bbR2triBmT3/ttJy9yBegav6iGKB0orR2baDFLxN1ctKNVgSI1lsNUqlYvYA1NugTtfnOa3RVtwveS6G8dXuV6xfVBwIDAQAB
+
+sparural:
+  kafka:
+    consumer.name: "notification-consumer"
+    producer.replyTopic: "lp.notification.response"
+    
+huawei:
+  app_id: 106776803
+  app_token: 59233feb8a6b0c04f2602d4b39a64a4d7d8ae77276a3e82d174b38dff72b42a8
+
+firebase:
+  type: "service_account"
+  project_id: "mobileappspar"
+  private_key_id: "9968ebf2f134dd59e8a0960e0ddf8c8815286c0d"
+  private_key: "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDBIByg4QvOr/HZ\nQ2AUQIfg0GldX0WTCaz6yS2y71kXrVc2glK6nvatIAyTsumpnU/O9QWe3OeJP6tH\nye7fNOHTRbnhgsT2SH7jWpz2tEaQp2L/5jr4djRFLpAANpUKmss8NcyabO88Ktul\n18dFo46IgyrwnbS/9HLGgiz4wTyXu46J5Pqxy3c02GsUrqKMTRSEY8VXc3f6ZAiA\nNzcWO4vf82tVQvNhGh1rRDLSBGhdNpHRbP6Ze3OXi/9EqfQOmHnJCJai7x4Yt2Al\nEu43MEDGlt4b0aFGWwnzzhpjHIG0DWsSbhuYowppGO5pcO3RsF6gxICKZPHf2Ql6\nuUEqblABAgMBAAECggEABztV5xsjD1o2T7qLdABKNkhuBNTG+a96K0MlgD0g1HEL\n9YFIamJk5IaKztMU/eJJ265mlGE7e4yHTbjJkzeOba3MPQR7ew94gbhiBuwpDxlw\nuYCcQuaTCxr09UhJKRL/1K4QQdSEQHgIYciK1tg99tQWlqXV+WQrEhtMAAQ+0FDh\nTPO3OxJ6xKH/5Wfhp8PkKlUtSfSG3Kw44Y6XNrIskLoaQWu+BQRyoWav78zlvsYP\nZKHckArsT1obj/UaTT+j2JNCUMNJhminbfvXDWPeXMVFFldKkFhA+Nje2DRkGPR5\nvK8B5NJk3tSdknERVkVwyvZo+OAsVcnJdoLjdEDlWwKBgQDm4u961+oiZEJW2oSJ\njwmmjPZz934sVXZY5ui9ssSeuYhHtiIYi8rJL5THlsT+M4eGs9uVdmPGZ+5FL7oB\nRvByXuIr08cHMc9zLkdzSJtqmANm7uNSlk+Gj7YfsBNG9hMYfwA4UfroWejCvGIU\nlws7qYIocY/vtRhx1jxyVvsIAwKBgQDWIbcm6cbaFi2lYZu+IDmZkVmkSqpykHal\nbid+oGV30PIqpmY7DCGE7CHxTyBq+sB1BGFvyBGJi0lYRN+wm37QiGalI9bkSeSS\nt407RpGw9/axz1oYhgEMdgq4wP1eXGd36iGlaf1WqbY3JQwzf9mhurmH9VQwPz95\n3wNw1WVSqwKBgGD8CI54bfA+XyNurOe/ftVINyolVwm2aH0VmcQ9eJwX4SgGWLIo\n3mi+JOfl7B+/c3lgyacx0N2BwLOtRZvNuajBNI4mal8aTELcuMSzRh1zd1JgnHqP\nix5B9cW/x4kySnkqt+Pwg83gHobWbPirLdvE61ijw0t0raz7ye5ZnR8TAoGAJodK\nfSXzMapr7CXz7/G8a3VLu9Pzd0mnD30SfiY+G6Ds8d+e5WD5ZwFV2iVyn80ec++l\n2IcXILh/KfK6jPxthPgGABDCybDB/+Qm9VNtQ3paWQQGIgN6jNNwem2/KQtXUqw+\nAZVgkAdZUfLIjzuh3QfL+jqaO1QmB7eo1tSOtqECgYEA1E4BjJcijVc4pt8npgN4\nwHkjp2mETHXRE+adJcYxiqUI+Rj+tp832o2nathrzbcWOmq5I7SVY4Fg/2uquZ6T\n4NzmgwhLWbmwNSlMl2hU6iAnnPdAq9luMvzqNjVUU409EDO08NN2jXgdvriCcUTP\nfUug4ZhnY4+6Lz0VIVBy9KU=\n-----END PRIVATE KEY-----\n"
+  client_email: "firebase-adminsdk-gw41f@mobileappspar.iam.gserviceaccount.com"
+  client_id: "105586357468412522813"
+  auth_uri: "https://accounts.google.com/o/oauth2/auth"
+  token_uri: "https://oauth2.googleapis.com/token"
+  auth_provider_x509_cert_url: "https://www.googleapis.com/oauth2/v1/certs"
+  client_x509_cert_url: "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-gw41f%40mobileappspar.iam.gserviceaccount.com"
+
+topic:
+  idle_interval:
+    main: 100
+    required: 100
+    
+security:
+  jwt:
+    token-prefix: "Bearer "
+    token-header: Authorization

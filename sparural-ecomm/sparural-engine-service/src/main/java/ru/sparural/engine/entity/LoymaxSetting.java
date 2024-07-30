@@ -1,0 +1,14 @@
+package ru.sparural.engine.entity;
+
+import lombok.Data;
+import lombok.ToString;
+
+@Data
+@ToString
+public class LoymaxSetting {
+    private String host;
+    private String username;
+    private String password;
+    private Long maxFaforiteCategoriesCount;
+    private String siteKey;
+}

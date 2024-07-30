@@ -1,0 +1,17 @@
+databaseChangeLog:
+  - include:
+      file: init.yaml
+  - include:
+      file: db.changelog-1.0.yaml
+  - include:
+      file: db.changelog-1.6.0.yaml
+  - include:
+      file: db.support_chat-1.0.yaml
+  - include:
+      file: db.ecomm-368.yaml
+  - include:
+      file: 30-db.rename_to_snake_case.yaml
+  - include:
+      file: 35-db.replace_psg_type_by_table.yaml
+  - include:
+      file: 40-db.drop_pg_types.yaml

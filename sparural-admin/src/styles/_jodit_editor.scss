@@ -1,0 +1,48 @@
+@import './config.scss';
+.jodit-dialog__panel {
+    border-radius: 10px;
+    padding: 10px;
+    width: 700px;
+}
+.jodit-ui-button {
+    height: 44px;
+    border-radius: 61px;
+}
+.jodit-ui-button_variant_primary:focus:not([disabled]) {
+    outline: none;
+}
+.jodit-ui-button_variant_primary {
+    background-color: #007c45;
+    color: #fff;
+    font-weight: 600;
+    font-size: 18px;
+    &:hover {
+        background-color: #007c45;
+    }
+}
+.jodit-ui-button_variant_primary:hover:not([disabled]) {
+    background-color: #007c45;
+}
+.jodit-ui-button_variant_initial {
+    border: 1px solid #007c45;
+    color: #007c45;
+
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.jodit-dialog__header-title {
+    font-weight: 700;
+    font-size: 20px;
+    color: #2e2e2e;
+}
+.jodit-dialog__content {
+    color: #2e2e2e;
+    font-size: 16px;
+}
+.jodit-dialog_prompt {
+    max-width: 100%;
+}
+.jodit-ui-button:focus:not([disabled]) {
+    outline: none;
+}

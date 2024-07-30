@@ -1,0 +1,31 @@
+@import '../../../styles//config.scss';
+
+.root{
+    cursor: pointer;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    // line-height: 130%;
+    color: $color-primary;
+    background: #ffffff;
+    border: 2px dashed $color-primary;
+    box-sizing: border-box;
+    border-radius: 5px;
+    width: 160px;
+    height: 160px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+padding: 6px;
+
+&.disable {
+    color: $color-disable;
+    border: 2px dashed $color-disable;
+    cursor: default;
+}
+}
+.label {
+    margin-bottom: 10px;
+}

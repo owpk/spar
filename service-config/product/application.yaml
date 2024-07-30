@@ -1,0 +1,20 @@
+spring:
+  redis:
+    host: 10.66.1.3
+
+sparural:
+  loymax:
+    rest.base-url: https://sparch.loymax.tech
+  kafka:
+    consumer:
+      threads:
+        max: 15
+        start: 5
+    bootstrap-servers: localhost:9092
+    request-topics:
+      engine:   prod.db.request
+      file:     prod.file.request
+      triggers: prod.trigger.request
+      notification:
+        main:     prod.notification.main.request
+        required: prod.notification.required.request

@@ -1,0 +1,54 @@
+@import '../../../styles/config.scss';
+
+.title {
+    font-size: 30px;
+    margin-left: 15px;
+}
+.content {
+    position: relative;
+    padding-top: 40px;
+}
+.layoutAside {
+    padding-top: $header-height;
+    background: #fff;
+}
+.layoutContent {
+    margin-left: $sidebar-width;
+    height: 100%;
+    padding-top: $header-height;
+    overflow-y: auto;
+    background-color: #fff;
+}
+.mainContent {
+    padding: 24px;
+    margin: 0;
+    min-height: 280px;
+    background-color: #fff;
+}
+.sidebar {
+    background-color: #fff;
+    width: $sidebar-width;
+    overflow: auto;
+    height: 100vh;
+    position: fixed !important;
+    left: 0;
+    padding-top: $header-height + 24px;
+    background: #fff;
+    z-index: 8;
+}
+.search {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+}
+.btnHolder {
+    flex: 1;
+}
+.addSearchBlock {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 32px;
+    flex: 1 1;
+}

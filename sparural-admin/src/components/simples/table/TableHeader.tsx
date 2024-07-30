@@ -1,0 +1,57 @@
+import React, { FC } from 'react'
+import { useTranslation } from 'react-i18next';
+import styles from './Table.module.scss'
+
+type Props = {
+    data: Array<{
+        title: string
+        width: number
+    }>
+    withoutEdit?: boolean
+}
+
+export type ColumnType = {
+    title: string
+    key: string
+    width: number
+    type?: 'button' | 'image' | 'string' | 'array' | 'checkbox' | 'input'
+    objectKey?: string
+    isChecked?: boolean
+}
+
+/**
+ * @data - Array of object {title, width} where title - column title and width - column width
+ * @returns - header for table
+ */
+
+const TableHeader: FC<Props> = ({ data,  withoutEdit=false }) => {
+
+    const { t } = useTranslation();
+    return (
+        <div className={styles.tableHeaderWrapper}>
+            {data?.map((item, index) => (
+                <div
+                    style={{
+                        flex: item.width,
+                        textAlign: !index ? 'start' : 'center'
+                    }}
+                    className={styles.tableHeaderLabel}
+                    key={index}
+                >
+                    {item.title}
+                </div>
+            ))}
+           
+           { !withoutEdit && <div className={styles.editBlock}>
+                <span style={{ flex: 1 }} className={styles.tableHeaderLabel}>
+                    {t("common.edit")}
+                </span>
+                <span style={{ flex: 1 }} className={styles.tableHeaderLabel}>
+                    {t("common.delete")}
+                </span>
+            </div>}
+        </div>
+    )
+}
+
+export default React.memo(TableHeader);

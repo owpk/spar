@@ -1,0 +1,45 @@
+plugins {
+    id 'java-gradle-plugin'
+    id 'java'
+    id 'maven-publish'
+}
+
+group 'ru.sparural.gradle'
+version '1.8.7'
+
+gradlePlugin {
+    plugins {
+        simplePlugin {
+            id = 'ru.sparural.microservice-configurer'
+            implementationClass = 'ru.sparural.gradle.plugins.microservice.MicroserviceConfigurerPlugin'
+        }
+    }
+}
+
+switch(JavaVersion.current()) {
+    case '17':
+        ext.dockerPluginVersion = '9.3.2';
+        break;
+    default:
+        ext.dockerPluginVersion = '6.7.0';
+        break;
+}
+
+dependencies {
+    
+    //plugins
+    implementation "com.bmuschko:gradle-docker-plugin:$dockerPluginVersion"
+    implementation 'org.liquibase:liquibase-core:4.16.1'
+    implementation 'org.jooq:jooq:3.16.5'
+    implementation 'com.h2database:h2:2.1.214'
+    implementation 'org.yaml:snakeyaml:1.33'
+    implementation 'org.apache.commons:commons-lang3:3.12.0'
+    implementation 'org.jooq:jooq-codegen:3.16.5'
+    implementation 'org.ajoberstar:gradle-git:0.6.1'
+}
+
+
+
+repositories {
+    maven{url 'http://nexus.ctmol.ru/repository/maven-public/'; allowInsecureProtocol = true}
+}

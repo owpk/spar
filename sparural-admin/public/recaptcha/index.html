@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>reCAPTCHA</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://www.recaptcha.net/recaptcha/api.js" async defer></script>
+    <style>
+        body {
+            background-color: #fff;
+            padding: 0;
+            margin: 0;
+        }
+
+        .main {
+            height:  100vh;
+            display:  flex;
+            justify-content: center;
+            align-items: center;
+            background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjU1IiBoZWlnaHQ9IjI1NiIgdmlld0JveD0iMCAwIDI1NSAyNTYiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xMjcuNSAyNTUuNDVDMTk3LjkxNiAyNTUuNDUgMjU1IDE5OC4zNjYgMjU1IDEyNy45NUMyNTUgNTcuNTMzNCAxOTcuOTE2IDAuNDQ5NzA3IDEyNy41IDAuNDQ5NzA3QzU3LjA4MzcgMC40NDk3MDcgMCA1Ny41MzM0IDAgMTI3Ljk1QzAgMTk4LjM2NiA1Ny4wODM3IDI1NS40NSAxMjcuNSAyNTUuNDVaTTg1Ljg0MjIgMjE4LjE2M0M1MS43ODUxIDIwMi40MSAyOC4xNTY4IDE2Ny45MzkgMjguMTU2OCAxMjcuOTVDMjguMTU2OCA3My4wODQgNzIuNjM0MyAyOC42MDY1IDEyNy41IDI4LjYwNjVDMTgyLjM2NiAyOC42MDY1IDIyNi44NDMgNzMuMDg0IDIyNi44NDMgMTI3Ljk1QzIyNi44NDMgMTY4LjAwMyAyMDMuMTQgMjAyLjUyIDE2OC45OTUgMjE4LjIzOEMxNjMuNTQ4IDIxNy45NzQgMTU3Ljc5MSAyMTYuODQxIDE1MS45NzggMjE0LjI4N0MxNDIuMjU2IDIwOS40OTIgMTQwLjI3MSAxOTcuMzc3IDE0MC4yNzEgMTg2LjUzN1YxNzIuODA3SDIxMC42MzFDMTgyLjkxMyAxNDQuNTg2IDEyNy40NzggNzcuMjU3NSAxMjcuNDc4IDMzLjcxNkMxMjcuNDc4IDc3LjI1NzUgNzIuMDQzNiAxNDQuNTg2IDQ0LjMyNjIgMTcyLjgwN0gxMTQuNjg2VjE4Ni41MzdDMTE0LjY4NiAxOTcuMzc3IDExMi43IDIwOS40OTIgMTAyLjk3OCAyMTQuMjg3Qzk3Ljc1NjggMjE2Ljg2MyA5MS43NTE4IDIxNy45NjMgODUuODQyMiAyMTguMTYzWiIgZmlsbD0iI0IwQUZCMyIgZmlsbC1vcGFjaXR5PSIwLjEiLz48L3N2Zz4=");
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 70%;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="main">
+          <form action="?" method="POST">
+              <div class="g-recaptcha"
+                   data-sitekey="6Lc0MxoeAAAAAMWsbxpKsmpT4rmWutaFl72gZF5i"
+                   data-callback="captchaCallback"></div>
+          </form>
+    </div>
+    <script>
+      function captchaCallback(response){
+        if(typeof Captcha!=="undefined"){
+          Captcha.postMessage(response);
+        }
+      }
+    </script>
+</body>
+</html>

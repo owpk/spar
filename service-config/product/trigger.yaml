@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://mob01.ctmol.ru/sparural-trigger
+    username: sparural-trigger
+    password: "{cipher}{key:product}AgCCMJFTkHtNTnLrAevtxja0madt1KQkCSQx7Hq5Qb7HSjXayBZRQpq4DsGl/ys/jm8aatT+L0qNX1bBqwj+BNE717KZZhuCQ3cnTLQWiSDiGqI7AtptlwqgPl0D2RjrfegKQ//5uRWtpJAc8lg6C3Z16IgDBYak8LeK98g7UaFgy/IQAAOWjg6LVgBN1VoLW1oLCXK6A/oSinOswyzCvZZNkAr/KQn1MEwrYpY46K4DTwBZw7a8x1KiqILGwP8OCvsqjeFu/f7vbfudKCdXd+CIA2fsWkSYbT4xOe4Yyu6Y0AKh2KZMK13hlNrD+upDuffqxOw6sX5wXamUXIUwsdC7ml0mTaaZRwz0BA84HtKJt6XQxutOx1ycJMf3wZRvjRqgIQw4SiQRTtliYk+DpLlK6I17cxPd0paWvGrofePHdc40HFnVuEPRO05vYEG6+DmHm+soF10dpomzOFXBZ8i//x5SQDr7OcUnytNk3blkxOFX0aupYV/avJTMrpMAgzA6DcGaF4msorQsF4QMAdJIRLqbx64HF1Z/ZLb8ZTNyShrVjLmykoeF0/qbu1inyskULKBSPmGlfZbwe9X4/YH5kur5xqn+zYqIjGSDIvIHEQk+56Fo2v5AezbRT9Yfa3ohv8FYr1DloEMhCb5DRK/K5E/zgrpdXuMXVu0hQNWdK1YXVop+PLYKcidDXekpHgnpxCUsUlFkZ4JPBe/MdHN40NksTXnLE3+1VmaR8k6jhA=="
+
+logging:
+  file:
+    name: /home/trigger/log/trigger.log
+  level:
+    root: INFO
+    
+sparural:
+  kafka:
+    consumer.name: "preprod.trigger-consumer"
+    producer.replyTopic: "preprod.trigger.response"

@@ -1,0 +1,1 @@
+export { default as SmsTab } from './SmsTab'

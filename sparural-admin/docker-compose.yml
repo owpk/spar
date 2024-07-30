@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  frontend:
+    build:
+      context: .
+    restart: unless-stopped
+    container_name: frontend
+    ports:
+      - 443:443
+      - 80:80

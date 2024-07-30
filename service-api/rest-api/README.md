@@ -1,0 +1,1 @@
+implementation ru.sparural:rest-api:version

@@ -1,0 +1,22 @@
+@import '../../../../../styles/config.scss';
+.block {
+    display: flex;
+    gap: 20px;
+    padding-bottom: 20px;
+}
+.blockOne {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+}
+.blockTwo {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+}
+.btn {
+    display: flex;
+    justify-content: flex-end;
+    padding: 0 35px;
+    margin-top: 20px;
+}

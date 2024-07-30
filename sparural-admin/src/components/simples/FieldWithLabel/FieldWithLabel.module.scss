@@ -1,0 +1,17 @@
+.root {
+    min-height: 70px;
+}
+
+.label {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 130%;
+    color: rgba(46, 46, 46, 0.4);
+}
+
+.info {
+    margin-top: 12px;
+    max-height: 50px;
+    overflow-y: auto;
+}

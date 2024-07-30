@@ -1,0 +1,47 @@
+@import '../../../styles/config.scss';
+.checkboxLabel {
+    font-size: 18px;
+    margin-left: 10px;
+}
+
+.optionBlock {
+    max-height: 300px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-bottom: 12px;
+}
+
+.inputLabel {
+    display: flex;
+    align-items: center;
+}
+
+.checkbox {
+    position: relative;
+    display: block;
+    min-width: 30px;
+    min-height: 30px;
+    border-radius: 4px;
+    background: #ffffff;
+    border: 2px solid $color-primary;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+.checked {
+    &:before {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 16px;
+        height: 16px;
+
+        background-color: $color-primary;
+    }
+}
+
+.input {
+    display: none;
+}

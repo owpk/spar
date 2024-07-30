@@ -1,0 +1,24 @@
+rest:
+  base-url: /api
+  version: v1
+
+sparural:
+  kafka:
+    consumer.name: "rest-consumer"
+    producer.replyTopic: "lp.rest.response" 
+
+security:
+  refresh:
+    expiration-time: 1092000
+
+spring:
+  mvc:
+    # springfox swagger known bug fix:
+    # https://stackoverflow.com/questions/70036953/springboot-2-6-0-spring-fox-3-failed-to-start-bean-documentationpluginsboot
+    pathmatch:
+      matching-strategy: ant-path-matcher
+  jackson:
+    serialization:
+      FAIL_ON_EMPTY_BEANS: false
+
+aspect.enabled: true

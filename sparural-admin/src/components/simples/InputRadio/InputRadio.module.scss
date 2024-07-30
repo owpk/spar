@@ -1,0 +1,27 @@
+@import '../../../styles/config.scss';
+
+.InputRario {
+    box-sizing: border-box;
+    appearance: none;
+    background: white;
+    outline: 2px solid #007c45;
+    border: 3px solid white;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+}
+
+.InputRario:checked {
+    background: #007c45;
+    outline: 2px solid #007c45;
+}
+.InputRario:focus {
+    outline: 2px solid #007c45;
+}
+
+.label {
+    font-family: SFProDisplay;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 20px;
+}

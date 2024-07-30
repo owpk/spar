@@ -1,0 +1,33 @@
+databaseChangeLog:
+  - changeSet:
+      id: "11-12-2023 12:18:00"
+      author: "fsuharev"
+      context: "data"
+      runInTransaction:  true
+      preConditions:
+        - onFail: MARK_RAN
+        - sqlCheck:
+            expectedResult: 1
+            sql: >
+              select case when count(*) > 0 then 1 else 0 end as "has_duplicates" 
+              from personal_offers
+              where attribute is null;
+      changes:
+        - sql:
+            sql: >
+              delete from personal_offers
+              where attribute is null;
+
+  - changeSet:
+      id: "11-12-2023 15:20:08"
+      author: "fsuharev"
+      context: "tableSchema"
+      changes:
+        - addUniqueConstraint:
+            columnNames: attribute
+            constraintName: attribute_uniq
+            tableName: personal_offers
+            validate: true
+        - addNotNullConstraint:
+            columnName: attribute
+            tableName: personal_offers

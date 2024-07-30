@@ -1,0 +1,49 @@
+plugins {
+    id 'application'
+    id 'java'
+    id 'org.springframework.boot' version '3.1.2'
+    id 'io.spring.dependency-management' version '1.1.2'
+    id 'ru.sparural.microservice-configurer' version '1.8.3-17'
+}
+
+microservice {
+    gitVersion()
+    docker()
+}
+repositories {
+    maven{url 'http://nexus.ctmol.ru/repository/maven-public/'; allowInsecureProtocol = true}
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+//def springBootVersion='3.1.2';
+dependencies {
+    //api
+    implementation 'ru.sparural:engine-api:1.37.0'
+    implementation 'ru.sparural:file-api:1.0.0'
+
+    //kafka
+    implementation 'ru.sparural:kafka-starter:1.8.0-17'
+
+    //lombok
+    compileOnly 'org.projectlombok:lombok:1.18.22'
+    annotationProcessor 'org.projectlombok:lombok:1.18.22'
+
+    // spring boot
+    ext.springVersion = '3.1.2'
+    implementation "org.springframework.boot:spring-boot-starter-web:$springVersion"
+    implementation "org.springframework.boot:spring-boot-starter-security:$springVersion"
+
+    //spring cloud
+    implementation 'org.springframework.cloud:spring-cloud-starter-config:4.0.4'
+
+    //utils
+    implementation 'commons-io:commons-io:2.11.0'
+    implementation 'org.modelmapper:modelmapper:3.0.0'
+    implementation 'org.apache.commons:commons-lang3:3.12.0'
+    implementation 'com.auth0:java-jwt:3.18.2'
+
+}

@@ -1,0 +1,52 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+				script {
+					echo 'Build....'
+					sh (script: "git checkout ${params.branch}")
+					version = sh(script: './gradlew printReleaseVersion --quiet', returnStdout: true).replace('\n','')
+					sh (script: "PROJECT_VERSION=$version ./gradlew clean build")
+				}
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Testing..'
+            }
+        }
+        stage('Build Docker Image') {
+		
+            steps {
+				sshagent(['jenkins_git']) {
+					script {
+						echo 'Git version tag'
+						version = sh(script: './gradlew printReleaseVersion --quiet', returnStdout: true).replace('\n','')
+						if (params.branch == 'master') {
+							sh "git tag -a v$version -m 'Tag release version'"
+							sh "git push --tags"
+						}
+						commit = sh(script: 'git rev-parse HEAD', returnStdout: true).replace('\n','')
+						projectName = sh(script: './gradlew printProjectName --quiet', returnStdout: true).replace('\n','')
+						
+						echo 'Prepare Dockerfile'
+						sh (script: "./gradlew dockerCreateDockerfile")
+
+						echo 'Build image'
+						imageName = 'docker.ctmol.ru/' + projectName + ':' + version
+						sh (script: "docker build --build-arg GIT_COMMIT_HASH=$commit --build-arg APPLICATION_VERSION=$version -t $imageName build/docker")
+
+						echo 'Publish image'
+						
+						sh (script: "docker push $imageName")
+						sh (script: "docker rmi $imageName")
+						sh (script: "git checkout .")
+						sh (script: "git clean -d -f")
+					}
+				}
+            }
+        }
+    }
+}

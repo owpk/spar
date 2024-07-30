@@ -1,0 +1,22 @@
+plugins {
+    id 'java-library'
+    id 'ru.sparural.microservice-configurer' version '1.8.2'
+}
+
+microservice {
+    nexus()
+    gitVersion()
+}
+
+repositories {
+    maven{url 'http://nexus.ctmol.ru/repository/maven-public/'; allowInsecureProtocol = true}
+}
+
+group 'ru.sparural'
+
+dependencies {
+    compileOnly 'org.projectlombok:lombok:1.18.24'
+    annotationProcessor 'org.projectlombok:lombok:1.18.24'
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.13.0'
+	implementation group: 'javax.validation', name: 'validation-api', version: '2.0.1.Final'
+}

@@ -1,0 +1,24 @@
+sparural:
+  loymax:
+    social:
+      # use '$' to declare social name wildcard: example http://localhost/$/success-login
+      redirect-url:
+        login: https%3A%2F%2Fadmin.sparural.ru/api/v1/socials/$/login-success
+        set: https%3A%2F%2Fadmin.sparural.ru/api/v1/socials/$/binding-success
+  kafka:
+    consumer.name: "dev.engine-consumer"
+    producer.replyTopic: "dev.db.response"
+spring:
+  datasource:
+    url: jdbc:postgresql://192.168.0.186/sparural_dev
+    password: "{cipher}{key:dev}AQBMp/bfgjYD3X3ltkOZM1KZP5v4XdXga7qg6LzWGvfK5NyeQPMmQ5Smug46cnk86r3J9lkFQNoHQVrVCz7yTdZDnNeIA7ydHk6PYSkuUurRdLIUOdCm7Lfg+FYwHBVtMqj0trRpXvJv/G0TzJzaLQtQtZhfl4a+wcBmIwXI+7hPtYTi28j+2JgPuD16XKYzoTQzW06xBKEz7BH+BPPDrMisPzGBSo0xieMSBMap4us1O7HM9epfmJoXSAnpjvXeK2j3tHTzvS0yLfQG4661BaLzeMotuyB3cH6n4t25Dcp1w1LLq9+AP6TXDdk4+tizbFtOfSv+KkLSFhILENM79Uq/jEDJJjMSwZ7HZcPuRAbWWyIqmmzd5OnMe3vqFid2/1dz5vXT0dI+aMQMDJ3JYa9r"
+    username: sparural_dev
+    
+performance_log:
+  enabled: true
+
+logging:
+  file:
+    name: /var/log/engine/engine.log
+  level:
+    root: INFO

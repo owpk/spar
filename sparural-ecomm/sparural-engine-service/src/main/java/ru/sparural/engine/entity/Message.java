@@ -1,0 +1,17 @@
+package ru.sparural.engine.entity;
+
+import lombok.Data;
+import lombok.ToString;
+import ru.sparural.engine.entity.enums.MessageStatuses;
+
+@Data
+@ToString
+public class Message {
+    String uuid;
+    Long messageTemplateId;
+    Long userId;
+    MessageStatuses messageStatuses;
+    Long sendedAt;
+    Long triggerLogId;
+    String data;
+}

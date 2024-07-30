@@ -1,0 +1,56 @@
+spring:
+  redis:
+    timeout: 2000
+    port: 6379
+  cache:
+    redis:
+      time-to-live: 100000
+  data:
+    redis:
+      repositories:
+        enabled: false 
+  kafka:
+    consumer:
+      enable-auto-commit: false
+      auto-offset-reset: latest
+
+loymax_cache:
+  default_ttl: 300
+  cards: 300
+  accounts: 300
+  status: 90
+  check: 90
+  favorite_categories: 300
+  offers: 300
+  personal_offers: 300
+  personal_goods: 300
+  user: 300
+  admin_token: 3600
+
+sparural:
+  kafka:
+    consumer:
+      threads:
+        max: 50
+        start: 10
+    producer:
+      timeout: 10000
+    request-topics:
+      engine: lp.db.request
+      file: lp.file.request
+      triggers: lp.trigger.request
+      notification:
+        main: lp.notification.main.request
+        required: lp.notification.required.request
+  nominatim:
+    address: "http://dev05.ctmol.ru:8180"
+    lang: "ru"
+
+logging:
+  pattern:
+    console: "%d %-5level %logger : %msg%n"
+    file: "%d %-5level [%thread] %logger : %msg%n"
+
+cache:
+  ttl: 20
+  local: false 

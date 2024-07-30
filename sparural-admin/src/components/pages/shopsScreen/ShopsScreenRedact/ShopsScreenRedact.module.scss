@@ -1,0 +1,61 @@
+@import '../../../../styles/config.scss';
+
+.block {
+    display: flex;
+    width: 100%;
+    gap: 20px;
+}
+.blockOne {
+    width: 40%;
+    .blockGrup {
+        display: flex;
+        width: 100%;
+        margin: 16px 0;
+        .Lat {
+            display: flex;
+            flex-direction: column;
+            margin-right: 9px;
+            width: 50%;
+        }
+        .Lng {
+            display: flex;
+            flex-direction: column;
+            width: 50%;
+        }
+    }
+    .select {
+        margin: 16px 0 48px 0;
+    }
+}
+
+.blockTwo {
+    width: 40%;
+    .blockTwoSpan {
+        font-style: normal;
+        font-weight: normal;
+        font-size: 18px;
+        line-height: 130%;
+        color: #2e2e2e;
+        margin-top: 16px;
+    }
+    .blockGrupSelect {
+        display: flex;
+        width: 100%;
+        margin: 0 0 016px 0;
+
+        .blockGrupSelectOne {
+            display: flex;
+            flex-direction: column;
+            margin-right: 9px;
+            width: 50%;
+        }
+        .blockGrupSelectTwo {
+            display: flex;
+            flex-direction: column;
+            width: 50%;
+        }
+    }
+    .select {
+        margin-top: 16px;
+    }
+}

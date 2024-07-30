@@ -1,0 +1,37 @@
+plugins {
+    id 'java-gradle-plugin'
+    id 'java'
+    id 'maven-publish'
+}
+
+group 'ru.sparural.gradle'
+version '1.2.3'
+
+gradlePlugin {
+    plugins {
+        simplePlugin {
+            id = 'ru.sparural.kafka-client-generator'
+            implementationClass = 'ru.sparural.gradle.plugins.kafka.client.KafkaClientGeneratorPlugin'
+        }
+    }
+}
+
+dependencies {
+    implementation 'org.jd:jd-core:1.1.3'
+    implementation 'org.apache.commons:commons-lang3:3.12.0'
+    implementation 'org.ajoberstar:gradle-git:0.6.1'
+    implementation group: 'com.google.guava', name: 'guava', version: '32.1.1-jre'
+
+    compileOnly 'org.projectlombok:lombok:1.18.22'
+    annotationProcessor 'org.projectlombok:lombok:1.18.22'
+    implementation gradleApi()
+    implementation 'org.xeustechnologies:jcl-core:2.8'
+    implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.12.0'
+}
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+    maven{url 'http://nexus.ctmol.ru/repository/maven-public/'; allowInsecureProtocol = true}
+}
+

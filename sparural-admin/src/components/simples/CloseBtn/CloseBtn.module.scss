@@ -1,0 +1,16 @@
+@import '../../../styles/config.scss';
+
+.root {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid $color-primary;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: .3s;
+    cursor: pointer;
+    &:hover {
+        box-shadow: $box-shadow-button;
+    }
+}

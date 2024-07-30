@@ -1,0 +1,118 @@
+plugins {
+    id 'application'
+    id 'groovy'
+    id 'java'
+
+    id "org.sonarqube" version "3.5.0.2730"
+    id 'org.springframework.boot' version '2.6.1'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+}
+
+repositories {
+    mavenCentral()
+    maven { url 'http://nexus.ctmol.ru/repository/maven-public/'; allowInsecureProtocol = true }
+}
+
+wrapper {
+    gradleVersion '7.3'
+}
+
+group 'ru.sparural'
+
+def modulePrefix = 'sparural'
+
+subprojects {
+    group 'ru.sparural'
+    version '1.0-SNAPSHOT'
+    apply plugin: 'java'
+
+    sourceCompatibility = '11'
+    targetCompatibility = '11'
+
+    wrapper {
+        gradleVersion '7.3'
+    }
+
+    repositories {
+        maven { url 'http://nexus.ctmol.ru/repository/maven-public/'; allowInsecureProtocol = true }
+        mavenCentral()
+    }
+
+    dependencies {
+        compileOnly 'org.projectlombok:lombok:1.18.22'
+        annotationProcessor 'org.projectlombok:lombok:1.18.22'
+    }
+
+    sonarqube {
+        properties {
+            property "sonar.sourceEncoding", "UTF-8"
+            property "sonar.sources", "src/main"
+            property "sonar.host.url", "http://192.168.0.186:9000"
+            property "sonar.login", "admin"
+            property "sonar.password", "1422"
+        }
+    }
+
+    configurations {
+        compileOnly {
+            extendsFrom annotationProcessor
+        }
+    }
+}
+
+// services
+def moduleEngineService = project("${modulePrefix}-engine-service")
+def moduleRestProxy = project("${modulePrefix}-rest-proxy")
+def moduleNotificationService = project("${modulePrefix}-notification-service")
+def moduleTriggers = project("${modulePrefix}-trigger")
+
+def moduleRestTemplate = project("${modulePrefix}-rest-template")
+def moduleGlobals = project("${modulePrefix}-globals")
+
+def services = [
+        moduleEngineService,
+        moduleNotificationService,
+        moduleRestProxy,
+        moduleTriggers
+]
+
+configure moduleNotificationService, {
+    dependencies {
+        implementation moduleRestTemplate
+    }
+}
+
+configure moduleEngineService, {
+    dependencies {
+        implementation moduleRestTemplate
+    }
+}
+
+// configure services, add sparural kafka dep
+configure services, {
+    apply plugin: 'org.springframework.boot'
+    apply plugin: 'io.spring.dependency-management'
+
+    dependencies {
+        implementation 'org.springframework.cloud:spring-cloud-starter-config'
+        implementation moduleGlobals
+    }
+
+    ext {
+        set('springCloudVersion', "2021.0.0")
+    }
+
+    repositories {
+        maven { url 'https://repo.spring.io/milestone' }
+    }
+
+    dependencyManagement {
+        imports {
+            mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+        }
+    }
+}
+
+tasks.getByName "bootJar", {
+    enabled = false
+}

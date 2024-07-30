@@ -1,0 +1,39 @@
+@import '../../../styles//config.scss';
+
+.btn {
+    height: $buttom-height;
+
+    align-items: center;
+    padding: 0 32px;
+    font-family: SFProDisplay;
+    color: #fff;
+    font-weight: 600;
+    font-size: 18px;
+    border: 1px solid #007c45;
+    box-sizing: border-box;
+    border-radius: 61px;
+    min-width: 100px;
+    max-width: 187px;
+}
+
+.disabledBtn {
+    background-color: $color-grey !important;
+    border-color: $color-grey;
+    span {
+        color: #fff;
+    }
+}
+
+.primary {
+    background-color: $color-primary;
+}
+.second {
+    background-color: #fff;
+}
+
+.primaryLabel {
+    color: #fff;
+}
+.secondLabel {
+    color: $color-primary;
+}

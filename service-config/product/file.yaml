@@ -1,0 +1,21 @@
+security:
+  jwt:
+    secret-key: "{cipher}{key:product}AgB1L0w/uS+5IvbCFGB/wzoiJA1P86AQPkiSP4ZujFLZS6tbvTERdodP4ERyIpAlcNvRsbCwOHNAS57f6Ml46huYU23KDPMKnizQaSyd607wIXMNvd76A3mzvXCVxI2p9hv0yYOC73fHiQQ4UoD5T7tMXWpXrhcCNyCxCuadY9DA9vEwUSDKDOMI6dTpIc7GWtX89XDMKBpTYXP98a0nxDzlpKe++weILGv7c4i4dyQxImscyVrMNnfSwSqOASCpWiMDdE+llfS94ovQpHsgGIF8Vi0X6Vat7/EuqcvlL1UwbojoOFGMSYXOLtbnFxoyr5HA0WRQLvQFNn4Z7kGySvftM157eymJ7e3mYRGTMhEm0vPmcCM37c31CIntQ79+DuViYwgyGxgnY9gxTNSowIpiVXirTRRcqz1SGy9q75fE9DzQ0k8SOmph2H7vX/I1Ez+9ULCWZNIN6xOXy1lhARlGJBn9uv2/cbcZFGpzsguwk1mF2acHLLtoty+Exio2ZlmFR9rpD7/4eZo89ccM2ICnlCJ1w2pyVqSqB1P9lbwlEyI/iPXbF+5CD25gGi6sgvw8BusLbyYvK8wKN4mPjW6QQQcns50T3sIuF8ErPpK4oZR0+Cvjiwc/EZ9pGcHz2JGIm6eMc+jijCybYsP2QSig0Z30H6OsIbTKU05PcZj+ofI3p0JBIb5T/mNeYYAjpD+DQuJF4pNvmN/EqV+Rx5ZvIRZJXWmc7YVC6e7MOp2qjg=="
+
+storage:
+  type: disk
+  path: /mnt/file-storage
+  temp: /mnt/file-temp
+  id: 91652270-ae5c-4e80-91f1-d50598ea30eb
+
+logging:
+  file:
+    name: /home/filesrv/log/filesrv.log
+  level:
+    root: INFO
+
+sparural:
+  kafka:
+    bootstrap-servers: mob03:9092
+    consumer.name: "prod.file-consumer"
+    producer.replyTopic: "prod.file.response"

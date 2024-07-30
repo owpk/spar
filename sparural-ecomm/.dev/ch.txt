@@ -1,0 +1,3 @@
+export SPARURAL_DB_PASSWORD=postgres
+export SPARURAL_DB_USER=postgres
+export SPARURAL_JDBC=jdbc:postgresql://localhost/sparural_dev
